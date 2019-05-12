@@ -21,3 +21,10 @@ Sass
 
 
 ![capture logic](./images/wireframe_p3.jpg)
+
+/Users/mingjing/j/track-fit/wireframe/iPhone X-XS – 1.png
+/Users/mingjing/j/track-fit/wireframe/iPhone X-XS – 2.png
+/Users/mingjing/j/track-fit/wireframe/iPhone X-XS – 3.png
+/Users/mingjing/j/track-fit/wireframe/iPhone X-XS – 4.png
+/Users/mingjing/j/track-fit/wireframe/iPhone X-XS – 5.png
+/Users/mingjing/j/track-fit/wireframe/iPhone X-XS – 6.png
