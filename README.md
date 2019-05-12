@@ -19,10 +19,17 @@ Sass
 
 <img width="852" alt="Screen Shot 2019-05-11 at 8 07 53 PM" src="https://user-images.githubusercontent.com/33525692/57576229-85929200-7428-11e9-802a-28e8e7cdf7fb.png">
 
+
+
+
 ## Wireframes 
 
+<img width="852" alt="wireframe" src="https://user-images.githubusercontent.com/29616227/57585371-38a8cd00-74b5-11e9-9e4f-2f3e6804421d.JPG">
 
-![capture logic](./images/wireframe_p3.jpg)
+
+
+
+<!-- ![capture logic](./src/images/wireframe_p3.jpg) -->
 
 
 
