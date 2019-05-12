@@ -1,5 +1,6 @@
+<img width="852" alt="track-fit" src="https://user-images.githubusercontent.com/29616227/57587882-43298d80-74da-11e9-8fa1-5202a7c2927d.png">
 
-# Track Fit
+
 
 
 ## MVP
@@ -21,15 +22,10 @@ Sass
 
 
 
-
 ## Wireframes 
 
 <img width="852" alt="wireframe" src="https://user-images.githubusercontent.com/29616227/57585371-38a8cd00-74b5-11e9-9e4f-2f3e6804421d.JPG">
 
-
-
-
-<!-- ![capture logic](./src/images/wireframe_p3.jpg) -->
 
 
 
