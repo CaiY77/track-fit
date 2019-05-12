@@ -21,13 +21,18 @@ Sass
 
 
 
-
 ## Wireframes 
 
 <img width="852" alt="wireframe" src="https://user-images.githubusercontent.com/29616227/57585371-38a8cd00-74b5-11e9-9e4f-2f3e6804421d.JPG">
 
+![capture logic](./images/wireframe_p3.jpg)
 
-
+/Users/mingjing/j/track-fit/wireframe/iPhone X-XS – 1.png
+/Users/mingjing/j/track-fit/wireframe/iPhone X-XS – 2.png
+/Users/mingjing/j/track-fit/wireframe/iPhone X-XS – 3.png
+/Users/mingjing/j/track-fit/wireframe/iPhone X-XS – 4.png
+/Users/mingjing/j/track-fit/wireframe/iPhone X-XS – 5.png
+/Users/mingjing/j/track-fit/wireframe/iPhone X-XS – 6.png
 
 <!-- ![capture logic](./src/images/wireframe_p3.jpg) -->
 
@@ -57,6 +62,3 @@ https://wger.de/en/software/api
  
 ### How to use
 Simply log in and create an account. Select the type of workout you did or plan to do and the duration and this information is saved on your profile. 
-
- 
-
