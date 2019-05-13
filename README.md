@@ -59,3 +59,11 @@ https://wger.de/en/software/api
  
 ### How to use
 Simply log in and create an account. Select the type of workout you did or plan to do and the duration and this information is saved on your profile. 
+
+#wireframe 
+![iPhone X-XS – 1](https://user-images.githubusercontent.com/10451577/57624299-a7426500-755f-11e9-8817-e56827ae43b7.png)
+![iPhone X-XS – 2](https://user-images.githubusercontent.com/10451577/57624300-a7dafb80-755f-11e9-95b6-d3a6b9b56366.png)
+![iPhone X-XS – 3](https://user-images.githubusercontent.com/10451577/57624301-a7dafb80-755f-11e9-8504-37a1162551c2.png)
+![iPhone X-XS – 4](https://user-images.githubusercontent.com/10451577/57624302-a7dafb80-755f-11e9-8a9d-3e215204986f.png)
+![iPhone X-XS – 5](https://user-images.githubusercontent.com/10451577/57624303-a7dafb80-755f-11e9-8f5b-d8b2fd4ec0cb.png)
+![iPhone X-XS – 6](https://user-images.githubusercontent.com/10451577/57624304-a7dafb80-755f-11e9-88e9-5b8451f03c5f.png)
