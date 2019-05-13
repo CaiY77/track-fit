@@ -9,7 +9,8 @@ constructor(props) {
   };
 }
 componentDidMount() {
-  this.testing();
+  document.title = 'Track My Fitness';
+  // this.testing();
 }
 
 testing = async() => {
@@ -19,7 +20,7 @@ testing = async() => {
   // console.log(newUser);
   // const foodGet = await fetchFood();
   // console.log(foodGet)
-  await deleteFood();
+  // await deleteFood();
 
 }
 
