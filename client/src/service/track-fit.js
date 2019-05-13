@@ -32,9 +32,35 @@ export const createUser = async()=>{
    }
 }
 
+
+const newFood = {
+  food: 'chips',
+  calGained: 5000,
+  date: '2019-07-07'
+
+}
+
+
 // get a food
-// export const fetchFood = async () => {
-//   try {
-//     const resp = await api.get(`/food`, )
-//   }
-// }
+export const fetchFood = async () => {
+  try {
+    const resp = await api.post(`/1/create-food`, newFood )
+    return resp.data;
+
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+
+
+//delete a food
+export const deleteFood = async ()=>{
+  try{
+    const res = await api.delete(`/1/food-entry/1`)
+    return res.data;
+  }
+  catch(e){
+    console.log(e)
+  }
+}
