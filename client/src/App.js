@@ -1,13 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import {fetchUser,createUser} from './service/track-fit'
 
-function App() {
-  return (
-    <div>
-      <h1>Track-Fit</h1>
-    </div>
-  );
+class App extends Component {
+
+componentDidMount() {
+  this.testing();
+}
+
+testing = async() => {
+  // const result = await fetchUser();
+  // console.log(result);
+  const newUser = await createUser();
+  console.log(newUser);
+}
+
+  render() {
+    return (
+      <div>
+        <h1>Hello</h1>
+      </div>
+    );
+  }
+
 }
 
 export default App;
