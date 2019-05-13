@@ -29,7 +29,6 @@ userRouter.post('/create', async(req,res)=>{
 
 
 // create food entry
-
 userRouter.post('/:id/create-food', async (req, res) => {
   try {
     const food = await Food.create(req.body);
@@ -40,6 +39,22 @@ userRouter.post('/:id/create-food', async (req, res) => {
     console.log(e)
   }
 
+})
+
+// update food /update-food/:food_id
+userRouter.put('/update-food/:food_id', async (req, res) => {
+  try {
+    await Food.update(
+      req.body
+      ,{
+        where: {
+          id: req.params.food_id
+        }
+      })
+      res.send('updated')
+    }catch (e) {
+      console.log(e)
+    }
 })
 
 //delete food
@@ -55,6 +70,8 @@ userRouter.delete('/:id/food-entry/:food_id', async (req, res) => {
   }
 })
 
+
+
 //create excercise entry
 userRouter.post('/:id/create-exercise', async(req, res) => {
   try{
@@ -64,6 +81,22 @@ userRouter.post('/:id/create-exercise', async(req, res) => {
     res.json(newExerciseEntry)
   }
   catch(e){
+    console.log(e)
+  }
+})
+
+// update exercise
+userRouter.put('/update-exercise/:ex_id', async (req, res) => {
+  try {
+    await Exercise.update(
+      req.body
+    ,{
+      where: {
+        id: req.params.ex_id
+      }
+    })
+    res.send('updated')
+  } catch (e) {
     console.log(e)
   }
 })
