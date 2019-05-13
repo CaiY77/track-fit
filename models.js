@@ -9,10 +9,10 @@ const db = new Sequelize({
     }
 })
 
-const User = db.define('data',{
+const User = db.define('user',{
   name: Sequelize.STRING,
   email: Sequelize.STRING,
-  password: Sequelize.INTEGER
+  password: Sequelize.STRING
 })
 
 const Goal = db.define('goal',{
@@ -20,33 +20,37 @@ const Goal = db.define('goal',{
   calIntake: Sequelize.INTEGER
 })
 
-const FoodEntries = db.define('food_entries',{
-  food = Sequelize.STRING,
-  calGained = Sequelize.INTEGER,
-  date = Sequelize.DATE
+const Food = db.define('food_entrie',{
+  food : Sequelize.STRING,
+  calGained :Sequelize.INTEGER,
+  date :Sequelize.DATE
 })
 
-const ExerciseEntries = db.define('exercise_entries',{
-  exercise = Sequelize.STRING,
-  calBurned = Sequelize.INTEGER,
-  date = Sequelize.DATE
+const Exercise = db.define('exercise_entrie',{
+  exercise : Sequelize.STRING,
+  calBurned : Sequelize.INTEGER,
+  date : Sequelize.DATE
 })
 
-User.hasMany(ExerciseEntries, {
+User.hasMany(Exercise, {
   onDelete: 'cascade'
 });
 
-User.hasMany(FoodEntries, {
+Exercise.belongsTo(User);
+
+User.hasMany(Food, {
   onDelete: 'cascade'
 });
 
-Goal.belongsTo(User);
+Food.belongsTo(User);
+
+User.hasOne(Goal);
 
 
-module.export = {
+module.exports = {
   db,
   User,
   Goal,
-  FoodEntries,
-  ExerciseEntries
+  Food,
+  Exercise
 }

@@ -1,4 +1,4 @@
-const { db,User,Goal,FoodEntries,ExerciseEntries } = require('...models.js')
+const { db,User,Goal,Food,Exercise } = require('./models.js')
 
 async function main() {
 
@@ -10,12 +10,14 @@ async function main() {
   await Goal.destroy({
     where: {}
   });
-  await FoodEntries.destroy({
+  await Food.destroy({
     where: {}
   });
-  await ExerciseEntries.destroy({
+  await Exercise.destroy({
     where: {}
   });
+
+
 
   const user1 = await User.create({
     name: 'Billy',
@@ -23,29 +25,29 @@ async function main() {
     password: 'helloworld'
   })
 
-  const goal = await Goal.destroy({
+  const goal = await Goal.create({
     calBurned: 3,
     calIntake: 3
   })
 
-  const foodEntries = await FoodEntries.create({
+  const foodEntries = await Food.create({
     food: 'cheese',
     calGained: 50,
     date: '2019-03-03'
   })
 
-  const exerciseEntries = await ExerciseEntries.create({
+  const exerciseEntries = await Exercise.create({
     exercise: 'jumping',
     calBurned: 5,
     date: '2019-03-03'
 
   })
 
-  await user1.setGoal(goal)
-  await user1.setFoodEntries(goal)
-  await user1.setExerciseEntries(exerciseEntries)
+  // const fE = await Food.findByPk(foodEntries.id)
 
-
+  await user1.setGoal(goal);
+  await foodEntries.setUser(user1)
+  await exerciseEntries.setUser(user1)
 
 
 
