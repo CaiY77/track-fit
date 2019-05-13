@@ -17,13 +17,38 @@ async function main() {
     where: {}
   });
 
-
   const user1 = await User.create({
     name: 'Billy',
     email: 'billy@gmail.com',
     password: 'helloworld'
+  })
+
+  const goal = await Goal.destroy({
+    calBurned: 3,
+    calIntake: 3
+  })
+
+  const foodEntries = await FoodEntries.create({
+    food: 'cheese',
+    calGained: 50,
+    date: '2019-03-03'
+  })
+
+  const exerciseEntries = await ExerciseEntries.create({
+    exercise: 'jumping',
+    calBurned: 5,
+    date: '2019-03-03'
 
   })
+
+  await user1.setGoal(goal)
+  await user1.setFoodEntries(goal)
+  await user1.setExerciseEntries(exerciseEntries)
+
+
+
+
+
 }
 
 async function run() {

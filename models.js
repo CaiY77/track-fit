@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 
 const db = new Sequelize({
-    database: 'track_fit',
+    database: 'trackfit_db',
     dialect: 'postgres',
     define:{
         underscored: true,
@@ -16,14 +16,14 @@ const User = db.define('data',{
 })
 
 const Goal = db.define('goal',{
-  execiseGoal: Sequelize.INTEGER,
-  foodGoal: Sequelize.INTEGER
+  calBurned: Sequelize.INTEGER,
+  calIntake: Sequelize.INTEGER
 })
 
 const FoodEntries = db.define('food_entries',{
   food = Sequelize.STRING,
-  calBurned = Sequelize.INTEGER,
-  data = Sequelize.DATE
+  calGained = Sequelize.INTEGER,
+  date = Sequelize.DATE
 })
 
 const ExerciseEntries = db.define('exercise_entries',{
@@ -40,7 +40,8 @@ User.hasMany(FoodEntries, {
   onDelete: 'cascade'
 });
 
-Goal.belongsTo(User)
+Goal.belongsTo(User);
+
 
 module.export = {
   db,

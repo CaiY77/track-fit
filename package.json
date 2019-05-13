@@ -5,7 +5,8 @@
   "main": "models.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "db:init": "dropdb --if-exists trackfit_db && createdb trackfit_db"
   },
   "repository": {
     "type": "git",
