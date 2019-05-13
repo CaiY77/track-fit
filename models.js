@@ -20,15 +20,25 @@ const Goal = db.define('goal',{
   foodGoal: Sequelize.INTEGER
 })
 
-const FoodEntries = db.define('entries',{
+const FoodEntries = db.define('food_entries',{
+  = Sequelize.STRING,
+  foodKind = Sequelize.STRING
+})
+
+const ExerciseEntries = db.define('exercise_entries',{
   sportsKind = Sequelize.STRING,
   foodKind = Sequelize.STRING
 })
 
-const ExerciseEntries = db.define('entries',{
-  sportsKind = Sequelize.STRING,
-  foodKind = Sequelize.STRING
-})
+User.hasMany(ExerciseEntries, {
+  onDelete: 'cascade'
+});
+
+User.hasMany(FoodEntries, {
+  onDelete: 'cascade'
+});
+
+Goal.belongsTo(User)
 
 module.export = {
   db,
