@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const logger = require('morgan');
 const { db,User,Goal,Food,Exercise } = require('./models');
-const {  } = require('./routes/');
+const { userRouter } = require('./routes/userRouter.js');
 const app = express();
 const PORT = process.env.PORT || 3001
 
@@ -26,4 +26,4 @@ app.get('/', async (request, response) => {
   }
 });
 
-app.listen(PORT, () => console.log(`Restaurant app listening on port ${PORT}!`))
+app.listen(PORT, () => console.log(`Tract Fit app listening on port ${PORT}!`))
