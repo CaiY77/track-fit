@@ -26,14 +26,7 @@ Sass
 
 <img width="852" alt="wireframe" src="https://user-images.githubusercontent.com/29616227/57585371-38a8cd00-74b5-11e9-9e4f-2f3e6804421d.JPG">
 
-![capture logic](./images/wireframe_p3.jpg)
-
-/Users/mingjing/j/track-fit/wireframe/iPhone X-XS – 1.png
-/Users/mingjing/j/track-fit/wireframe/iPhone X-XS – 2.png
-/Users/mingjing/j/track-fit/wireframe/iPhone X-XS – 3.png
-/Users/mingjing/j/track-fit/wireframe/iPhone X-XS – 4.png
-/Users/mingjing/j/track-fit/wireframe/iPhone X-XS – 5.png
-/Users/mingjing/j/track-fit/wireframe/iPhone X-XS – 6.png
+<img width="635" alt="Screen Shot 2019-05-13 at 11 31 43 AM" src="https://user-images.githubusercontent.com/10451577/57634446-52104e80-7573-11e9-96da-1268a263cd0a.png">
 
 ## Motivation
 Tracking your exercise is all the rage these days so we decided to take a stab at creating our own fitness app! Track Fit is a personalised application that allows users to log a large variety of exercises tailored to their specific needs. 
@@ -60,10 +53,4 @@ https://wger.de/en/software/api
 ### How to use
 Simply log in and create an account. Select the type of workout you did or plan to do and the duration and this information is saved on your profile. 
 
-#wireframe 
-![iPhone X-XS – 1](https://user-images.githubusercontent.com/10451577/57624299-a7426500-755f-11e9-8817-e56827ae43b7.png)
-![iPhone X-XS – 2](https://user-images.githubusercontent.com/10451577/57624300-a7dafb80-755f-11e9-95b6-d3a6b9b56366.png)
-![iPhone X-XS – 3](https://user-images.githubusercontent.com/10451577/57624301-a7dafb80-755f-11e9-8504-37a1162551c2.png)
-![iPhone X-XS – 4](https://user-images.githubusercontent.com/10451577/57624302-a7dafb80-755f-11e9-8a9d-3e215204986f.png)
-![iPhone X-XS – 5](https://user-images.githubusercontent.com/10451577/57624303-a7dafb80-755f-11e9-8f5b-d8b2fd4ec0cb.png)
-![iPhone X-XS – 6](https://user-images.githubusercontent.com/10451577/57624304-a7dafb80-755f-11e9-88e9-5b8451f03c5f.png)
+
