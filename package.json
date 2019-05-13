@@ -1,0 +1,29 @@
+{
+  "name": "track-fit",
+  "version": "1.0.0",
+  "description": "<img width=\"852\" alt=\"track-fit\" src=\"https://user-images.githubusercontent.com/29616227/57587882-43298d80-74da-11e9-8fa1-5202a7c2927d.png\">",
+  "main": "models.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CaiY77/track-fit.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CaiY77/track-fit/issues"
+  },
+  "homepage": "https://github.com/CaiY77/track-fit#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.19.0",
+    "pg": "^7.11.0",
+    "sequelize": "^5.8.6"
+  }
+}
