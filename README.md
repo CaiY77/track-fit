@@ -10,15 +10,22 @@ The user can scroll down the list and add each workout. Then they can proceed by
 
 This database will need to contain the entries, time, date, description, user id, ex_name, cal_burned ect
 
+
 ## dependencies
 
 Axios
 React-router
 Semantic UI
 Sass
+PostgreSQL to push data into the db
 
 
-<img width="852" alt="Screen Shot 2019-05-11 at 8 07 53 PM" src="https://user-images.githubusercontent.com/33525692/57576229-85929200-7428-11e9-802a-28e8e7cdf7fb.png">
+## Backend
+Are we storing users in local storage or do we want to push the users details into a database in which case we may need multiple cases for this process. 
+
+
+
+<img width="852" alt="Screen Shot 2019-05-11 at 8 07 53 PM" src="https://media.git.generalassemb.ly/user/19642/files/08852b00-7596-11e9-86a2-02210ed9edf2">
 
 
 
@@ -26,7 +33,8 @@ Sass
 
 <img width="852" alt="wireframe" src="https://user-images.githubusercontent.com/29616227/57585371-38a8cd00-74b5-11e9-9e4f-2f3e6804421d.JPG">
 
-<img width="635" alt="Screen Shot 2019-05-13 at 11 31 43 AM" src="https://user-images.githubusercontent.com/10451577/57634446-52104e80-7573-11e9-96da-1268a263cd0a.png">
+
+
 
 ## Motivation
 Tracking your exercise is all the rage these days so we decided to take a stab at creating our own fitness app! Track Fit is a personalised application that allows users to log a large variety of exercises tailored to their specific needs. 
@@ -53,4 +61,5 @@ https://wger.de/en/software/api
 ### How to use
 Simply log in and create an account. Select the type of workout you did or plan to do and the duration and this information is saved on your profile. 
 
+ 
 
