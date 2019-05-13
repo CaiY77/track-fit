@@ -46,7 +46,7 @@ async function main() {
   // const fE = await Food.findByPk(foodEntries.id)
 
   await user1.setGoal(goal);
-  await foodEntries.setUser(user1)
+  await foodEntries.setUser(user1);
   await exerciseEntries.setUser(user1)
 
 
