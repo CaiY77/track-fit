@@ -1,5 +1,6 @@
+<img width="852" alt="track-fit" src="https://user-images.githubusercontent.com/29616227/57587882-43298d80-74da-11e9-8fa1-5202a7c2927d.png">
 
-# Track Fit
+
 
 
 ## MVP
@@ -33,10 +34,6 @@ Sass
 /Users/mingjing/j/track-fit/wireframe/iPhone X-XS – 4.png
 /Users/mingjing/j/track-fit/wireframe/iPhone X-XS – 5.png
 /Users/mingjing/j/track-fit/wireframe/iPhone X-XS – 6.png
-
-<!-- ![capture logic](./src/images/wireframe_p3.jpg) -->
-
-
 
 ## Motivation
 Tracking your exercise is all the rage these days so we decided to take a stab at creating our own fitness app! Track Fit is a personalised application that allows users to log a large variety of exercises tailored to their specific needs. 
