@@ -42,8 +42,18 @@ userRouter.post('/:id/create-food', async (req, res) => {
 
 })
 
-
-
+//delete food
+userRouter.delete('/:id/food-entry/:food_id', async (req, res) => {
+  try {
+    const destroyFood = await Food.destroy({
+      where:{
+        id: req.params.food_id
+      }
+    })
+  } catch (e) {
+    console.log(e)
+  }
+})
 
 module.exports = {
   userRouter
