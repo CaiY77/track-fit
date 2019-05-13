@@ -55,6 +55,33 @@ userRouter.delete('/:id/food-entry/:food_id', async (req, res) => {
   }
 })
 
+//create excercise entry
+userRouter.post('/:id/create-exercise', async(req, res) => {
+  try{
+    const newExerciseEntry = await Exercise.create(req.body)
+    const who = await User.findByPk(req.params.id);
+    await newExerciseEntry.setUser(who);
+    res.json(newExerciseEntry)
+  }
+  catch(e){
+    console.log(e)
+  }
+})
+
+//delete exercise entry
+userRouter.delete('/:id/exercise-entry/:exercise_id', async (req, res) => {
+  try {
+    const destroyExercise = await Exercise.destroy({
+      where:{
+        id: req.params.exercise_id
+      }
+    })
+  } catch (e) {
+    console.log(e)
+  }
+})
+
+
 module.exports = {
   userRouter
 }
