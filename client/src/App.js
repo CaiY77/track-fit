@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
-import {fetchUser,createUser,fetchFood,deleteFood} from './service/track-fit'
+import {fetchUser,createUser,fetchFood,deleteFood,createExercise,updateExercise,updateFood} from './service/track-fit'
+import LogInPage from './components/LogInPage.js'
+import ProfilePage from './components/ProfilePage.js'
 
 class App extends Component {
+
 constructor(props) {
   super(props);
   this.state = {
     loggedIn: true
   };
 }
+
 componentDidMount() {
   document.title = 'Track My Fitness';
-  // this.testing();
+  this.testing();
 }
 
 testing = async() => {
@@ -21,6 +25,7 @@ testing = async() => {
   // const foodGet = await fetchFood();
   // console.log(foodGet)
   // await deleteFood();
+  const newEx = await updateFood();
 
 }
 
@@ -28,10 +33,13 @@ testing = async() => {
     const {loggedIn} = this.state;
     return (
       <div>
+
         {
-          (loggedIn)? <h1>Profile Page </h1>
-          : <h1>LogIn Page</h1>
+          (loggedIn)
+            ? <ProfilePage />
+            : <LogInPage />
         }
+
       </div>
     );
   }

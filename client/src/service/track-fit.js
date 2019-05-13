@@ -41,7 +41,7 @@ const newFood = {
 }
 
 
-// get a food
+// create a food
 export const fetchFood = async () => {
   try {
     const resp = await api.post(`/1/create-food`, newFood )
@@ -52,6 +52,19 @@ export const fetchFood = async () => {
   }
 }
 
+// update food
+const updateFooood = {
+  food: 'potatoooooosss'
+}
+
+export const updateFood = async () => {
+  try {
+    const res = await api.put(`/update-food/8`, updateFooood)
+  }
+  catch(e){
+    console.log(e)
+  }
+}
 
 
 //delete a food
@@ -65,11 +78,47 @@ export const deleteFood = async ()=>{
   }
 }
 
+// hardcode new excersise
+const newExercise = {
+  exercise: `walking`,
+  calBurned: 5,
+  date: '2019-05-05'
+}
 
-//delete a exercise
+
+// create excersise
+export const createExercise = async () => {
+  try {
+    const res = await api.post(`/1/create-exercise`, newExercise)
+    return res.data;
+
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+//update exercise
+const updateEx = {
+  exercise : "die",
+}
+
 export const updateExercise = async()=>{
   try{
-    const res = await api.update(`/1/3`)
+    const res = await api.put(`/update-exercise/3`,updateEx);
+
+  }
+  catch(e){
+    console.log(e)
+  }
+}
+
+
+
+//delete a exercise
+export const deleteExercise = async ()=>{
+  try{
+    const res = await api.delete(`/1/exercise-entry/1`)
+    return res.data;
   }
   catch(e){
     console.log(e)
