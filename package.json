@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
-    "db:init": "dropdb --if-exists trackfit_db && createdb trackfit_db"
+    "db:fresh": "dropdb --if-exists -e trackfit_db && createdb -e trackfit_db && node resetDb.js && node seed.js"
   },
   "repository": {
     "type": "git",

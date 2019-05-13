@@ -1,6 +1,6 @@
 const express = require('express');
 const userRouter = express.Router();
-const {User} = require('../models');
+const {User,Food,Exercise} = require('../models');
 const bodyParser = require('body-parser');
 
 userRouter.use(bodyParser.json());
@@ -8,8 +8,8 @@ userRouter.use(bodyParser.json());
 // get single user
 userRouter.get('/:id',async(req,res)=>{
     try{
-        const users = await User.findByPk(req.params.id);
-        res.json(users);
+        const user = await User.findByPk(req.params.id);
+        res.json(user);
     }
     catch(e){
         console.log(`Something went wrong: ${e}`)
@@ -30,10 +30,12 @@ userRouter.post('/create', async(req,res)=>{
 
 // create food entry
 
-userRouter.post('/:id/foodEntry', async (req, res) => {
+userRouter.post('/:id/create-food', async (req, res) => {
   try {
-    const newFoodEntry = await Food.create(req.body)
-    res.send(newFoodEntry)
+    const food = await Food.create(req.body);
+    const who = await User.findByPk(req.params.id);
+    await food.setUser(who);
+    res.json(food)
   } catch (e) {
     console.log(e)
   }
@@ -41,7 +43,7 @@ userRouter.post('/:id/foodEntry', async (req, res) => {
 })
 
 
-//delete food
+
 
 module.exports = {
   userRouter
