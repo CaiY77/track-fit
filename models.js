@@ -21,13 +21,15 @@ const Goal = db.define('goal',{
 })
 
 const FoodEntries = db.define('food_entries',{
-  = Sequelize.STRING,
-  foodKind = Sequelize.STRING
+  food = Sequelize.STRING,
+  calBurned = Sequelize.INTEGER,
+  data = Sequelize.DATE
 })
 
 const ExerciseEntries = db.define('exercise_entries',{
-  sportsKind = Sequelize.STRING,
-  foodKind = Sequelize.STRING
+  exercise = Sequelize.STRING,
+  calBurned = Sequelize.INTEGER,
+  date = Sequelize.DATE
 })
 
 User.hasMany(ExerciseEntries, {
@@ -44,5 +46,6 @@ module.export = {
   db,
   User,
   Goal,
-  Entries
+  FoodEntries,
+  ExerciseEntries
 }
