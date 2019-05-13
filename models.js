@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 
 const db = new Sequelize({
-    database: 'track_fit',
+    database: 'trackfit_db',
     dialect: 'postgres',
     define:{
         underscored: true,
@@ -9,30 +9,48 @@ const db = new Sequelize({
     }
 })
 
-const User = db.define('data',{
+const User = db.define('user',{
   name: Sequelize.STRING,
   email: Sequelize.STRING,
-  password: Sequelize.INTEGER
+  password: Sequelize.STRING
 })
 
 const Goal = db.define('goal',{
-  execiseGoal: Sequelize.INTEGER,
-  foodGoal: Sequelize.INTEGER
+  calBurned: Sequelize.INTEGER,
+  calIntake: Sequelize.INTEGER
 })
 
-const FoodEntries = db.define('entries',{
-  sportsKind = Sequelize.STRING,
-  foodKind = Sequelize.STRING
+const Food = db.define('food_entrie',{
+  food : Sequelize.STRING,
+  calGained :Sequelize.INTEGER,
+  date :Sequelize.DATE
 })
 
-const ExerciseEntries = db.define('entries',{
-  sportsKind = Sequelize.STRING,
-  foodKind = Sequelize.STRING
+const Exercise = db.define('exercise_entrie',{
+  exercise : Sequelize.STRING,
+  calBurned : Sequelize.INTEGER,
+  date : Sequelize.DATE
 })
 
-module.export = {
+User.hasMany(Exercise, {
+  onDelete: 'cascade'
+});
+
+Exercise.belongsTo(User);
+
+User.hasMany(Food, {
+  onDelete: 'cascade'
+});
+
+Food.belongsTo(User);
+
+User.hasOne(Goal);
+
+
+module.exports = {
   db,
   User,
   Goal,
-  Entries
+  Food,
+  Exercise
 }
