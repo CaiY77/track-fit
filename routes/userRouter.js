@@ -81,23 +81,21 @@ userRouter.delete('/:id/exercise-entry/:exercise_id', async (req, res) => {
   }
 })
 
-// // update food /update-food/:food_id
-// userRouter.put('/update-food/:food_id', async (req, res) => {
-//   try {
-//     await Food.update
-//
-//   }
-// })
-
-// instructorRoute.put('/:in_id/students/:id', async (req, res) => {
-//     try {
-//         const instructorId = req.params.in_id;
-//         const oldStudent = await Student.findByPk(req.params.id)
-//         const studentBody = req.body;
-//         studentBody.name = studentBody.name ? studentBody.name : oldStudent.name
-//         studentBody.hometown = studentBody.hometown ? studentBody.hometown : oldStudent.hometown
-//         studentBody.bio = studentBody.bio ? studentBody.bio : oldStudent.bio
-//         studentBody.instructor_id = studentBody.instructor_id ? studentBody.instructor_id : oldStudent.instructor_id
+// update food /update-food/:food_id
+userRouter.put('/update-food/:food_id', async (req, res) => {
+  try {
+    await Food.update(
+      req.body
+      ,{
+        where: {
+          id: req.params.food_id
+        }
+      })
+      res.send('updated')
+    }catch (e) {
+      console.log(e)
+    }
+})
 
 
 
@@ -111,6 +109,7 @@ userRouter.put('/update-exercise/:ex_id', async (req, res) => {
         id: req.params.ex_id
       }
     })
+    res.send('updated')
   } catch (e) {
     console.log(e)
   }

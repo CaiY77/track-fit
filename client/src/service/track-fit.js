@@ -64,3 +64,14 @@ export const deleteFood = async ()=>{
     console.log(e)
   }
 }
+
+
+//delete a exercise
+export const updateExercise = async()=>{
+  try{
+    const res = await api.update(`/1/3`)
+  }
+  catch(e){
+    console.log(e)
+  }
+}
