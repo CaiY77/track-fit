@@ -9,7 +9,8 @@ constructor(props) {
   super(props);
 
   this.state = {
-    loggedIn: true
+    loggedIn: true,
+    userID: 1
   };
 
 }
@@ -32,13 +33,13 @@ testing = async() => {
 }
 
   render() {
-    const {loggedIn} = this.state;
+    const {loggedIn,userID} = this.state;
     return (
       <div>
 
         {
           (loggedIn)
-            ? <ProfilePage />
+            ? <ProfilePage user = {userID} />
             : <LogInPage />
         }
 

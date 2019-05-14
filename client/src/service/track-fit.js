@@ -40,15 +40,25 @@ const newFood = {
 }
 
 
-export const fetchFood = async()=>{
+
+//find the all food
+export const fetchFood = async(id)=>{
   try{
-    const res = await
+
+    return await api.get(`/${id}/food`).data;
+
+
+  }catch(e){
+    console.log(e)
   }
 }
 
 
+
+
+
 // create a food
-export const fetchFood = async () => {
+export const createFood = async () => {
   try {
     const resp = await api.post(`/1/create-food`, newFood )
     return resp.data;
@@ -89,6 +99,19 @@ const newExercise = {
   exercise: `walking`,
   calBurned: 5,
   date: '2019-05-05'
+}
+
+
+//find all exercise
+export const fetchExercise = async(id)=>{
+  try{
+
+    const res = await api.get(`/${id}/exercise`)
+    return res.data;
+
+  }catch(e){
+    console.log(e)
+  }
 }
 
 
