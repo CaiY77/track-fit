@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {fetchFood} from '../service/track-fit'
-import {Card, Feed, Icon,Button,Modal} from 'semantic-ui-react'
+import {Card, Feed, Icon,Button,Modal,Form} from 'semantic-ui-react'
 import '../App.css'
 const moment = require('moment');
 
