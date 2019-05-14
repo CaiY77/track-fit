@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {fetchFood} from '../service/track-fit'
 import {Card} from 'semantic-ui-react'
+const moment = require('moment');
 
   class FoodEntries extends Component {
     constructor(props) {
@@ -18,10 +19,12 @@ import {Card} from 'semantic-ui-react'
     showEntries = () =>{
       const {allFood} = this.state;
       const myCards = allFood.map(entry =>{
+        const dateString = entry.date;
+        const momentDate = moment(dateString)
         return (<Card>
           <h1>{entry.food}</h1>
           <h1>{entry.calGained}</h1>
-          <h1>{entry.date.substr(0,10)}</h1>
+          <h1>{momentDate.format("YYYY-MM-DD")}</h1>
         </Card>)
       })
 

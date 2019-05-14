@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 
-class Profile extends Component {
 
+class Profile extends Component {
+  // console.log(this.props.)
   render() {
     return (
-      <div>Profile</div>
+      <div>
+        <h1>Profile</h1>
+        <p>
+            Username
+        </p>
+      </div> 
     );
   }
-
 }
 
 export default Profile;
