@@ -1,3 +1,16 @@
 .logo{
-  
+  width: 8vh;
+  height: 8vh;
+  padding: 3px;
+}
+.right-style{
+  width: 50%;
+}
+.item-style{
+  font-size: 1.5em;
+  font-family: ;
+}
+.button-style{
+  width: 100%;
+  font-size: 1.5em;
 }
