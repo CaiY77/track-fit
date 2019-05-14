@@ -9,7 +9,7 @@ constructor(props) {
   super(props);
 
   this.state = {
-    loggedIn: false,
+    loggedIn: true,
     userID: 1
   };
 

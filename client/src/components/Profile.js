@@ -1,13 +1,24 @@
 import React, { Component } from 'react';
+import Calendar from 'react-calendar';
 
 class Profile extends Component {
+  state = {
+    date: new Date(),
+  }
+
+  onChange = date => this.setState({ date })
 
   render() {
     return (
-      <div>Profile</div>
-    );
+      <div>
+        <Calendar
+          onChange={this.onChange}
+          value={this.state.date}
+        />
+      </div>
+    )
   }
-
 }
+
 
 export default Profile;
