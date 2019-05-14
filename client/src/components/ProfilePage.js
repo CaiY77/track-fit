@@ -29,7 +29,7 @@ class ProfilePage extends Component {
             <Link class="item item-style" to="/exercise-entries">Exercise Entries</Link>
             <Button onClick={this.props.toggleLog} color='blue' class="item" className="button-style">Log Out</Button>
           </div>
-
+          
         </nav>
 
         <Route exact path='/'
