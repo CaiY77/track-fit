@@ -151,3 +151,24 @@ export const deleteExercise = async ()=>{
     console.log(e)
   }
 }
+
+
+const newGoal = {
+  calBurned: 505,
+  canIntake: 600
+  
+}
+
+
+// create goal 
+export const createGoal = async () => {
+  try {
+    const res = await api.post('/create-goal', newGoal)
+    console.log(`axios response ${res}`)
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+
+
