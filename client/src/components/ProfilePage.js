@@ -26,6 +26,7 @@ class ProfilePage extends Component {
           render={()=> <ExerciseEntries
                        />}
         />
+
       </div>
     );
   }
