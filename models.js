@@ -1,19 +1,45 @@
 const Sequelize = require('sequelize');
+const bcrypt = require('bcrypt')
 
 const db = new Sequelize({
     database: 'trackfit_db',
     dialect: 'postgres',
-    define:{
-        underscored: true,
-        returning: true
-    }
 })
 
-const User = db.define('user',{
+const User = db.define('user', {
   name: Sequelize.STRING,
-  email: Sequelize.STRING,
-  password: Sequelize.STRING
+  email: {
+    type: Sequelize.STRING,
+    allowNull: {
+      args: false,
+      msg: 'email is required'
+    },
+    unique: {
+      args: true,
+      msg: 'email must be unique'
+    },
+    validate: {
+      isEmail: {
+        args: true,
+        msg: 'email format is invalid'
+      }
+    }
+  },
+  password: {
+    type: Sequelize.STRING,
+    allowNull: {
+      args: false,
+      msg: 'password is required'
+    }
+  }
 })
+
+User.beforeCreate(async (user, options) => {
+  const hashedPassword = await bcrypt.hash(user.password, 12)
+  user.password = hashedPassword
+})
+
+
 
 const Goal = db.define('goal',{
   calBurned: Sequelize.INTEGER,

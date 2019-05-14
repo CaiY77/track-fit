@@ -1,31 +1,80 @@
 const express = require('express');
 const userRouter = express.Router();
 const {User,Food,Exercise} = require('../models');
+const { passport, jwtSign } = require('../auth/auth.js')
 const bodyParser = require('body-parser');
-
 userRouter.use(bodyParser.json());
 
-// get single user
-userRouter.get('/:id',async(req,res)=>{
-    try{
-        const user = await User.findByPk(req.params.id);
-        res.json(user);
+authRouter.post('/signup', async(req, res, next) => {
+  passport.authenticate('signup', async(err, user, info) => {
+    try {
+      if (err) {
+        let error = new Error(err.message || info.message)
+        error.status = 400
+        return next(error)
+      }
+
+      if (!user) {
+        return res.status(401).json({message: info.message})
+      }
+      const { email, id } = user
+      const payload = { email, id }
+
+      const token = jwtSign(payload)
+      return res.json({user: user, token: token, message: info.message})
+    } catch (error) {
+      return next(error)
     }
-    catch(e){
-        console.log(`Something went wrong: ${e}`)
-    }
+  })(req, res, next)
 })
 
-// make new user
-userRouter.post('/create', async(req,res)=>{
-    try{
-        const newUser = await User.create(req.body);
-        res.send(newUser)
+// matches '/auth/login' route
+authRouter.post('/login', (req, res, next) => {
+  // res.status(200).json({message: "So far so good!"})
+  passport.authenticate('login', async(err, user, info) => {
+    try {
+      let error
+
+      if (err) {
+        error = new Error(err.message)
+        error.status = 500
+
+        return next(error)
+      }
+
+      if (!user) {
+        error = new Error(info.message)
+        error.status = 400
+        return next(error)
+      }
+
+      req.login(user, { session: false }, async (error) => {
+        if (error) return next(error)
+
+        if (!user) {
+          let err = new Error(info.message)
+          err.status = 400
+          return next(err)
+        }
+
+        const { email, id } = user
+        const payload = { email, id }
+
+        const token = jwtSign(payload)
+        return res.json({ user, token })
+      })
+    } catch (error) {
+      return next(error)
     }
-    catch(e){
-        console.log('Something went wrong: ${e}')
-    }
+  })(req, res, next)
 })
+
+
+
+
+
+
+
 
 
 //find all food
@@ -42,7 +91,6 @@ userRouter.get('/:id/food', async(req,res)=>{
     console.log(e)
   }
 })
-
 
 // create food entry
 userRouter.post('/:id/create-food', async (req, res) => {
