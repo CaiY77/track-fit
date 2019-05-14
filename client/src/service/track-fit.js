@@ -5,9 +5,10 @@ const api = axios.create({
   baseURL: `${URL}/user`
 })
 // get a user
-export const fetchUser = async () => {
+export const fetchUser = async (id) => {
   try {
-    const resp = await api.get(`/1`)
+    const resp = await api.get(`/${id}`)
+    console.log(resp.data)
     return resp.data;
   } catch (e) {
     console.log(e)
