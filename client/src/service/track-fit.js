@@ -40,6 +40,7 @@ const newFood = {
 }
 
 
+<<<<<<< HEAD
 
 //find the all food
 export const fetchFood = async(id)=>{
@@ -47,6 +48,15 @@ export const fetchFood = async(id)=>{
 
     return await api.get(`/${id}/food`).data;
 
+=======
+
+//find the all food
+export const fetchFood = async(id)=>{
+  try{
+
+    const res = await api.get(`/${id}/food`)
+    return res.data;
+>>>>>>> cd684f76657dfe4330ac058d55c7319685a9335a
 
   }catch(e){
     console.log(e)

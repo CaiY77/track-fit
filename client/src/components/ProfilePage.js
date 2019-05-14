@@ -30,6 +30,7 @@ class ProfilePage extends Component {
             user ={user}
                        />}
         />
+
       </div>
     );
   }
