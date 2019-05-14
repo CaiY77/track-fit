@@ -27,7 +27,7 @@ class ProfilePage extends Component {
             <Link class="item item-style" to="/">Profile</Link>
             <Link class="item item-style" to="/food-entries">Food Entries</Link>
             <Link class="item item-style" to="/exercise-entries">Exercise Entries</Link>
-            <Button color='blue' class="item" className="button-style">Log Out</Button>
+            <Button onClick={this.props.toggleLog} color='blue' class="item" className="button-style">Log Out</Button>
           </div>
 
         </nav>
