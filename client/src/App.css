@@ -1,3 +1,11 @@
+nav{
+  margin: 0 !important;
+  border-radius: 0 !important;
+  position: fixed;
+  z-index: 5;
+  top:0;
+  left:0;
+}
 .logo{
   width: 8vh;
   height: 8vh;
@@ -14,6 +22,10 @@
   width: 100%;
   font-size: 1.5em;
 }
-.myFeed{
-  border: solid red;
+.food-contain{
+  border:solid red;
+  padding:20vh 0 0 20vw;
+}
+.add-button{
+  color:red;
 }

@@ -35,6 +35,16 @@ async function main() {
     calGained: 50,
     date: '2019-03-03'
   })
+  const foodEntries2 = await Food.create({
+    food: 'cheese',
+    calGained: 60,
+    date: '2019-03-04'
+  })
+  const foodEntries3 = await Food.create({
+    food: 'cheese',
+    calGained: 70,
+    date: '2019-03-05'
+  })
 
   const exerciseEntries = await Exercise.create({
     exercise: 'jumping',
@@ -47,6 +57,8 @@ async function main() {
 
   await user1.setGoal(goal);
   await foodEntries.setUser(user1);
+  await foodEntries2.setUser(user1);
+  await foodEntries3.setUser(user1);
   await exerciseEntries.setUser(user1)
 
 
