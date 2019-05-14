@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import {fetchFood} from '../service/track-fit'
 
 class FoodEntries extends Component {
@@ -12,12 +13,3 @@ class FoodEntries extends Component {
     console.log(allFood);
   }
 
-  render() {
-    return (
-      <div>FoodEntries</div>
-    );
-  }
-
-}
-
-export default FoodEntries;
