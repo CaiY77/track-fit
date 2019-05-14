@@ -1,10 +1,17 @@
-import React, { Component } from 'react';
-import Calendar from 'react-calendar';
+import React, { Component } from 'react'
+import moment from 'moment'
+import Calendar from 'react-calendar'
 
 class Profile extends Component {
   state = {
-    date: new Date(),
+    dateContext: moment(),
+    today: moment()
   }
+
+  weekdays = moment.weekdays()
+  weekdaysShort = moment.weekdaysShort() 
+  months = moment.months()
+
 
   onChange = date => this.setState({ date })
 
@@ -14,6 +21,10 @@ class Profile extends Component {
         <Calendar
           onChange={this.onChange}
           value={this.state.date}
+
+          onClickWeekNumber={(weekNumber, date) => {
+          console.log('Clicked week number', weekNumber, date);
+        }}
         />
       </div>
     )
