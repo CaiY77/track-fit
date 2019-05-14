@@ -7,9 +7,12 @@ class App extends Component {
 
 constructor(props) {
   super(props);
+
   this.state = {
-    loggedIn: true
+    loggedIn: true,
+    userID: 1
   };
+
 }
 
 componentDidMount() {
@@ -30,13 +33,13 @@ testing = async() => {
 }
 
   render() {
-    const {loggedIn} = this.state;
+    const {loggedIn,userID} = this.state;
     return (
       <div>
 
         {
           (loggedIn)
-            ? <ProfilePage />
+            ? <ProfilePage user = {userID} />
             : <LogInPage />
         }
 

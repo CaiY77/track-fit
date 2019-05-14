@@ -7,6 +7,7 @@ import ExerciseEntries from './ExerciseEntries'
 class ProfilePage extends Component {
 
   render() {
+    const {user} = this.props;
     return (
       <div>
 
@@ -16,14 +17,17 @@ class ProfilePage extends Component {
 
         <Route exact path='/'
           render={()=> <Profile
+            user ={user}
                        />}
         />
         <Route path = '/food-entries'
           render={()=> <FoodEntries
+            user ={user}
                        />}
         />
         <Route path = '/exercise-entries'
           render={()=> <ExerciseEntries
+            user ={user}
                        />}
         />
 
