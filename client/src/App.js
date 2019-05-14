@@ -14,7 +14,7 @@ constructor(props) {
 
 componentDidMount() {
   document.title = 'Track My Fitness';
-  this.testing();
+  // this.testing();
 }
 
 testing = async() => {
