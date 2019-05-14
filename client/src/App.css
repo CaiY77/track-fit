@@ -21,10 +21,26 @@ nav{
   width: 100%;
   font-size: 1.5em;
 }
-.food-contain{
-  border:solid red;
-  padding:20vh 0 0 20vw;
+.display-contain{
+  display: flex;
 }
-.add-button{
-  color:red;
+.display-right{
+  border:solid;
+  flex:1;
+}
+.display-left{
+  border:solid;
+  padding: 5vh 5vw 5vh 5vw;
+  flex:2;
+}
+.button-modal{
+text-align: center
+}
+.card-group{
+  margin-top: 5vh !important;
+}
+.my-cards{
+  margin-top: 5vh !important;
+}
+.card-icon{
 }
