@@ -3,7 +3,7 @@ import {Route,Link} from 'react-router-dom';
 import Profile from './Profile'
 import FoodEntries from './FoodEntries'
 import ExerciseEntries from './ExerciseEntries'
-import {Menu} from 'semantic-ui-react'
+import {Button} from 'semantic-ui-react'
 import logo from '../images/track-fit-TF.jpg'
 import '../App.css'
 
@@ -19,7 +19,7 @@ class ProfilePage extends Component {
     return (
       <div>
 
-        <nav class="ui three borderless item menu">
+        <nav class="ui four borderless item menu">
 
           <img class="item" className="logo" src={logo} />
 
@@ -27,6 +27,7 @@ class ProfilePage extends Component {
             <Link class="item item-style" to="/">Profile</Link>
             <Link class="item item-style" to="/food-entries">Food Entries</Link>
             <Link class="item item-style" to="/exercise-entries">Exercise Entries</Link>
+            <Button color='blue' class="item" className="button-style">Log Out</Button>
           </div>
 
         </nav>
