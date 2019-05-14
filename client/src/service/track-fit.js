@@ -46,7 +46,7 @@ const newFood = {
 export const fetchFood = async(id)=>{
   try{
 
-    const res = await api.get(`/${id}/food`)
+    const res = await api.get(`/${id}/food`);
     return res.data;
 
   }catch(e){
