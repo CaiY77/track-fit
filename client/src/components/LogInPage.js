@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom'
-
+import {createUser} from '../service/track-fit'
 
 
 class LogInPage extends Component {
@@ -8,34 +8,61 @@ class LogInPage extends Component {
     super()
 
     this.state={
-      Signin: false,
-      email: "",
-      password: ""
-      
+      signin: false,
+      newUser:{
+        name: "",
+        email: "",
+        password: ""
+      }
     }
+  }
+
+  onSigninNameChange = async(event)=>{
+    const userName = event.target.value;
+    console.log(userName);
+    this.setState({
+      newUser:{
+        name: userName   
+      }     
+    })
   }
   
   onSigninEmailChange = async (event) =>{
     const userEmail = event.target.value;
     console.log(userEmail)
     this.setState({ 
+      newUser:{
         email: userEmail
+      }
     })
   }
 
   onSigninPasswordChange = async(event)=>{
     const userPassword = event.target.value;
     console.log(userPassword);
-    this.setState({  
-        password: userPassword   
+    this.setState({ 
+      newUser:{ 
+        password: userPassword  
+      } 
     })
   }
   
-  // onSigninFormChange = async(event)=>{
-  //   let userInfo = {
-      
-  //   }
-  // }
+  onSigninFormSubmit = async(event)=>{
+    event.preventDefault()
+
+    console.log(`Form submitted: `)
+
+    let userInfo = {
+      name: this.state.newUser.name,
+      email: this.state.newUser.email,
+      password: this.state.newUser.password
+    }
+    const currentUser = await createUser(userInfo)
+    console.log(currentUser)
+    this.setState({
+      signin: true
+    })
+  }
 
 
   render() {
@@ -68,8 +95,14 @@ class LogInPage extends Component {
           </form>
         </div> 
         <div>
-          <p>Signin</p>
-          <form onSubmit={this.onSigninFormChange}>
+          <p>SignUp</p>
+          <form onSubmit={this.onSigninFormSubmit}>
+              <input
+                id="name"
+                type="text"
+                name="name"
+                onChange={this.onSigninNameChange}
+                placeholder="name"/>
               <input 
                 id="email"
                 type="text" 
