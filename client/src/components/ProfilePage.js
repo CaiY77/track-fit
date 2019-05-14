@@ -18,14 +18,19 @@ class ProfilePage extends Component {
     const {user} = this.props;
     return (
       <div>
-        <nav class="ui three item menu">
+
+        <nav class="ui three borderless item menu">
+
           <img class="item" className="logo" src={logo} />
-          <div class="right menu">
-            <Link class="active item" to="/">Profile</Link>
-            <Link class="item" to="/food-entries">Food Entries</Link>
-            <Link class="item" to="/exercise-entries">Exercise Entries</Link>
+
+          <div class="right menu right-style">
+            <Link class="item item-style" to="/">Profile</Link>
+            <Link class="item item-style" to="/food-entries">Food Entries</Link>
+            <Link class="item item-style" to="/exercise-entries">Exercise Entries</Link>
           </div>
+
         </nav>
+
         <Route exact path='/'
           render={()=> <Profile
             user ={user}

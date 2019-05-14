@@ -9,7 +9,7 @@ constructor(props) {
   super(props);
 
   this.state = {
-    loggedIn: false,
+    loggedIn: true,
     userID: 1
   };
 
@@ -40,7 +40,7 @@ testing = async() => {
         {
           (loggedIn)
             ? <ProfilePage user = {userID} />
-            : <LogInPage login = 
+            : <LogInPage login =
             {loggedIn} />
         }
 

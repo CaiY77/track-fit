@@ -1,3 +1,11 @@
 .logo{
-  
+  width: 8vh;
+  height: 8vh;
+  padding: 5px;
+}
+.right-style{
+  width: 50%;
+}
+.item-style{
+  font-size: 1.5em;
 }
