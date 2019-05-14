@@ -10,7 +10,7 @@ class ProfilePage extends Component {
 
         PROFILE PAGE
 
-
+        
         route
       </div>
     );
