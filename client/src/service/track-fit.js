@@ -14,17 +14,14 @@ export const fetchUser = async () => {
   }
 }
 
-const newUser = {
-  name: 'lalala',
-  email: 'lalala@gmail.com',
-  password: 'helloworld'
-}
 
 // create new user
-export const createUser = async()=>{
+export const createUser = async(newUser)=>{
    try{
       const res = await api.post('/create', newUser)
-      return res.data;
+      console.log(`axios response ${res}`);
+
+      // return res.data;
 
    }
    catch(e){

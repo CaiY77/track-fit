@@ -17,20 +17,14 @@ constructor(props) {
 
 componentDidMount() {
   document.title = 'Track My Fitness';
-  // this.testing();
 }
 
-testing = async() => {
-  // const result = await fetchUser();
-  // console.log(result);
-  // const newUser = await createUser();
-  // console.log(newUser);
-  // const foodGet = await fetchFood();
-  // console.log(foodGet)
-  // await deleteFood();
-  const newEx = await updateFood();
-
+toggleLog = () =>{
+  this.setState({
+    loggedIn: !this.state.loggedIn
+  });
 }
+
 
   render() {
     const {loggedIn,userID} = this.state;
@@ -39,8 +33,8 @@ testing = async() => {
 
         {
           (loggedIn)
-            ? <ProfilePage user = {userID} />
-            : <LogInPage login = 
+            ? <ProfilePage toggleLog ={this.toggleLog} user = {userID} login = {loggedIn}/>
+            : <LogInPage login =
             {loggedIn} />
         }
 
