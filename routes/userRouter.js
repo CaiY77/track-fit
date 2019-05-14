@@ -87,6 +87,21 @@ userRouter.delete('/:id/food-entry/:food_id', async (req, res) => {
 })
 
 
+//find all excersise
+userRouter.get('/:id/exercise', async(req,res)=>{
+  try{
+    const allExercise = await Exercise.findAll({
+      where:{
+        user_id: req.params.id
+      }
+    });
+    res.send(allExercise);
+  }
+  catch(e){
+    console.log(e)
+  }
+})
+
 
 //create excercise entry
 userRouter.post('/:id/create-exercise', async(req, res) => {

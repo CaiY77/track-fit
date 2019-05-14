@@ -37,7 +37,13 @@ const newFood = {
   food: 'chips',
   calGained: 5000,
   date: '2019-07-07'
+}
 
+
+export const fetchFood = async()=>{
+  try{
+    const res = await
+  }
 }
 
 
