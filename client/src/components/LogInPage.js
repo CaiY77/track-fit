@@ -9,43 +9,20 @@ class LogInPage extends Component {
 
     this.state={
       signin: false,
-      newUser:{
-        name: "",
-        email: "",
-        password: ""
-      }
+      newUser:[]
     }
   }
 
-  onSigninNameChange = async(event)=>{
-    const userName = event.target.value;
-    console.log(userName);
-    this.setState({
-      newUser:{
-        name: userName   
-      }     
-    })
-  }
-  
-  onSigninEmailChange = async (event) =>{
-    const userEmail = event.target.value;
-    console.log(userEmail)
-    this.setState({ 
-      newUser:{
-        email: userEmail
-      }
-    })
+  onSigninFormChange = (event)=>{
+    const element = event.target
+    const name = element.name
+    const value = element.value
+    
+    console.log(name);
+    this.setState({[name]: value})
+    
   }
 
-  onSigninPasswordChange = async(event)=>{
-    const userPassword = event.target.value;
-    console.log(userPassword);
-    this.setState({ 
-      newUser:{ 
-        password: userPassword  
-      } 
-    })
-  }
   
   onSigninFormSubmit = async(event)=>{
     event.preventDefault()
@@ -53,9 +30,9 @@ class LogInPage extends Component {
     console.log(`Form submitted: `)
 
     let userInfo = {
-      name: this.state.newUser.name,
-      email: this.state.newUser.email,
-      password: this.state.newUser.password
+      name: this.state.name,
+      email: this.state.email,
+      password: this.state.password
     }
     const currentUser = await createUser(userInfo)
     console.log(currentUser)
@@ -67,7 +44,7 @@ class LogInPage extends Component {
 
   render() {
     console.log(this.props.login);
-    
+
     // if(this.state.login === true){
     //   return <Redirect to="/user" />
     // }
@@ -101,19 +78,19 @@ class LogInPage extends Component {
                 id="name"
                 type="text"
                 name="name"
-                onChange={this.onSigninNameChange}
+                onChange={this.onSigninFormChange}
                 placeholder="name"/>
               <input 
                 id="email"
                 type="text" 
                 name="email"
-                onChange={this.onSigninEmailChange}
+                onChange={this.onSigninFormChange}
                 placeholder= "email address"/>
               <input 
                 id="password"
                 type="text" 
                 name="password"
-                onChange={this.onSigninPasswordChange}
+                onChange={this.onSigninFormChange}
                 placeholder="enter your password"/>
               <button type="submit">
                 Submit
