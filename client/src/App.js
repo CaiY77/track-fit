@@ -10,7 +10,7 @@ constructor(props) {
 
   this.state = {
     loggedIn: true,
-    userID: 1;
+    userID: 1
   };
 
 }
