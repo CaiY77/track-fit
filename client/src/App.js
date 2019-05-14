@@ -34,8 +34,7 @@ toggleLog = () =>{
         {
           (loggedIn)
             ? <ProfilePage toggleLog ={this.toggleLog} user = {userID} login = {loggedIn}/>
-            : <LogInPage login =
-            {loggedIn} />
+            : <LogInPage login = {loggedIn} />
         }
 
       </div>
