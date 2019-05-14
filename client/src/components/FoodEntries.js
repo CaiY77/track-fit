@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {fetchFood} from '../service/track-fit'
-import {Card, Feed, Icon} from 'semantic-ui-react'
+import {Card, Feed, Icon,Button,Modal} from 'semantic-ui-react'
 import '../App.css'
 const moment = require('moment');
 
@@ -9,8 +9,7 @@ const moment = require('moment');
     constructor(props) {
       super(props);
       this.state = {
-        allFood: [],
-        hasFood: false
+        allFood: []
       };
     }
 
@@ -18,20 +17,13 @@ const moment = require('moment');
       this.getAll();
     }
 
-    getAll = async() => {
+    getAll = async () => {
       const allFoods = await fetchFood(this.props.user)
+        this.setState({
+          allFood: allFoods
+        });
 
-      if (allFoods.length != 0){
-        this.setState({
-          allFood: allFoods,
-          hasFood: true
-        });
-      } else {
-        this.setState({
-          allFood: [],
-          hasFood: false
-        });
-      }
+
     }
 
     showEntries = () =>{
@@ -39,7 +31,7 @@ const moment = require('moment');
       const myCards = allFood.map(entry =>{
         const dateString = entry.date;
         const momentDate = moment(dateString)
-        return (<Feed.Event className="feed-box">
+        return (<Feed.Event>
           <Feed.Label><Icon size="big" name="food" className="feed-left"/></Feed.Label>
           <Feed.Content className ="feed-right">
             <Feed.Date content={momentDate.format("YYYY-MM-DD")}/>
@@ -53,16 +45,28 @@ const moment = require('moment');
 
     render() {
       return (
-        <div>
+        <div className="food-contain">
+          <Modal trigger={<Button icon="add" size="huge" className="add-button">Add Food Entry</Button>}>
+            <Form>
+              <Form.Field>
+                <label>Food Consumed</label>
+                <input placeholder='First Name' />
+              </Form.Field>
+              <Form.Field>
+                <label>calories</label>
+                <input type="number" placeholder='Last Name' />
+              </Form.Field>
+              <Button type='submit'>Submit</Button>
+            </Form>
+          </Modal>
           <Card>
-
             <Card.Content className="myFeed">
               <Card.Header>My Food Log</Card.Header>
             </Card.Content>
             <Card.Content>
-              <Feed>
+              <Feed size="large">
                 {
-                  (this.state.hasFood)
+                  (this.state.allFood)
                     ? this.showEntries()
                     : <h1>No Entries Exist</h1>
                 }
