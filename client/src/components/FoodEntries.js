@@ -8,14 +8,50 @@ const FoodOptions = [
   {
     key: 1,
     value: 'burgers',
-    text: 'Burgers'
+    text: 'Burger'
+  },{
+    key: 2,
+    value: 'chickens',
+    text: 'Chicken'
+  },{
+    key: 3,
+    value: 'donuts',
+    text: 'donuts'
+  },{
+    key: 4,
+    value: 'pizza',
+    text: 'Pizza'
+  },{
+    key: 5,
+    value: 'fries',
+    text: 'Fries'
   }
 ]
 const CalorieOptions = [
   {
     key: 1,
-    value: 20000,
-    text: '20000'
+    value: 100,
+    text: '100'
+  },{
+    key: 2,
+    value: 200,
+    text: '200'
+  },{
+    key: 3,
+    value: 300,
+    text: '300'
+  },{
+    key: 5,
+    value: 500,
+    text: '500'
+  },{
+    key: 6,
+    value: 600,
+    text: '600'
+  },{
+    key: 7,
+    value: 700,
+    text: '700'
   }
 ]
 
@@ -141,8 +177,6 @@ const CalorieOptions = [
                 </Segment>
 
               </Modal>
-
-
 
             </div>
             <Card.Group itemsPerRow={2} className="card-group">
