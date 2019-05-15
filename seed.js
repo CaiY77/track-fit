@@ -27,7 +27,7 @@ async function main() {
 
   const goal = await Goal.create({
     calBurned: 3,
-    calIntake: 3
+    calIntake: 4000
   })
 
   const foodEntries = await Food.create({

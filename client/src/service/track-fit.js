@@ -8,7 +8,15 @@ const api = axios.create({
 export const fetchUser = async (id) => {
   try {
     const resp = await api.get(`/${id}`)
-    console.log(resp.data)
+    return resp.data;
+  } catch (e) {
+    console.log(e)
+  }
+}
+//get user Goal
+export const fetchGoal = async(id)=>{
+  try {
+    const resp = await api.get(`/${id}/goal`)
     return resp.data;
   } catch (e) {
     console.log(e)
@@ -39,16 +47,6 @@ export const createUser = async(newUser)=>{
    }
 }
 
-
-const newFood = {
-  food: 'chips',
-  calGained: 5000,
-  date: '2019-07-07'
-}
-
-
-
-
 //find the all food
 export const fetchFood = async(id)=>{
   try{
@@ -66,11 +64,10 @@ export const fetchFood = async(id)=>{
 
 
 // create a food
-export const createFood = async () => {
+export const createFood = async (user,newFood) => {
   try {
-    const resp = await api.post(`/1/create-food`, newFood )
+    const resp = await api.post(`/${user}/create-food`, newFood )
     return resp.data;
-
   } catch (e) {
     console.log(e)
   }
@@ -83,7 +80,7 @@ const updateFooood = {
 
 export const updateFood = async () => {
   try {
-    const res = await api.put(`/update-food/8`, updateFooood)
+    await api.put(`/update-food/8`, updateFooood)
   }
   catch(e){
     console.log(e)
@@ -92,13 +89,16 @@ export const updateFood = async () => {
 
 
 //delete a food
-export const deleteFood = async ()=>{
+export const deleteFood = async (user,food)=>{
   try{
-    const res = await api.delete(`/1/food-entry/1`)
+    const res = await api.delete(`/${user}/food-entry/${food}`)
     return res.data;
   }
   catch(e){
     console.log(e)
+  }
+  finally{
+    process.exit();
   }
 }
 
@@ -141,7 +141,7 @@ const updateEx = {
 
 export const updateExercise = async()=>{
   try{
-    const res = await api.put(`/update-exercise/3`,updateEx);
+    await api.put(`/update-exercise/3`,updateEx);
 
   }
   catch(e){

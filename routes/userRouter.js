@@ -1,6 +1,6 @@
 const express = require('express');
 const userRouter = express.Router();
-const {User,Food,Exercise} = require('../models');
+const {User,Food,Exercise,Goal} = require('../models');
 const bodyParser = require('body-parser');
 const authRouter = require('./authRouter')
 
@@ -145,6 +145,21 @@ userRouter.delete('/:id/exercise-entry/:exercise_id', async (req, res) => {
   } catch (e) {
     console.log(e)
   }
+})
+
+//getGoal
+userRouter.get('/:id/goal',async(req,res)=>{
+  try {
+    const goal = await Goal.findOne({
+      where:{
+        user_id: req.params.id
+      }
+    })
+    res.send(goal);
+  } catch (e) {
+    console.log(e)
+  }
+
 })
 
 
