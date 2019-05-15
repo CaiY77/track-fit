@@ -76,3 +76,14 @@ text-align: center
   padding-top:3vh;
 }
 
+.profile{
+  display:flex;
+  flex-direction: column;
+  width:350px;
+  margin: 20px auto;
+}
+
+.ui medium circular image{
+  
+}
+

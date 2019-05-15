@@ -27,8 +27,10 @@ class Profile extends Component {
     // console.log(this.props.user);
 
     return (
-      <div>
-        <h1>Profile</h1>
+      <div class= "profile">
+        <div>
+          <h1>Profile</h1>
+        </div>
         <img style={{width: "200px", height: "auto" }}
             src="https://react.semantic-ui.com/images/wireframe/square-image.png"
             class="ui medium circular image"
