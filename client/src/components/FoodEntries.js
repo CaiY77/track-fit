@@ -4,7 +4,20 @@ import {Card,Icon,Button,Modal,Form,Divider,Grid,Segment} from 'semantic-ui-reac
 import '../App.css'
 import {deleteFood} from '../service/track-fit'
 const moment = require('moment');
-
+const FoodOptions = [
+  {
+    key: 1,
+    value: 'burgers',
+    text: 'Burgers'
+  }
+]
+const CalorieOptions = [
+  {
+    key: 1,
+    value: 20000,
+    text: '20000'
+  }
+]
 
   class FoodEntries extends Component {
     constructor(props) {
@@ -56,6 +69,16 @@ const moment = require('moment');
       const value = element.value
       this.setState({[name]: value})
     }
+    handleFood=(value)=>{
+      this.setState({
+        food: value
+      })
+    }
+    handleCal=(value)=>{
+      this.setState({
+        calGained: value
+      })
+    }
 
     addNewFood = () => {
       const newFood = {
@@ -92,12 +115,26 @@ const moment = require('moment');
                           <label>Date</label>
                           <input onChange={this.handleChanges} type="datetime-local" name="date" />
                         </Form.Field>
-                        <Button type='submit'>Submit</Button>
+                        <Button inverted color="green" type='submit'>Submit</Button>
                       </Form>
 
                     </Grid.Column>
                     <Grid.Column>
-
+                      <Form onSubmit={()=>this.addNewFood()}>
+                        <Form.Field>
+                          <label>Food Consumed</label>
+                          <Form.Select onChange={(e, {value}) => this.handleFood(value)} options={FoodOptions} name="food" placeholder='Select Food' />
+                        </Form.Field>
+                        <Form.Field>
+                          <label>Calories</label>
+                          <Form.Select onChange={(e, {value}) => this.handleCal(value)} options={CalorieOptions} name="calGained" placeholder='Select Calories' />
+                        </Form.Field>
+                        <Form.Field>
+                          <label>Date</label>
+                          <input onChange={this.handleChanges} type="datetime-local" name="date" />
+                        </Form.Field>
+                        <Button inverted color="green" type='submit'>Submit</Button>
+                      </Form>
                     </Grid.Column>
                   </Grid>
                   <Divider vertical>OR</Divider>
