@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom'
 import {createUser} from '../service/track-fit'
 import './LoginPage.css'
 import bulma from '../../node_modules/bulma/css/bulma.css'
@@ -18,13 +17,13 @@ class LogInPage extends Component {
     const element = event.target
     const name = element.name
     const value = element.value
-    
+
     console.log(name);
     this.setState({[name]: value})
-    
+
   }
 
-  
+
   onSigninFormSubmit = async(event)=>{
     event.preventDefault()
 
@@ -55,6 +54,7 @@ class LogInPage extends Component {
         <div class = "login">
           <h2>Login</h2>
           <form onSubmit={this.onLoginFormSubmit}>
+
           <div class="label">
             <p class="control">
               <input 
@@ -138,6 +138,7 @@ class LogInPage extends Component {
               </button>
               </p>
           </div>
+
           </form>
         </div>
         

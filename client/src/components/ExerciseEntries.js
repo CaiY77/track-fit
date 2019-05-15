@@ -26,7 +26,7 @@ class ExerciseEntries extends Component {
         <Card>
           <h1>{exercise.exercise}</h1>
           <h1>{exercise.calBurned}</h1>
-          <h1>{momentDate.format("YYYY-MM-DD")}</h1>
+          <h1>{momentDate.format("MMMM Do YYYY")}</h1>
         </Card>
       )
     })

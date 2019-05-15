@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {fetchUser,createUser,fetchFood,deleteFood,createExercise,updateExercise,updateFood} from './service/track-fit'
 import LogInPage from './components/LogInPage.js'
 import ProfilePage from './components/ProfilePage.js'
 
