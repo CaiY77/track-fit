@@ -66,7 +66,6 @@ const CalorieOptions = [
       super(props);
       this.state = {
         allFood: [],
-        cal: 0,
         maxCal: 0
       };
     }
@@ -152,6 +151,7 @@ const CalorieOptions = [
     }
 
     render() {
+      const {maxCal} = this.state
       return (
 
         <div className="display-contain">
@@ -213,26 +213,28 @@ const CalorieOptions = [
             </Card.Group>
           </div>
           <div className="display-right">
-
+            <CircularProgressbar value={this.totalCal()/maxCal * 100} className="progress"/>
+            <Divider section className="divide"/>
             <Statistic className ="stats">
               <Statistic.Label>Consumed</Statistic.Label>
               <Statistic.Value>{this.totalCal()}</Statistic.Value>
               <Statistic.Label>Calories So Far</Statistic.Label>
             </Statistic>
-            <Divider section />
+            <Divider section className="divide"/>
+            <Statistic className ="stats">
+              <Statistic.Label>You Set a </Statistic.Label>
+              <Statistic.Value>{maxCal}</Statistic.Value>
+              <Statistic.Label>Calorie Limit</Statistic.Label>
+            </Statistic>
+            <Divider section className="divide"/>
             <Statistic className ="stats">
               <Statistic.Label>You Have a Total of</Statistic.Label>
               <Statistic.Value>{this.state.allFood.length}</Statistic.Value>
               <Statistic.Label>ENTRIES</Statistic.Label>
             </Statistic>
-            <Divider section />
-            <Statistic className ="stats">
-              <Statistic.Label>You Set a </Statistic.Label>
-              <Statistic.Value>{this.state.maxCal}</Statistic.Value>
-              <Statistic.Label>Calorie Limit</Statistic.Label>
-            </Statistic>
 
-        </div>
+
+          </div>
 
         </div>
 
