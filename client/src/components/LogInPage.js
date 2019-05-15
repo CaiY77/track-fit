@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom'
-import {createUser} from '../service/track-fit'
+import {createUser, getUser} from '../service/track-fit'
 
 
 class LogInPage extends Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
 
     this.state={
       signin: false,
-      newUser:[]
+      newUser:[],
+     // currentUser: null
     }
   }
+
+  
 
   onSigninFormChange = (event)=>{
     const element = event.target
@@ -19,13 +22,13 @@ class LogInPage extends Component {
     const value = element.value
     
     console.log(name);
-    this.setState({[name]: value})
+    this.setState({[name]: value});
     
   }
 
   
-  onSigninFormSubmit = async(event)=>{
-    event.preventDefault()
+  onSigninFormSubmit = async(e)=>{
+    e.preventDefault();
 
     console.log(`Form submitted: `)
 
@@ -33,21 +36,36 @@ class LogInPage extends Component {
       name: this.state.name,
       email: this.state.email,
       password: this.state.password
-    }
+    };
+
     const currentUser = await createUser(userInfo)
-    console.log(currentUser)
-    this.setState({
-      signin: true
-    })
+    console.log(currentUser);
+    this.props.setCurrentUser(currentUser);
+    return <Redirect to="/" />
   }
 
+  onLoginFormSubmit = async(e)=>{
+    e.preventDefault();
+
+    console.log(`Form submitted: `)
+
+    let userInfo = {
+      email: this.state.email,
+      password: this.state.password
+    };
+
+    const currentUser = await getUser(userInfo)
+
+    if(currentUser !== undefined) {
+    this.props.setCurrentUser(currentUser);
+    return <Redirect to="/" />
+    }
+  }
+ 
 
   render() {
     console.log(this.props.login);
 
-    // if(this.state.login === true){
-    //   return <Redirect to="/user" />
-    // }
 
     return (
       <div>
@@ -58,13 +76,13 @@ class LogInPage extends Component {
                 id="email"
                 type="text" 
                 name="email"
-                onChange={this.onLoginEmailChange}
+                onChange={this.onSigninFormChange}
                 placeholder= "email address"/>
               <input 
                 id="password"
                 type="text" 
                 name="password"
-                onChange={this.onLoginPasswordChange}
+                onChange={this.onSigninFormChange}
                 placeholder="enter your password"/>
               <button type="submit">
                 Submit
