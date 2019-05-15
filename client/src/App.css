@@ -21,10 +21,18 @@ nav{
   font-size: 1.5em !important;
 }
 .display-contain{
+  background: url(./images/back3.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+
+}
+.shade{
+  background: rgba(255,255,255,0.3);
   display: flex;
 }
 .display-right{
   border-left:solid 1px darkgray;
+  background-attachment: fixed;
   flex:1;
   text-align: center;
   display:flex;
@@ -49,6 +57,7 @@ text-align: center
 }
 .my-cards{
   margin-top: 5vh !important;
+  opacity: 0.9;
 }
 .trash-button{
   float:right;
