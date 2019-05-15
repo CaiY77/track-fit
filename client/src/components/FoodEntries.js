@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {fetchFood} from '../service/track-fit'
+import {fetchFood,createFood} from '../service/track-fit'
 import {Card,Icon,Button,Modal,Form,Divider,Grid,Segment} from 'semantic-ui-react'
 import '../App.css'
 import {deleteFood} from '../service/track-fit'
@@ -41,7 +41,7 @@ const moment = require('moment');
             <Button onClick={()=>this.deleteFoodHandle(this.props.user,entry.id)} icon ="trash" className="trash-button"/>
           </Card.Content>
           <Card.Content className ="feed-right">
-            <Card.Meta content={momentDate.format("YYYY-MM-DD")}/>
+            <Card.Meta content={momentDate.format("MMMM Do YYYY")}/>
             <Card.Description>You consumed some {entry.food} and gained a whopping {entry.calGained} calories.</Card.Description>
           </Card.Content>
         </Card>)
@@ -54,9 +54,17 @@ const moment = require('moment');
       const element = event.target
       const name = element.name
       const value = element.value
-
-      console.log(name);
       this.setState({[name]: value})
+    }
+
+    addNewFood = () => {
+      const newFood = {
+        food: this.state.food,
+        calGained: Number.parseInt(this.state.calGained),
+        date: this.state.date
+      }
+      createFood(this.props.user,newFood);
+      window.location.reload();
     }
 
     render() {
@@ -70,21 +78,23 @@ const moment = require('moment');
                 <Segment>
                   <Grid columns={2} relaxed='very'>
                     <Grid.Column>
-                      <Form>
+
+                      <Form onSubmit={()=>this.addNewFood()}>
                         <Form.Field>
                           <label>Food Consumed</label>
                           <input onChange={this.handleChanges} name="food" placeholder='Today, I had some ...' />
                         </Form.Field>
                         <Form.Field>
                           <label>Calories</label>
-                          <input onChange={this.handleChanges} name="calGained "type="number" placeholder='Enter Calories' />
+                          <input onChange={this.handleChanges} name="calGained" placeholder='Enter Calories' />
                         </Form.Field>
                         <Form.Field>
                           <label>Date</label>
-                          <input onChange={this.handleChanges} name="date" placeholder='YYYY-MM-DD' />
+                          <input onChange={this.handleChanges} type="datetime-local" name="date" />
                         </Form.Field>
                         <Button type='submit'>Submit</Button>
                       </Form>
+
                     </Grid.Column>
                     <Grid.Column>
 

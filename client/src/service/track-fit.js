@@ -30,16 +30,6 @@ export const createUser = async(newUser)=>{
    }
 }
 
-
-const newFood = {
-  food: 'chips',
-  calGained: 5000,
-  date: '2019-07-07'
-}
-
-
-
-
 //find the all food
 export const fetchFood = async(id)=>{
   try{
@@ -57,11 +47,10 @@ export const fetchFood = async(id)=>{
 
 
 // create a food
-export const createFood = async () => {
+export const createFood = async (user,newFood) => {
   try {
-    const resp = await api.post(`/1/create-food`, newFood )
+    const resp = await api.post(`/${user}/create-food`, newFood )
     return resp.data;
-
   } catch (e) {
     console.log(e)
   }
