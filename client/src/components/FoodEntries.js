@@ -50,6 +50,15 @@ const moment = require('moment');
       return myCards;
     }
 
+    handleChanges =(event)=>{
+      const element = event.target
+      const name = element.name
+      const value = element.value
+
+      console.log(name);
+      this.setState({[name]: value})
+    }
+
     render() {
       return (
 
@@ -64,15 +73,15 @@ const moment = require('moment');
                       <Form>
                         <Form.Field>
                           <label>Food Consumed</label>
-                          <input placeholder='Today, I had some ...' />
+                          <input onChange={this.handleChanges} name="food" placeholder='Today, I had some ...' />
                         </Form.Field>
                         <Form.Field>
                           <label>Calories</label>
-                          <input type="number" placeholder='Enter Calories' />
+                          <input onChange={this.handleChanges} name="calGained "type="number" placeholder='Enter Calories' />
                         </Form.Field>
                         <Form.Field>
                           <label>Date</label>
-                          <input placeholder='YYYY-MM-DD' />
+                          <input onChange={this.handleChanges} name="date" placeholder='YYYY-MM-DD' />
                         </Form.Field>
                         <Button type='submit'>Submit</Button>
                       </Form>
