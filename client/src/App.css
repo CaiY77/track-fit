@@ -5,10 +5,10 @@ nav{
   top:0;
   left:0;
 }
-.logo{
-  width: 8vh;
-  height: 8vh;
-  padding: 3px;
+.logo-style{
+  width: 8vh !important;
+  height: 8vh !important;
+  padding: 3px !important;
 }
 .right-style{
   width: 50%;
@@ -18,13 +18,51 @@ nav{
   font-family: ;
 }
 .button-style{
-  width: 100%;
-  font-size: 1.5em;
+  font-size: 1.5em !important;
 }
-.food-contain{
-  border:solid red;
-  padding:20vh 0 0 20vw;
+.display-contain{
+  display: flex;
 }
-.add-button{
-  color:red;
+.display-right{
+  border-left:solid 1px darkgray;
+  flex:1;
+  text-align: center;
+  display:flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+.display-left{
+  padding: 5vh 5vw 5vh 5vw;
+  flex:2;
+  height: 92vh;
+  overflow-y: auto;
+}
+.button-modal{
+text-align: center
+}
+.modal-style{
+  text-align: center;
+  padding: 2vh 0 0 0;
+}
+.card-group{
+  margin-top: 3vh !important;
+}
+.my-cards{
+  margin-top: 5vh !important;
+}
+.trash-button{
+  float:right;
+}
+.stats{
+  flex:1;
+  margin:0 !important;
+}
+.divide{
+  margin: 0 !important;
+  margin-bottom: 3vh !important;
+  margin-top: 4vh !important;
+}
+.progress{
+  height: 25vh;
+  padding-top:3vh;
 }

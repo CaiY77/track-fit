@@ -9,27 +9,22 @@ import '../App.css'
 
 class ProfilePage extends Component {
 
-  constructor(props) {
-    super(props);
-
-  }
-
   render() {
     const {user} = this.props;
     return (
       <div>
 
-        <nav class="ui four borderless item menu">
+        <nav className="ui four borderless item menu">
 
-          <img class="item" className="logo" src={logo} />
+          <img className="item logo-style" alt="TF" src={logo} />
 
-          <div class="right menu right-style">
-            <Link class="item item-style" to="/">Profile</Link>
-            <Link class="item item-style" to="/food-entries">Food Entries</Link>
-            <Link class="item item-style" to="/exercise-entries">Exercise Entries</Link>
-            <Button onClick={this.props.toggleLog} color='blue' class="item" className="button-style">Log Out</Button>
+          <div className="right menu right-style">
+            <Link className="item item-style" to="/">Profile</Link>
+            <Link className="item item-style" to="/food-entries">Food Entries</Link>
+            <Link className="item item-style" to="/exercise-entries">Exercise Entries</Link>
+            <Button onClick={this.props.toggleLog} color='blue' className="item button-style" >Sign Out</Button>
           </div>
-          
+
         </nav>
 
         <Route exact path='/'
