@@ -103,15 +103,15 @@ const CalorieOptions = [
                     <Grid.Column>
 
                       <Form onSubmit={()=>this.addNewFood()}>
-                        <Form.Field>
+                        <Form.Field required>
                           <label>Food Consumed</label>
                           <input onChange={this.handleChanges} name="food" placeholder='Today, I had some ...' />
                         </Form.Field>
-                        <Form.Field>
+                        <Form.Field required>
                           <label>Calories</label>
                           <input onChange={this.handleChanges} name="calGained" placeholder='Enter Calories' />
                         </Form.Field>
-                        <Form.Field>
+                        <Form.Field required>
                           <label>Date</label>
                           <input onChange={this.handleChanges} type="datetime-local" name="date" />
                         </Form.Field>
@@ -121,15 +121,15 @@ const CalorieOptions = [
                     </Grid.Column>
                     <Grid.Column>
                       <Form onSubmit={()=>this.addNewFood()}>
-                        <Form.Field>
+                        <Form.Field required>
                           <label>Food Consumed</label>
                           <Form.Select onChange={(e, {value}) => this.handleFood(value)} options={FoodOptions} name="food" placeholder='Select Food' />
                         </Form.Field>
-                        <Form.Field>
+                        <Form.Field required>
                           <label>Calories</label>
                           <Form.Select onChange={(e, {value}) => this.handleCal(value)} options={CalorieOptions} name="calGained" placeholder='Select Calories' />
                         </Form.Field>
-                        <Form.Field>
+                        <Form.Field required>
                           <label>Date</label>
                           <input onChange={this.handleChanges} type="datetime-local" name="date" />
                         </Form.Field>
