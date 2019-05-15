@@ -140,13 +140,13 @@ const CalorieOptions = [
       })
     }
 
-    addNewFood = () => {
+    addNewFood = async() => {
       const newFood = {
         food: this.state.food,
         calGained: Number.parseInt(this.state.calGained),
         date: this.state.date
       }
-      createFood(this.props.user,newFood);
+      await createFood(this.props.user,newFood);
       window.location.reload();
     }
 
