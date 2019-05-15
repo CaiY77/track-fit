@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {fetchUser} from '../service/track-fit.js';
-import { Image, Segment, Button } from 'semantic-ui-react'
+import { Image, Segment, Button, Icon } from 'semantic-ui-react'
+import profilePic from '../images/profile1.jpg'
 
 class Profile extends Component {
   constructor(props) {
@@ -22,6 +23,8 @@ class Profile extends Component {
     });
   } 
 
+  axios
+
 
   render() {
     // console.log(this.props.user);
@@ -29,18 +32,18 @@ class Profile extends Component {
     return (
     <div class= "profile">
         <div>
-          <h1>Welcome Back {this.state.user.name}!</h1>
+            <img src={profilePic} class="ui fluid image" />
         </div>
+        
+        {/* <div>
+          <h1>Welcome Back {this.state.user.name}!</h1>
+        </div> */}
 
         <div class = "profilePic">
-            <div>
-                <h2>Profile</h2>
-            </div>
-            <div>
-               <img style={{width: "200px", height: "auto" }}
-                    src="https://react.semantic-ui.com/images/wireframe/square-image.png"
-                    class="ui medium circular image"/>
-            </div>
+            <img style={{width: "200px", height: "auto" }}
+                 src="https://react.semantic-ui.com/images/wireframe/square-image.png"
+                 class="ui medium circular image"/>
+            <Icon name = "pencil alternate"/>
         </div>
         
         
