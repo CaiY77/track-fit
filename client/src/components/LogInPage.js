@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom'
 import {createUser} from '../service/track-fit'
-// import './LoginPage.css'
+import './LoginPage.css'
 import bulma from '../../node_modules/bulma/css/bulma.css'
 
 
