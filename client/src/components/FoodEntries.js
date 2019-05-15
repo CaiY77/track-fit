@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {fetchFood} from '../service/track-fit'
-import {Card,Icon,Button,Modal,Form} from 'semantic-ui-react'
+import {Card,Icon,Button,Modal,Form,Divider,Grid,Segment} from 'semantic-ui-react'
 import '../App.css'
 import {deleteFood} from '../service/track-fit'
 const moment = require('moment');
@@ -57,18 +57,37 @@ const moment = require('moment');
           <div className="display-left">
             <div className="button-modal">
               <Modal trigger={<Button inverted color="green" size="huge" className ="add-button">Add Food Entry</Button>}>
-                <Form>
-                  <Form.Field>
-                    <label>Food Consumed</label>
-                    <input placeholder='First Name' />
-                  </Form.Field>
-                  <Form.Field>
-                    <label>calories</label>
-                    <input type="number" placeholder='Last Name' />
-                  </Form.Field>
-                  <Button type='submit'>Submit</Button>
-                </Form>
+                <h1 className="modal-style">Add To Your Food Log</h1>
+                <Segment>
+                  <Grid columns={2} relaxed='very'>
+                    <Grid.Column>
+                      <Form>
+                        <Form.Field>
+                          <label>Food Consumed</label>
+                          <input placeholder='Today, I had some ...' />
+                        </Form.Field>
+                        <Form.Field>
+                          <label>Calories</label>
+                          <input type="number" placeholder='Enter Calories' />
+                        </Form.Field>
+                        <Form.Field>
+                          <label>Date</label>
+                          <input placeholder='YYYY-MM-DD' />
+                        </Form.Field>
+                        <Button type='submit'>Submit</Button>
+                      </Form>
+                    </Grid.Column>
+                    <Grid.Column>
+
+                    </Grid.Column>
+                  </Grid>
+                  <Divider vertical>OR</Divider>
+                </Segment>
+
               </Modal>
+
+
+
             </div>
             <Card.Group itemsPerRow={2} className="card-group">
               {

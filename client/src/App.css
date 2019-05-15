@@ -35,6 +35,10 @@ nav{
 .button-modal{
 text-align: center
 }
+.modal-style{
+  text-align: center;
+  padding: 2vh 0 0 0;
+}
 .card-group{
   margin-top: 3vh !important;
 }
