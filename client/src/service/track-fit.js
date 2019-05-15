@@ -74,7 +74,7 @@ const updateFooood = {
 
 export const updateFood = async () => {
   try {
-    const res = await api.put(`/update-food/8`, updateFooood)
+    await api.put(`/update-food/8`, updateFooood)
   }
   catch(e){
     console.log(e)
@@ -83,13 +83,16 @@ export const updateFood = async () => {
 
 
 //delete a food
-export const deleteFood = async ()=>{
+export const deleteFood = async (user,food)=>{
   try{
-    const res = await api.delete(`/1/food-entry/1`)
+    const res = await api.delete(`/${user}/food-entry/${food}`)
     return res.data;
   }
   catch(e){
     console.log(e)
+  }
+  finally{
+    process.exit();
   }
 }
 
@@ -132,7 +135,7 @@ const updateEx = {
 
 export const updateExercise = async()=>{
   try{
-    const res = await api.put(`/update-exercise/3`,updateEx);
+    await api.put(`/update-exercise/3`,updateEx);
 
   }
   catch(e){

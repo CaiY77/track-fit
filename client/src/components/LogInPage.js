@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom'
 import {createUser} from '../service/track-fit'
 
 
@@ -17,13 +16,13 @@ class LogInPage extends Component {
     const element = event.target
     const name = element.name
     const value = element.value
-    
+
     console.log(name);
     this.setState({[name]: value})
-    
+
   }
 
-  
+
   onSigninFormSubmit = async(event)=>{
     event.preventDefault()
 
@@ -54,15 +53,15 @@ class LogInPage extends Component {
         <div>
           <p>Login</p>
           <form onSubmit={this.onLoginFormSubmit}>
-              <input 
+              <input
                 id="email"
-                type="text" 
+                type="text"
                 name="email"
                 onChange={this.onLoginEmailChange}
                 placeholder= "email address"/>
-              <input 
+              <input
                 id="password"
-                type="text" 
+                type="text"
                 name="password"
                 onChange={this.onLoginPasswordChange}
                 placeholder="enter your password"/>
@@ -70,7 +69,7 @@ class LogInPage extends Component {
                 Submit
               </button>
           </form>
-        </div> 
+        </div>
         <div>
           <p>SignUp</p>
           <form onSubmit={this.onSigninFormSubmit}>
@@ -80,15 +79,15 @@ class LogInPage extends Component {
                 name="name"
                 onChange={this.onSigninFormChange}
                 placeholder="name"/>
-              <input 
+              <input
                 id="email"
-                type="text" 
+                type="text"
                 name="email"
                 onChange={this.onSigninFormChange}
                 placeholder= "email address"/>
-              <input 
+              <input
                 id="password"
-                type="text" 
+                type="text"
                 name="password"
                 onChange={this.onSigninFormChange}
                 placeholder="enter your password"/>

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {fetchFood} from '../service/track-fit'
-import {Card, Feed, Icon,Button,Modal,Form} from 'semantic-ui-react'
+import {Card,Icon,Button,Modal,Form} from 'semantic-ui-react'
 import '../App.css'
+import {deleteFood} from '../service/track-fit'
 const moment = require('moment');
 
 
@@ -22,8 +23,11 @@ const moment = require('moment');
         this.setState({
           allFood: allFoods
         });
+    }
 
-
+    deleteFoodHandle = (user,food) => {
+      deleteFood(user,food);
+      window.location.reload();
     }
 
     showEntries = () =>{
@@ -31,8 +35,11 @@ const moment = require('moment');
       const myCards = allFood.map(entry =>{
         const dateString = entry.date;
         const momentDate = moment(dateString)
-        return (<Card className="my-cards">
-          <Card.Content extra><Icon size="big" name="food" className="card-icon"/></Card.Content>
+        return (<Card key={entry.id} className="my-cards">
+          <Card.Content extra>
+            <Icon size="big" name="food"/>
+            <Button onClick={()=>this.deleteFoodHandle(this.props.user,entry.id)} icon ="trash" className="trash-button"/>
+          </Card.Content>
           <Card.Content className ="feed-right">
             <Card.Meta content={momentDate.format("YYYY-MM-DD")}/>
             <Card.Description>You consumed some {entry.food} and gained a whopping {entry.calGained} calories.</Card.Description>
@@ -49,7 +56,7 @@ const moment = require('moment');
         <div className="display-contain">
           <div className="display-left">
             <div className="button-modal">
-              <Modal trigger={<Button inverted color="green" icon="add" size="huge" className ="add-button">Add Food Entry</Button>}>
+              <Modal trigger={<Button inverted color="green" size="huge" className ="add-button">Add Food Entry</Button>}>
                 <Form>
                   <Form.Field>
                     <label>Food Consumed</label>
@@ -65,9 +72,9 @@ const moment = require('moment');
             </div>
             <Card.Group itemsPerRow={2} className="card-group">
               {
-                (this.state.allFood)
+                (this.state.allFood.length !== 0)
                   ? this.showEntries()
-                  : <Card><Card.Description>No Entries Exist</Card.Description></Card>
+                  : <h1>No Entries Exist</h1>
               }
             </Card.Group>
           </div>
