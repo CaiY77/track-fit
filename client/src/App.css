@@ -24,13 +24,16 @@ nav{
   display: flex;
 }
 .display-right{
-  border:solid;
+  border-left:solid 1px darkgray;
   flex:1;
+  text-align: center;
+  height: 92vh;
 }
 .display-left{
-  border:solid;
   padding: 5vh 5vw 5vh 5vw;
   flex:2;
+  height: 92vh;
+  overflow-y: auto;
 }
 .button-modal{
 text-align: center
@@ -47,4 +50,8 @@ text-align: center
 }
 .trash-button{
   float:right;
+}
+.stats{
+  padding: 5vh 10vw 5vh 10vw;
+  border-bottom:solid 1px darkgray;
 }

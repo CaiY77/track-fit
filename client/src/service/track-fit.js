@@ -8,6 +8,15 @@ const api = axios.create({
 export const fetchUser = async (id) => {
   try {
     const resp = await api.get(`/${id}`)
+    return resp.data;
+  } catch (e) {
+    console.log(e)
+  }
+}
+//get user Goal
+export const fetchGoal = async(id)=>{
+  try {
+    const resp = await api.get(`/${id}/goal`)
     console.log(resp.data)
     return resp.data;
   } catch (e) {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {fetchFood,createFood} from '../service/track-fit'
-import {Card,Icon,Button,Modal,Form,Divider,Grid,Segment} from 'semantic-ui-react'
+import {Card,Icon,Button,Modal,Form,Divider,Grid,Segment,Statistic} from 'semantic-ui-react'
 import '../App.css'
 import {deleteFood} from '../service/track-fit'
 const moment = require('moment');
@@ -16,7 +16,7 @@ const FoodOptions = [
   },{
     key: 3,
     value: 'donuts',
-    text: 'donuts'
+    text: 'Donuts'
   },{
     key: 4,
     value: 'pizza',
@@ -25,6 +25,10 @@ const FoodOptions = [
     key: 5,
     value: 'fries',
     text: 'Fries'
+  },{
+    key: 6,
+    value: 'salad',
+    text: 'Salad'
   }
 ]
 const CalorieOptions = [
@@ -187,7 +191,14 @@ const CalorieOptions = [
               }
             </Card.Group>
           </div>
-          <div className="display-right"></div>
+          <div className="display-right">
+
+            <Statistic className ="stats">
+              <Statistic.Value>{this.state.allFood.length}</Statistic.Value>
+              <Statistic.Label>ENTRIES</Statistic.Label>
+            </Statistic>
+
+        </div>
 
         </div>
 
