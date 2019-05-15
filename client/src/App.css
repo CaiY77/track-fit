@@ -28,6 +28,8 @@ nav{
   flex:1;
   text-align: center;
   height: 92vh;
+  display:flex;
+  flex-direction: column;
 }
 .display-left{
   padding: 5vh 5vw 5vh 5vw;
@@ -52,6 +54,7 @@ text-align: center
   float:right;
 }
 .stats{
-  padding: 5vh 10vw 5vh 10vw;
-  border-bottom:solid 1px darkgray;
+  flex:1;
+  margin:0 !important;
+  padding-top:5vh;
 }

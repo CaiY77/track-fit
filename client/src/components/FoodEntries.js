@@ -1,31 +1,33 @@
 import React, { Component } from 'react';
-import {fetchFood,createFood} from '../service/track-fit'
+import {fetchFood,createFood,fetchGoal} from '../service/track-fit'
 import {Card,Icon,Button,Modal,Form,Divider,Grid,Segment,Statistic} from 'semantic-ui-react'
 import '../App.css'
 import {deleteFood} from '../service/track-fit'
+import { CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 const moment = require('moment');
 const FoodOptions = [
   {
     key: 1,
     value: 'burgers',
     text: 'Burger'
-  },{
+  }, {
     key: 2,
     value: 'chickens',
     text: 'Chicken'
-  },{
+  }, {
     key: 3,
     value: 'donuts',
     text: 'Donuts'
-  },{
+  }, {
     key: 4,
     value: 'pizza',
     text: 'Pizza'
-  },{
+  }, {
     key: 5,
     value: 'fries',
     text: 'Fries'
-  },{
+  }, {
     key: 6,
     value: 'salad',
     text: 'Salad'
@@ -36,23 +38,23 @@ const CalorieOptions = [
     key: 1,
     value: 100,
     text: '100'
-  },{
+  }, {
     key: 2,
     value: 200,
     text: '200'
-  },{
+  }, {
     key: 3,
     value: 300,
     text: '300'
-  },{
+  }, {
     key: 5,
     value: 500,
     text: '500'
-  },{
+  }, {
     key: 6,
     value: 600,
     text: '600'
-  },{
+  }, {
     key: 7,
     value: 700,
     text: '700'
@@ -63,12 +65,23 @@ const CalorieOptions = [
     constructor(props) {
       super(props);
       this.state = {
-        allFood: []
+        allFood: [],
+        cal: 0,
+        maxCal: 0
       };
     }
 
     componentDidMount() {
       this.getAll();
+      this.getGoal();
+    }
+
+    getGoal = async () => {
+      const goal = await fetchGoal(this.props.user)
+
+    this.setState({
+      maxCal: goal.calIntake
+    });
     }
 
     getAll = async () => {
@@ -99,8 +112,16 @@ const CalorieOptions = [
           </Card.Content>
         </Card>)
       })
-
       return myCards;
+    }
+
+    totalCal =()=>{
+      const {allFood} = this.state;
+      let total = 0
+      allFood.map(entry=>{
+        total+=entry.calGained
+      })
+      return total;
     }
 
     handleChanges =(event)=>{
@@ -194,8 +215,21 @@ const CalorieOptions = [
           <div className="display-right">
 
             <Statistic className ="stats">
+              <Statistic.Label>Consumed</Statistic.Label>
+              <Statistic.Value>{this.totalCal()}</Statistic.Value>
+              <Statistic.Label>Calories So Far</Statistic.Label>
+            </Statistic>
+            <Divider section />
+            <Statistic className ="stats">
+              <Statistic.Label>You Have a Total of</Statistic.Label>
               <Statistic.Value>{this.state.allFood.length}</Statistic.Value>
               <Statistic.Label>ENTRIES</Statistic.Label>
+            </Statistic>
+            <Divider section />
+            <Statistic className ="stats">
+              <Statistic.Label>You Set a </Statistic.Label>
+              <Statistic.Value>{this.state.maxCal}</Statistic.Value>
+              <Statistic.Label>Calorie Limit</Statistic.Label>
             </Statistic>
 
         </div>

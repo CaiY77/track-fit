@@ -17,7 +17,6 @@ export const fetchUser = async (id) => {
 export const fetchGoal = async(id)=>{
   try {
     const resp = await api.get(`/${id}/goal`)
-    console.log(resp.data)
     return resp.data;
   } catch (e) {
     console.log(e)
