@@ -75,3 +75,12 @@ text-align: center
   height: 25vh;
   padding-top:3vh;
 }
+
+
+.profile{
+  display:flex;
+  flex-direction: column;
+  width:350px;
+  margin: 20px auto;
+}
+
