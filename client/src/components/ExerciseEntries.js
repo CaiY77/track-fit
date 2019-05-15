@@ -12,8 +12,11 @@ class ExerciseEntries extends Component {
     }
   }
 
-  componentDidMount(){
-      this.getAll();
+  componentDidMount=()=>{
+      if(this.props.user != '')
+      {
+        this.getAll();
+      }
   }
 
   showExercise=()=>{

@@ -1,52 +1,86 @@
 import React, { Component } from 'react';
-import {createUser} from '../service/track-fit'
+import { createUser } from '../service/track-fit'
+import { login, getProfile, signUp } from '../service/apiServices'
+import authService from '../service/authServices'
+import tokenService from '../service/tokenServices'
+
+import { Route, Link } from 'react-router-dom'
 
 
 class LogInPage extends Component {
-  constructor(){
+  constructor() {
     super()
 
-    this.state={
+    this.state = {
       signin: false,
-      newUser:[]
+      user: {}
     }
+
+
   }
 
-  onSigninFormChange = (event)=>{
+
+  // setting state of form change 
+  onSigninFormChange = (event) => {
     const element = event.target
     const name = element.name
     const value = element.value
 
     console.log(name);
-    this.setState({[name]: value})
+    this.setState({ [name]: value })
 
   }
 
+  // sign in 
+  onSigninFormSubmit = async (e) => {
+    e.preventDefault()
+    try {
+      let credentials = {
+        name: this.state.name,
+        password: this.state.password,
+      }
 
-  onSigninFormSubmit = async(event)=>{
-    event.preventDefault()
-
-    console.log(`Form submitted: `)
-
-    let userInfo = {
-      name: this.state.name,
-      email: this.state.email,
-      password: this.state.password
+      const user = await login(credentials)
+      console.log(user, 'sign in')
+      //tokenService.storeToken(user.token)
+      this.props.setCurrentUserInfo(user);
+      this.setState({
+        isSignedIn: true,
+        user: user
+      })
+      this.props.toggleLog()
+    } catch (e) {
+      throw e
     }
-    const currentUser = await createUser(userInfo)
-    console.log(currentUser)
-    this.setState({
-      signin: true
-    })
+  }
+
+
+  // sign up user
+  signUpUser = async (e) => {
+    e.preventDefault()
+
+    try {
+      let credentials = {
+        name: this.state.name,
+        password: this.state.password,
+        email: this.state.email
+      }
+      const user = await signUp(credentials)
+      console.log(user, 'sign up')
+      this.props.setCurrentUserInfo(user);
+      this.setState({
+        isSignedIn: true,
+        user: user
+      })
+      this.props.toggleLog()
+    } catch (e) {
+      throw e
+    }
   }
 
 
   render() {
-    console.log(this.props.login);
-
-    // if(this.state.login === true){
-    //   return <Redirect to="/user" />
-    // }
+    const { isSignedIn, user } = this.state
 
     return (
       <div>
@@ -57,14 +91,14 @@ class LogInPage extends Component {
               id="email"
               type="text"
               name="email"
-              onChange={this.onLoginEmailChange}
-            placeholder= "email address"/>
+              onChange={this.onSigninFormChange}
+              placeholder="email address" />
             <input
               id="password"
               type="text"
               name="password"
-              onChange={this.onLoginPasswordChange}
-            placeholder="enter your password"/>
+              onChange={this.onSigninFormChange}
+              placeholder="enter your password" />
             <button type="submit">
               Submit
             </button>
@@ -72,25 +106,25 @@ class LogInPage extends Component {
         </div>
         <div>
           <p>SignUp</p>
-          <form onSubmit={this.onSigninFormSubmit}>
+          <form onSubmit={this.signUpUser}>
             <input
               id="name"
               type="text"
               name="name"
               onChange={this.onSigninFormChange}
-            placeholder="name"/>
+              placeholder="name" />
             <input
               id="email"
               type="text"
               name="email"
               onChange={this.onSigninFormChange}
-            placeholder= "email address"/>
+              placeholder="email address" />
             <input
               id="password"
               type="text"
               name="password"
               onChange={this.onSigninFormChange}
-            placeholder="enter your password"/>
+              placeholder="enter your password" />
             <button type="submit">
               Submit
             </button>

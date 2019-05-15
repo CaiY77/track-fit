@@ -71,8 +71,11 @@ const CalorieOptions = [
     }
 
     componentDidMount() {
+      if(this.props.user != '')
+      {
       this.getAll();
       this.getGoal();
+      }
     }
 
     getGoal = async () => {
@@ -147,7 +150,7 @@ const CalorieOptions = [
         date: this.state.date
       }
       await createFood(this.props.user,newFood);
-      window.location.reload();
+     window.location.reload();
     }
 
     render() {
