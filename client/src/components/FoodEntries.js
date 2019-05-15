@@ -116,7 +116,7 @@ const CalorieOptions = [
 
     totalCal =()=>{
       const {allFood} = this.state;
-      let total = 0
+      let total = 0;
       allFood.map(entry=>{
         total+=entry.calGained
       })
@@ -152,6 +152,7 @@ const CalorieOptions = [
 
     render() {
       const {maxCal} = this.state
+      console.log(this.props.user.id);
       return (
 
         <div className="display-contain">

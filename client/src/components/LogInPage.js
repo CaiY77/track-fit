@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {createUser, getUser} from '../service/track-fit'
 import './LoginPage.css'
-import bulma from '../../node_modules/bulma/css/bulma.css'
+import {Redirect} from 'react-router-dom'
+// import bulma from '../../node_modules/bulma/css/bulma.css'
 
 
 
@@ -16,7 +17,7 @@ class LogInPage extends Component {
     }
   }
 
-  
+
 
   onSigninFormChange = (event)=>{
     const element = event.target
@@ -26,10 +27,10 @@ class LogInPage extends Component {
     console.log(name);
 
     this.setState({[name]: value});
-    
+
   }
 
-  
+
   onSigninFormSubmit = async(e)=>{
     e.preventDefault();
 
@@ -65,40 +66,41 @@ class LogInPage extends Component {
     return <Redirect to="/" />
     }
   }
- 
+
 
   render() {
     console.log(this.props.login);
-    
+
     return (
       <div class = "content">
         <div class = "login">
           <h2>Login</h2>
           <form onSubmit={this.onLoginFormSubmit}>
 
-          <div class="label">
-            <p class="control">
-              <input 
+            <div class="label">
+              <p class="control">
 
-                id="email"
-                type="text" 
-                name="email"
-                onChange={this.onSigninFormChange}
-                placeholder= "email address"/>
-              <input 
+                <input
+                  id="email"
+                  type="text"
+                  name="email"
+                  onChange={this.onSigninFormChange}
+                  placeholder= "email address"
+                />
+                <input
+                  id="password"
+                  class="input"
+                  type="text"
+                  name="password"
+                  onChange={this.onSigninFormChange}
+                  placeholder="enter your password"
+                />
 
-                id="password"
-                class="input" 
-                type="text" 
-                name="password"
-
-                onChange={this.onSigninFormChange}
-                placeholder="enter your password"/>
-              <button type="submit">
-                Submit
-              </button>
+                <button type="submit">
+                  Submit
+                </button>
               </p>
-          </div>
+            </div>
           </form>
         </div>
 
@@ -110,10 +112,10 @@ class LogInPage extends Component {
           <form onSubmit={this.onSigninFormSubmit}>
           <div class="label">
             <p class="control">
-              <input 
+              <input
               id="name"
-              class="input" 
-              type="text" 
+              class="input"
+              type="text"
               name="name"
               onChange={this.onSigninFormChange}
               placeholder="Name"/>
@@ -122,10 +124,10 @@ class LogInPage extends Component {
 
           <div class="label">
             <p class="control">
-                <input 
+                <input
                 id="email"
-                class="input" 
-                type="email" 
+                class="input"
+                type="email"
                 name="email"
                 onChange={this.onSigninFormChange}
                 placeholder="Email"/>
@@ -134,16 +136,16 @@ class LogInPage extends Component {
 
           <div class="label">
               <p class="control">
-                <input 
+                <input
                 id="password"
-                class="input" 
-                type="text" 
+                class="input"
+                type="text"
                 name="password"
                 onChange={this.onSigninFormChange}
                 placeholder="Password"/>
               </p>
           </div>
-          
+
           <div class="label">
               <p class="control">
               <button class="button is-success" type="submit">
@@ -154,7 +156,7 @@ class LogInPage extends Component {
 
           </form>
         </div>
-        
+
       </div>
     );
   }

@@ -26,6 +26,7 @@ toggleLog = () =>{
     loggedIn: !this.state.loggedIn
   });
 }
+
 setCurrentUser = (currentUser) => {
   console.log("from App.js cur: ",currentUser)
   let userID = currentUser.id ? currentUser.id : null
@@ -46,8 +47,6 @@ setCurrentUser = (currentUser) => {
           (loggedIn)
             ? <ProfilePage toggleLog ={this.toggleLog} user = {this.state.currentUser} login = {loggedIn}/>
             : <LogInPage login = {loggedIn}  setCurrentUser={this.setCurrentUser}/>
-   
-
         }
 
       </div>
