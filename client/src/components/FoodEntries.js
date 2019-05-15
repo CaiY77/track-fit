@@ -213,7 +213,15 @@ const CalorieOptions = [
             </Card.Group>
           </div>
           <div className="display-right">
-            <CircularProgressbar value={this.totalCal()/maxCal * 100} className="progress"/>
+            <CircularProgressbar
+              className="progress"
+              value={this.totalCal()/maxCal * 100}
+              text={
+                (this.totalCal()/maxCal * 100 > 100)
+                  ? `Yikes!`
+                  :`~ ${Math.floor(this.totalCal()/maxCal * 100)} %`
+              }
+            />
             <Divider section className="divide"/>
             <Statistic className ="stats">
               <Statistic.Label>Consumed</Statistic.Label>
