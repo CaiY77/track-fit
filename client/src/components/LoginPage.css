@@ -1,0 +1,17 @@
+.content{
+    display:flex;
+    width: 500px;
+    margin: 200px auto;
+    justify-content: space-between;
+}
+
+
+.verticalLine {
+    border-left: 1px solid gray;
+    margin: 5px auto 5px auto;
+}
+
+
+.label{
+    margin-bottom: 20px;
+}

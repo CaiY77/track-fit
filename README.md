@@ -61,5 +61,7 @@ https://wger.de/en/software/api
 ### How to use
 Simply log in and create an account. Select the type of workout you did or plan to do and the duration and this information is saved on your profile. 
 
- 
+
+## User interface demo
+<img width="635" alt="Screen Shot 2019-05-13 at 11 31 43 AM" src="https://user-images.githubusercontent.com/10451577/57746787-cd235300-76a0-11e9-8e75-2822ee08e82b.png">
 
