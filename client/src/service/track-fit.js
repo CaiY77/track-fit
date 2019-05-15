@@ -22,15 +22,24 @@ export const fetchGoal = async(id)=>{
     console.log(e)
   }
 }
-
+export const getUser = async (User) => {
+  try {
+    console.log("from get user ", User)
+    const resp = await api.post(`/auth/login`,User)
+    console.log(resp.data)
+    return resp.data;
+  } catch (e) {
+    console.log(e)
+  }
+}
 
 // create new user
 export const createUser = async(newUser)=>{
    try{
       const res = await api.post('/create', newUser)
-      console.log(`axios response ${res}`);
+      console.log(`axios response ${res.data.id}`);
 
-      // return res.data;
+      return res.data;
 
    }
    catch(e){

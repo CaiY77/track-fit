@@ -2,8 +2,10 @@ const express = require('express');
 const userRouter = express.Router();
 const {User,Food,Exercise,Goal} = require('../models');
 const bodyParser = require('body-parser');
+const authRouter = require('./authRouter')
 
 userRouter.use(bodyParser.json());
+userRouter.use('/auth', authRouter);
 
 // get single user
 userRouter.get('/:id',async(req,res)=>{

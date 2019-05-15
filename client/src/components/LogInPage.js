@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
-import {createUser} from '../service/track-fit'
+import {createUser, getUser} from '../service/track-fit'
 import './LoginPage.css'
 import bulma from '../../node_modules/bulma/css/bulma.css'
 
 
+
 class LogInPage extends Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
 
     this.state={
       signin: false,
+      newUser:[]
+     // currentUser: null
     }
   }
+
+  
 
   onSigninFormChange = (event)=>{
     const element = event.target
@@ -19,13 +24,15 @@ class LogInPage extends Component {
     const value = element.value
 
     console.log(name);
-    this.setState({[name]: value})
 
+    this.setState({[name]: value});
+    
   }
 
+  
+  onSigninFormSubmit = async(e)=>{
+    e.preventDefault();
 
-  onSigninFormSubmit = async(event)=>{
-    event.preventDefault()
 
     console.log(`Form submitted: `)
 
@@ -33,22 +40,36 @@ class LogInPage extends Component {
       name: this.state.name,
       email: this.state.email,
       password: this.state.password
-    }
+    };
+
     const currentUser = await createUser(userInfo)
-    console.log(currentUser)
-    this.setState({
-      signin: true
-    })
+    console.log(currentUser);
+    this.props.setCurrentUser(currentUser);
+    return <Redirect to="/" />
   }
 
+  onLoginFormSubmit = async(e)=>{
+    e.preventDefault();
+
+    console.log(`Form submitted: `)
+
+    let userInfo = {
+      email: this.state.email,
+      password: this.state.password
+    };
+
+    const currentUser = await getUser(userInfo)
+
+    if(currentUser !== undefined) {
+    this.props.setCurrentUser(currentUser);
+    return <Redirect to="/" />
+    }
+  }
+ 
 
   render() {
     console.log(this.props.login);
-
-    if(this.state.signin === true){
-      return <Redirect to="/" />
-    }
-
+    
     return (
       <div class = "content">
         <div class = "login">
@@ -58,31 +79,23 @@ class LogInPage extends Component {
           <div class="label">
             <p class="control">
               <input 
-              id="email"
-              class="input" 
-              type="text" 
-              name="email"
-              onChange={this.onLoginFormChange}
-              placeholder="Email"/>
-            </p>
-          </div>
 
-          <div class="label">
-              <p class="control">
-                <input 
+                id="email"
+                type="text" 
+                name="email"
+                onChange={this.onSigninFormChange}
+                placeholder= "email address"/>
+              <input 
+
                 id="password"
                 class="input" 
                 type="text" 
                 name="password"
-                onChange={this.onLoginFormChange}
-                placeholder="Password"/>
-              </p>
-          </div>
-          
-          <div class="label">
-              <p class="control">
-              <button class="button is-success" type="submit">
-                Login
+
+                onChange={this.onSigninFormChange}
+                placeholder="enter your password"/>
+              <button type="submit">
+                Submit
               </button>
               </p>
           </div>

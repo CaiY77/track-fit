@@ -28,7 +28,7 @@ class Profile extends Component {
       <div>
         <h1>Profile</h1>
         <p>
-          {this.state.user.name}
+          {this.props.user.name}
         </p>
       </div> 
     );
