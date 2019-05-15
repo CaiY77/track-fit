@@ -27,14 +27,23 @@ class Profile extends Component {
     // console.log(this.props.user);
 
     return (
-      <div class= "profile">
+    <div class= "profile">
         <div>
-          <h1>Profile</h1>
+          <h1>Welcome Back {this.state.user.name}!</h1>
         </div>
-        <img style={{width: "200px", height: "auto" }}
-            src="https://react.semantic-ui.com/images/wireframe/square-image.png"
-            class="ui medium circular image"
-        />
+
+        <div class = "profilePic">
+            <div>
+                <h2>Profile</h2>
+            </div>
+            <div>
+               <img style={{width: "200px", height: "auto" }}
+                    src="https://react.semantic-ui.com/images/wireframe/square-image.png"
+                    class="ui medium circular image"/>
+            </div>
+        </div>
+        
+        
         <div class="ui raised segments">
             <div class="ui segment">
                 {this.state.user.name}
@@ -49,7 +58,7 @@ class Profile extends Component {
                 {/* <button class="ui negative button">Update Password</button> */}
             </div>
         </div>
-      </div> 
+    </div> 
     );
   }
 }
