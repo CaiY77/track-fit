@@ -55,6 +55,8 @@
     padding-top: 4.5vw;
     /* border: solid; */
 }
-
-
-
+@media (max-width: 375px) {
+.log-in-pic{
+  background-size:contain;
+}
+}

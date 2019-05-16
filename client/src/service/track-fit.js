@@ -22,6 +22,16 @@ export const fetchGoal = async(id)=>{
     console.log(e)
   }
 }
+//create Goal
+export const createGoal = async(id, goal)=>{
+  try{
+    const resp = await api.post(`/${id}/create-goal`, goal)
+    return resp.data;
+  }
+  catch(e){
+    console.log(e)
+  }
+}
 
 //find the all food
 export const fetchFood = async(id)=>{
@@ -88,7 +98,8 @@ export const fetchExercise = async(id)=>{
 // create excersise
 export const createExercise = async (user,newExercise) => {
   try {
-    const res = await api.post(`/1/create-exercise`, newExercise)
+    const res = await api.post(`/${user}/create-exercise`, newExercise)
+    console.log(res)
     return res.data;
 
   } catch (e) {
