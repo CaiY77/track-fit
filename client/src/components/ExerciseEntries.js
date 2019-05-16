@@ -74,10 +74,11 @@ class ExerciseEntries extends Component {
 
   getGoal = async () => {
     const goal = await fetchGoal(this.props.user)
+    const check = goal.calBurned;
 
-  this.setState({
-    maxCal: goal.calBurned
-  });
+    (check)
+    ? (this.setState({maxCal: check}))
+    : (this.setState({maxCal: null}))
   }
 
   showEntries = () =>{

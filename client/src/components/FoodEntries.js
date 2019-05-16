@@ -71,15 +71,15 @@ const CalorieOptions = [
 
     componentDidMount() {
       this.getGoal();
-      
     }
 
     getGoal = async () => {
       const goal = await fetchGoal(this.props.user)
+      const check = goal.calIntake;
 
-    this.setState({
-      maxCal: goal.calIntake
-    });
+      (check)
+      ? (this.setState({maxCal: check}))
+      : (this.setState({maxCal: null}))
     }
 
     getAll = async () => {
