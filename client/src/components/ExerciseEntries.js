@@ -64,24 +64,28 @@ class ExerciseEntries extends Component {
     super(props)
     this.state={
       allExercise:[],
-      maxCal: 0
+      maxCal: 0,
+      render: ""
     }
   }
 
-  componentDidMount(){
-      this.getGoal();
+  componentDidMount=async()=>{
+    await this.props.findToken();
+    await this.getGoal();
+    await this.getAll();
   }
 
   getGoal = async () => {
     const goal = await fetchGoal(this.props.user)
+    await console.log(goal)
+    const check = goal.calBurned;
 
-  this.setState({
-    maxCal: goal.calBurned
-  });
+    (check)
+    ? (this.setState({maxCal: check}))
+    : (this.setState({maxCal: null}))
   }
 
   showEntries = () =>{
-    this.getAll();
     const {allExercise} = this.state;
     const myCards = allExercise.map(entry =>{
       const dateString = entry.date;
@@ -125,6 +129,7 @@ class ExerciseEntries extends Component {
 
   deleteExerciseHandle = async (user,ex) => {
     await deleteExercise(user,ex);
+    this.getAll();
   }
 
   addNewExercise = async() => {
@@ -134,6 +139,7 @@ class ExerciseEntries extends Component {
       date: this.state.date
     }
     await createExercise(this.props.user,newExercise);
+    this.getAll();
   }
   handleExercise=(value)=>{
     this.setState({

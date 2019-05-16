@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import {Route,Link} from 'react-router-dom';
 import {fetchUser} from '../service/track-fit.js';
-import { Image, Icon, Card, Item, Header, Button} from 'semantic-ui-react'
+import { Image, Icon, Card, Item, Header, Button, Input} from 'semantic-ui-react'
 import profilePic from '../images/profile1.jpg'
+import defaultProfile from '../images/default_pic.jpeg'
 import './Profile.css'
 const axios = require('axios')
 
@@ -14,17 +15,17 @@ class Profile extends Component {
     };
   }
 
-  componentDidMount(){
-    this.findUser();
+  componentDidMount = async()=>{
+  await this.props.findToken();
+  await this.findUser();
   }
 
   findUser = async()=>{
     const myUser = await fetchUser(this.props.user);
-    console.log(myUser);
     this.setState({
       user: myUser
     });
-  } 
+  }
 
   // getProfilePhoto = async()=>{
   //   try{
@@ -39,45 +40,68 @@ class Profile extends Component {
 
   render() {
     // console.log(this.getProfilePhoto());
-    
+
     return (
     <div id= "profile">
-        <div id="title">
-            <div>
-              <img id="backgroundImg" class="ui fluid image" src={profilePic} />
-            </div>
-            <div id = "profilePic">
-                <img 
-                 style={{width: "200px", height: "200px" }}
-                 src="https://randomuser.me/api/portraits/women/26.jpg"
-                 class="ui medium circular image"
-                />
-                
-                <button id="pencil" class="ui button"><Icon name = "pencil alternate"/>Edit</button>
-            </div>
+      <div id="title">
+        <div>
+          <img id="backgroundImg" className="ui fluid image" src={profilePic} />
         </div>
+        <div id = "profilePic">
+          <img
+            style={{width: "200px", height: "200px" }}
+            src={defaultProfile}
+            class="ui medium circular image"
+          />
 
-        <div id="content">
-        <div id = "personalInfo" class="ui link card">
-            <div class="content">
-              <div class="header">{this.state.user.name}</div>
-              <div id="emailAddress" class="meta">{this.state.user.email}</div>
+          <button id="pencil" className="ui button">
+            Edit
+            <Icon id = "pencilAlt" name="pencil alternate"></Icon></button>
+        </div>
+      </div>
+
+      <div id="content">
+        <div id = "personalInfo" className="ui link card">
+          <div class="content">
+            <div class="header">{this.state.user.name}</div>
+            <div id="emailAddress" class="meta">{this.state.user.email}</div>
             <div id="quotes" class="description">
               <p>
-              <span>Today's quotes:</span>
-              <span>
-              Fitness is not about being better than someone else, it’s about being better than you used to be.
-              </span>
+                <span>Today's quotes:</span>
+                <span>
+                  Fitness is not about being better than someone else, it’s about being better than you used to be.
+                </span>
               </p>
             </div>
           </div>
         </div>
 
-        <div id = "personalInfo" class="ui link card">
-            <div class="content">
-                <div class="header">Personal Goal</div>
-           
-                <div id="personalGoal">
+        <div id = "personalInfo" className="ui link card">
+          <div class="content">
+            <div class="header">Personal Goal</div>
+
+            <div id="personalGoal">
+              <div><p id="goalButton">Food Calories</p></div>
+              <div class="ui input"><input type="text" placeholder="Enter your goal" /></div>
+              <div>
+                <Link to="/food-entries">
+                  <Button id="go"className="ui button" color='orange'>Go Food</Button>
+                </Link>
+              </div>
+            </div>
+
+            <div id="personalGoal">
+              <div><p id="goalButton" >Exercise Calories</p></div>
+              <div class="ui input"><input type="text" placeholder="Enter your goal" /></div>
+              <div>
+                <Link to="/exercise-entries">
+                  <Button id="go" className="ui button"color='orange'>Go Exercise</Button>
+                </Link>
+              </div>
+
+                </div>
+
+                {/* <div id="personalGoal">
                 <Link to="/food-entries">
                     <h3 class="ui block header blue">
                       Food Entries
@@ -91,15 +115,15 @@ class Profile extends Component {
                     Exercise Entries
                   </h3>
                 </Link>
-                </div>
+                </div> */}
               </div>
         </div>
         </div>
 
         <Route path = '/food-entries'/>
         <Route path = '/exercise-entries'/>
-        
-    </div> 
+
+    </div>
     );
   }
 }
