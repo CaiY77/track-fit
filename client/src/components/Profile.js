@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Route,Link} from 'react-router-dom';
-import {fetchUser,createGoal} from '../service/track-fit.js';
-import { Image, Icon, Card, Item, Header, Button, Input} from 'semantic-ui-react'
+import {fetchUser,createGoal,fetchGoal} from '../service/track-fit.js';
+import {Image, Icon, Card, Item, Header, Button, Input,Form} from 'semantic-ui-react'
 import profilePic from '../images/profile1.jpg'
 import defaultProfile from '../images/default_pic.jpeg'
 import './Profile.css'
@@ -11,8 +11,7 @@ class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      getGoal: false,
-      goal:[],
+      hasGoal: null,
       user:[]
     };
   }
@@ -20,6 +19,15 @@ class Profile extends Component {
   componentDidMount = async()=>{
   await this.props.findToken();
   await this.findUser();
+  await this.getGoaldb();
+  }
+
+  getGoaldb = async () => {
+    const goal = await fetchGoal(this.props.user);
+    const check = goal.calBurned;
+    (check)
+    ? (this.setState({hasGoal: true}))
+    : (this.setState({hasGoal: false}))
   }
 
   findUser = async()=>{
@@ -33,31 +41,16 @@ class Profile extends Component {
     const element = event.target
     const name = element.name
     const value = element.value
-
-    console.log(name)
     this.setState({[name]: value})
   }
 
-  getGoal = async(e) =>{
-    e.preventDefault()
-    try{
+  getGoal = async() =>{
       let goal = {
-        calBurned: Number.parseInt(this.state.newFoodGoal),
-        calInstake: Number.parseInt(this.state.newExerciseGoal)
+        calBurned: Number.parseInt(this.state.FoodGoal),
+        calIntake: Number.parseInt(this.state.ExerciseGoal)
       }
-      console.log(goal)
-
-      const newGoal = await createGoal(goal)
-      console.log('new goal '+ newGoal)
-      this.setState({
-        getGoal: true,
-        goal: newGoal
-      })
-      console.log(newGoal)
-    }
-    catch(e){
-      console.log(e)
-    }
+      const newGoal = await createGoal(this.props.user, goal)
+      this.getGoaldb();
   }
 
   // getProfilePhoto = async()=>{
@@ -71,8 +64,6 @@ class Profile extends Component {
   // }
 
   render() {
-    // console.log(this.getProfilePhoto());
-
     return (
     <div id= "profile">
       <div id="title">
@@ -109,101 +100,42 @@ class Profile extends Component {
         </div>
 
         <div id = "personalInfo" class="ui link card">
-            <div class="content">
-                <div class="header">Personal Goal</div>
-
-                <form onSubmit={this.getGoal}>
-                  <input
-                        name = "newFoodGoal"
-                        onChange={this.onUpdateChange}
-                        type="text"
-                        placeholder="Enter your goal"
-                  />
-                  <input
-                        name = "newExerciseGoal"
-                        onChange={this.onUpdateChange}
-                        type="text"
-                        placeholder="Enter your goal"
-                  />
-                  <Button
-                      type="submit"
-                      id="go"
-                      class="ui button"
-                      color='orange'>
-                      Submit
-                  </Button>
-                </form>
+          <div class="content">
+            <div class="header">Personal Goal</div>
 
 
+            {
+              (this.state.hasGoal)
+                ?
+                  (
+                    <Form onSubmit={()=>this.updateGoal()}>
+                      <Form.Field required>
+                        <label>My Food Goal</label>
+                        <input onChange={this.onUpdateChange} name="FoodGoal" placeholder='Calorie Limit' />
+                      </Form.Field>
+                      <Form.Field required>
+                        <label>My Exercise Goal</label>
+                        <input onChange={this.onUpdateChange} name="ExerciseGoal" placeholder='Exercise Goal' />
+                      </Form.Field>
+                      <Button color="orange" type='submit'>Update Goal</Button>
+                    </Form>
+                  )
+                :
+                (
+                  <Form onSubmit={()=>this.getGoal()}>
+                    <Form.Field required>
+                      <label>My Food Goal</label>
+                      <input onChange={this.onUpdateChange} name="FoodGoal" placeholder='Calorie Limit' />
+                    </Form.Field>
+                    <Form.Field required>
+                      <label>My Exercise Goal</label>
+                      <input onChange={this.onUpdateChange} name="ExerciseGoal" placeholder='Exercise Goal' />
+                    </Form.Field>
+                    <Button color="orange" type='submit'>Create Goal</Button>
+                  </Form>
+                )
 
-                {/* <div id="personalGoal">
-                    <div>
-                      <p id="goalButton">Food Calories</p>
-                    </div>
-                    <div class="ui input">
-                      <input
-                        name = "newFoodGoal"
-                        onChange={this.onUpdateChange}
-                        type="text"
-                        placeholder="Enter your goal"
-                      />
-                    </div>
-                    <div>
-                      <Link to="/food-entries">
-                         <Button
-                          id="go"
-                          class="ui button"
-                          color='orange'>
-                          Go Food
-                          </Button>
-                      </Link>
-                    </div>
-                </div>
-
-                <div id="personalGoal">
-                    <div>
-                      <p id="goalButton" >Exercise Calories</p>
-                    </div>
-                    <div class="ui input">
-                      <input
-                        name = "newExerciseGoal"
-                        onChange={this.onUpdateChange}
-                        type="text"
-                        placeholder="Enter your goal"
-                      />
-                    </div>
-                    <div>
-                      <Link to="/exercise-entries">
-                        <Button
-                          id="go"
-                          class="ui button"
-                          color='orange'>
-                          Go Exercise
-                        </Button>
-                      </Link>
-                    </div>
-                </div> */}
-
-
-
-
-
-
-                {/* <div id="personalGoal">
-                <Link to="/food-entries">
-                    <h3 class="ui block header blue">
-                      Food Entries
-                    </h3>
-                </Link>
-                </div>
-
-                <div id="personalGoal">
-                <Link to="/exercise-entries">
-                  <h3 class="ui block header blue">
-                    Exercise Entries
-                  </h3>
-                </Link>
-                </div> */}
+            }
             </div>
         </div>
         </div>

@@ -77,7 +77,6 @@ class ExerciseEntries extends Component {
 
   getGoal = async () => {
     const goal = await fetchGoal(this.props.user)
-    await console.log(goal)
     const check = goal.calBurned;
 
     (check)
