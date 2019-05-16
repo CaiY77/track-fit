@@ -149,12 +149,12 @@ class ExerciseEntries extends Component {
   render() {
     const {maxCal} = this.state
     return (
-      <div className="display-contain">
-        <div className="shade">
+      <div className="display-contain-ex">
+        <div className="shade-ex">
           <div className="display-left">
             <div className ="button-modal">
-              <Modal trigger={<Button inverted color="green" size="huge" className ="add-button">Add Workout Entry</Button>}>
-                <h1 className="modal-style">Add To Your Workout Log</h1>
+              <Modal trigger={<Button color="green" size="huge" className ="add-button">Add Exercise Entry</Button>}>
+                <h1 className="modal-style">Add To Your Exercise Log</h1>
                 <Segment>
                   <Grid columns={2} relaxed='very'>
                     <Grid.Column>

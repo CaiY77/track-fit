@@ -157,7 +157,7 @@ const CalorieOptions = [
           <div className="shade">
             <div className="display-left">
               <div className="button-modal">
-                <Modal trigger={<Button inverted color="green" size="huge" className ="add-button">Add Food Entry</Button>}>
+                <Modal trigger={<Button color="green" size="huge" className ="add-button">Add Food Entry</Button>}>
                   <h1 className="modal-style">Add To Your Food Log</h1>
                   <Segment>
                     <Grid columns={2} relaxed='very'>
