@@ -85,7 +85,7 @@ class Profile extends Component {
                     <div class="ui input"><input type="text" placeholder="Enter your goal" /></div>
                     <div>
                     <Link to="/food-entries">
-                      <button id="go"class="ui button">Go Food</button>
+                      <Button id="go"class="ui button" color='orange'>Go Food</Button>
                     </Link>
                     </div>
                 </div>
@@ -95,7 +95,7 @@ class Profile extends Component {
                     <div class="ui input"><input type="text" placeholder="Enter your goal" /></div>
                     <div>
                       <Link to="/exercise-entries">
-                      <button id="go" class="ui button">Go Exercise</button>
+                      <Button id="go" class="ui button"color='orange'>Go Exercise</Button>
                       </Link>
                     </div>
                     
