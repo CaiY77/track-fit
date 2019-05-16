@@ -31,9 +31,10 @@ nav{
   display: flex;
 }
 .display-contain-ex{
-  background: url(./images/back1.jpg);
+  background: url(./images/back2.jpg);
   background-attachment: fixed;
   background-size: cover;
+  background-position: center;
 }
 .shade-ex{
   /* background: rgba(255,255,255,0.3); */

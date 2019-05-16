@@ -212,9 +212,11 @@ class ExerciseEntries extends Component {
               className="progress"
               value={this.totalCal()/maxCal * 100}
               text={
-                (this.totalCal()/maxCal * 100 > 100)
-                  ? `Complete!`
-                  :`~ ${Math.floor(this.totalCal()/maxCal * 100)} %`
+                (this.totalCal()/maxCal * 100)
+                  ?((this.totalCal()/maxCal * 100 > 100)
+                    ? `Complete!`
+                    :`~ ${Math.floor(this.totalCal()/maxCal * 100)} %`)
+                  : 'N/A'
               }
             />
             <Divider section className="divide"/>

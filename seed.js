@@ -57,7 +57,8 @@ async function main() {
     calBurned: 60,
     date: '2019-05-14'
 
-  })const exerciseEntries3 = await Exercise.create({
+  })
+  const exerciseEntries3 = await Exercise.create({
     exercise: 'pull-ups',
     calBurned: 40,
     date: '2019-03-03'
