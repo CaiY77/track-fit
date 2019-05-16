@@ -18,18 +18,6 @@ userRouter.get('/:id',async(req,res)=>{
     }
 })
 
-// make new user
-// userRouter.post('/create', async(req,res)=>{
-//     try{
-//         const newUser = await User.create(req.body);
-//         res.send(newUser)
-//     }
-//     catch(e){
-//         console.log('Something went wrong: ${e}')
-//     }
-// })
-
-
 //find all food
 userRouter.get('/:id/food', async(req,res)=>{
   try{
@@ -83,6 +71,7 @@ userRouter.delete('/:id/food-entry/:food_id', async (req, res) => {
         id: req.params.food_id
       }
     })
+    res.send('msg: deleted');
   } catch (e) {
     console.log(e)
   }
@@ -142,6 +131,7 @@ userRouter.delete('/:id/exercise-entry/:exercise_id', async (req, res) => {
         id: req.params.exercise_id
       }
     })
+    res.send('msg: deleted');
   } catch (e) {
     console.log(e)
   }
