@@ -15,7 +15,7 @@ nav{
 }
 .item-style{
   font-size: 1.5em;
-  font-family: ;
+  /* font-family: ; */
 }
 .button-style{
   font-size: 1.5em !important;
@@ -86,8 +86,6 @@ text-align: center
   height: 25vh;
   padding-top:3vh;
 }
-
-
 .profile{
   display:flex;
   flex-direction: column;
