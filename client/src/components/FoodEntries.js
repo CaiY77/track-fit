@@ -229,11 +229,20 @@ const CalorieOptions = [
                 <Statistic.Label>Calories So Far</Statistic.Label>
               </Statistic>
               <Divider section className="divide"/>
-              <Statistic className ="stats">
-                <Statistic.Label>You Set a </Statistic.Label>
-                <Statistic.Value>{maxCal}</Statistic.Value>
-                <Statistic.Label>Calorie Limit</Statistic.Label>
-              </Statistic>
+              {
+                (maxCal)
+                  ? (<Statistic className ="stats">
+                    <Statistic.Label>You Set a </Statistic.Label>
+                    <Statistic.Value>{maxCal}</Statistic.Value>
+                    <Statistic.Label>Calorie Limit</Statistic.Label>
+                  </Statistic>)
+                  : (<Statistic className ="stats">
+                    <Statistic.Label>You </Statistic.Label>
+                    <Statistic.Value>Haven't Set</Statistic.Value>
+                    <Statistic.Label>Any Goals</Statistic.Label>
+                  </Statistic>)
+              }
+
               <Divider section className="divide"/>
               <Statistic className ="stats">
                 <Statistic.Label>You Have a Total of</Statistic.Label>

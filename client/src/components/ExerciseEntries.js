@@ -238,7 +238,7 @@ class ExerciseEntries extends Component {
                   <Statistic.Label>Any Goals</Statistic.Label>
                 </Statistic>)
             }
-            
+
             <Divider section className="divide"/>
             <Statistic className ="stats">
               <Statistic.Label>You Have a Total of</Statistic.Label>
