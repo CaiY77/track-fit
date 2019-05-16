@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Route,Link} from 'react-router-dom';
 import {fetchUser} from '../service/track-fit.js';
-import { Image, Icon, Card, Item, Header } from 'semantic-ui-react'
+import { Image, Icon, Card, Item, Header, Button} from 'semantic-ui-react'
 import profilePic from '../images/profile1.jpg'
 import './Profile.css'
 const axios = require('axios')
@@ -52,7 +52,8 @@ class Profile extends Component {
                  src="https://randomuser.me/api/portraits/women/26.jpg"
                  class="ui medium circular image"
                 />
-                <Icon id="pencil" name = "pencil alternate"/>
+                
+                <button id="pencil" class="ui button"><Icon name = "pencil alternate"/>Edit</button>
             </div>
         </div>
 
@@ -77,15 +78,19 @@ class Profile extends Component {
                 <div class="header">Personal Goal</div>
            
                 <div id="personalGoal">
-                    <h3 class="ui block header">
-                    <Link to="/food-entries">Food Entries</Link>
+                <Link to="/food-entries">
+                    <h3 class="ui block header blue">
+                      Food Entries
                     </h3>
+                </Link>
                 </div>
 
                 <div id="personalGoal">
-                    <h3 class="ui block header">
-                    <Link to="/exercise-entries">Exercise Entries</Link>
-                    </h3>
+                <Link to="/exercise-entries">
+                  <h3 class="ui block header blue">
+                    Exercise Entries
+                  </h3>
+                </Link>
                 </div>
               </div>
         </div>
