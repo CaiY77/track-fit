@@ -15,6 +15,7 @@
     left: 0;
     opacity: 0.7;
     height: 400px;
+    object-fit: cover;
   }
 
   #profilePic{
