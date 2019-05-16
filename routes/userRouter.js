@@ -107,6 +107,19 @@ userRouter.post('/:id/create-exercise', async(req, res) => {
   }
 })
 
+//create Goal
+userRouter.post('/:id/create-goal',async(req,res)=>{
+  try{
+    const newGoal = await Goal.create(req.body);
+    const who = await User.findByPk(req.params.id);
+    await who.setGoal(newGoal);
+    res.send(newGoal) 
+  }
+  catch(e){
+    console.log(e)
+  }
+})
+
 // update exercise
 userRouter.put('/update-exercise/:ex_id', async (req, res) => {
   try {

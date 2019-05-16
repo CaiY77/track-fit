@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Route,Link} from 'react-router-dom';
-import {fetchUser} from '../service/track-fit.js';
+import {fetchUser,createGoal} from '../service/track-fit.js';
 import { Image, Icon, Card, Item, Header, Button, Input} from 'semantic-ui-react'
 import profilePic from '../images/profile1.jpg'
 import defaultProfile from '../images/default_pic.jpeg'
@@ -11,6 +11,8 @@ class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      getGoal: false,
+      goal:{},
       user:[]
     };
   }
@@ -27,6 +29,38 @@ class Profile extends Component {
     });
   } 
 
+  onUpdateChange = (event) =>{
+    const element = event.target
+    const name = element.name
+    const value = element.value
+
+    console.log(name)
+    this.setState({[name]: value})
+  }
+
+  getGoal = async(e) =>{
+    e.preventDefault()
+
+    try{
+      let goal = {
+        calBurned: this.state.newFoodGoal,
+        calInstake: this.state.newExerciseGoal
+      }
+      console.log(goal)
+
+      const newGoal = await createGoal(goal)
+      console.log('new goal '+ goal)
+      this.setState({
+        getGoal: true,
+        goal: goal
+      })
+      console.log(goal)
+    }
+    catch(e){
+      console.log(e)
+    }
+  }
+
   // getProfilePhoto = async()=>{
   //   try{
   //     const response = await axios.get('https://randomuser.me/api/')
@@ -36,7 +70,6 @@ class Profile extends Component {
   //     console.log(e)
   //   }
   // }
-
 
   render() {
     // console.log(this.getProfilePhoto());
@@ -81,24 +114,51 @@ class Profile extends Component {
                 <div class="header">Personal Goal</div>
            
                 <div id="personalGoal">
-                    <div><p id="goalButton">Food Calories</p></div>
-                    <div class="ui input"><input type="text" placeholder="Enter your goal" /></div>
                     <div>
-                    <Link to="/food-entries">
-                      <Button id="go"class="ui button" color='orange'>Go Food</Button>
-                    </Link>
+                      <p id="goalButton">Food Calories</p>
+                    </div>
+                    <div class="ui input">
+                      <input 
+                        name = "newFoodGoal"
+                        onChange={this.onUpdateChange}
+                        type="text" 
+                        placeholder="Enter your goal"
+                      />
+                    </div>
+                    <div>
+                      <Link to="/food-entries">
+                         <Button 
+                          id="go"
+                          class="ui button" 
+                          color='orange'>
+                          Go Food
+                          </Button>
+                      </Link>
                     </div>
                 </div>
 
                 <div id="personalGoal">
-                    <div><p id="goalButton" >Exercise Calories</p></div>
-                    <div class="ui input"><input type="text" placeholder="Enter your goal" /></div>
+                    <div>
+                      <p id="goalButton" >Exercise Calories</p>
+                    </div>
+                    <div class="ui input">
+                      <input 
+                        name = "newExerciseGoal"
+                        onChange={this.onUpdateChange}
+                        type="text" 
+                        placeholder="Enter your goal" 
+                      />
+                    </div>
                     <div>
                       <Link to="/exercise-entries">
-                      <Button id="go" class="ui button"color='orange'>Go Exercise</Button>
+                        <Button 
+                          id="go" 
+                          class="ui button"
+                          color='orange'>
+                          Go Exercise
+                        </Button>
                       </Link>
                     </div>
-                    
                 </div>
 
                 {/* <div id="personalGoal">
@@ -116,7 +176,7 @@ class Profile extends Component {
                   </h3>
                 </Link>
                 </div> */}
-              </div>
+            </div>
         </div>
         </div>
 

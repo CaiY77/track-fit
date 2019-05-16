@@ -22,6 +22,17 @@ export const fetchGoal = async(id)=>{
     console.log(e)
   }
 }
+//create Goal
+export const createGoal = async(id, goal)=>{
+  try{
+    const resp = await api.post(`/${id}/create-goal`, goal)
+    return resp.data;
+  }
+  catch(e){
+    console.log(e)
+  }
+}
+// export const makeGoal = async(id,goal)
 
 //find the all food
 export const fetchFood = async(id)=>{
