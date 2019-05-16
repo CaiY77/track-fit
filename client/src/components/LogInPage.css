@@ -23,6 +23,8 @@
     border: solid;
     color: rgb(192, 103, 2);
 }
-
-
-
+@media (max-width: 375px) {
+.log-in-pic{
+  background-size:contain;
+}
+}
