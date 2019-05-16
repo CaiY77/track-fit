@@ -76,6 +76,7 @@ class ExerciseEntries extends Component {
 
   getGoal = async () => {
     const goal = await fetchGoal(this.props.user)
+    await console.log(goal)
     const check = goal.calBurned;
 
     (check)
@@ -84,7 +85,6 @@ class ExerciseEntries extends Component {
   }
 
   showEntries = () =>{
-    // this.getAll();
     const {allExercise} = this.state;
     const myCards = allExercise.map(entry =>{
       const dateString = entry.date;
