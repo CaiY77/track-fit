@@ -71,15 +71,16 @@ const CalorieOptions = [
 
     componentDidMount() {
       this.getGoal();
-      
+      this.getAll();
     }
 
     getGoal = async () => {
       const goal = await fetchGoal(this.props.user)
+      const check = goal.calIntake;
 
-    this.setState({
-      maxCal: goal.calIntake
-    });
+      (check)
+      ? (this.setState({maxCal: check}))
+      : (this.setState({maxCal: null}))
     }
 
     getAll = async () => {
@@ -91,10 +92,10 @@ const CalorieOptions = [
 
     deleteFoodHandle = async (user,food) => {
       await deleteFood(user,food);
+      this.getAll();
     }
 
     showEntries = () =>{
-      this.getAll();
       const {allFood} = this.state;
       const myCards = allFood.map(entry =>{
         const dateString = entry.date;
@@ -146,6 +147,7 @@ const CalorieOptions = [
         date: this.state.date
       }
       await createFood(this.props.user,newFood);
+      this.getAll();
     }
 
     render() {
