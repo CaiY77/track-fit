@@ -84,9 +84,6 @@ export const deleteFood = async (user,food)=>{
   catch(e){
     console.log(e)
   }
-  finally{
-    process.exit();
-  }
 }
 
 //find all exercise

@@ -122,9 +122,11 @@ class ExerciseEntries extends Component {
       getExercise: true
     });
   }
+
   deleteExerciseHandle = async (user,ex) => {
     await deleteExercise(user,ex);
   }
+
   addNewExercise = async() => {
     const newExercise = {
       exercise: this.state.exercise,
@@ -202,7 +204,7 @@ class ExerciseEntries extends Component {
               }
               {
                 (this.state.allExercise.length === 0)
-                  ? <h1>No Entries Exist</h1>
+                  ? <Segment><h1>No Entries Exist</h1></Segment>
                   : null
               }
             </Card.Group>

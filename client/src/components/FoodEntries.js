@@ -150,7 +150,6 @@ const CalorieOptions = [
     render() {
       const {maxCal} = this.state
       return (
-
         <div className="display-contain">
           <div className="shade">
             <div className="display-left">
@@ -208,7 +207,7 @@ const CalorieOptions = [
                 }
                 {
                   (this.state.allFood.length === 0)
-                    ? <h1>No Entries Exist</h1>
+                    ? <Segment><h1>No Entries Exist</h1></Segment>
                     : null
                 }
               </Card.Group>
