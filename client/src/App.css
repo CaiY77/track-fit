@@ -31,7 +31,7 @@ nav{
   display: flex;
 }
 .display-contain-ex{
-  background: url(./images/back2.jpg);
+  background: url(./images/back1.jpg);
   background-attachment: fixed;
   background-size: cover;
   background-position: center;

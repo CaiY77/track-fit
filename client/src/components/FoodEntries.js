@@ -71,6 +71,7 @@ const CalorieOptions = [
 
     componentDidMount() {
       this.getGoal();
+      
     }
 
     getGoal = async () => {
