@@ -6,15 +6,12 @@
     width: 60vw;
 
     margin: auto;
-    /* border:solid; */
 }
 
 .profile-page {
     background-image: url('../images/profile-option.jpg');
-    /* background-color: rgb(240, 240, 240); */
     background-size:cover;
     background-position: center;
-    /* border:solid; */
     height: 100vh;
     width: 100vw;
     opacity: 0.8;
@@ -23,14 +20,9 @@
 }
 
 .profile-page h2 {
-    /* border: solid; */
     color: rgb(224, 120, 0);
 }
-/* 
-.grid {
-    background-color: white;
-    opacity: 0;
-} */
+
 
 .grid-total {
     /* border: solid; */
@@ -51,7 +43,6 @@
 
 .log-in-but {
     padding-top: 4.5vw;
-    /* border: solid; */
 }
 @media (max-width: 375px) {
 .log-in-pic{

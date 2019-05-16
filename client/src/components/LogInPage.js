@@ -33,7 +33,6 @@ class LogInPage extends Component {
     const name = element.name
     const value = element.value
 
-    console.log(name);
     this.setState({ [name]: value })
 
   }
@@ -112,8 +111,7 @@ class LogInPage extends Component {
                       name="email"
                       onChange={this.onSigninFormChange}
                       placeholder="email" />
-                    {/* </Form.Field>
-              <Form.Field required> */}
+                  
                     <input
                       id="password"
                       type="password"
@@ -132,9 +130,6 @@ class LogInPage extends Component {
 
               </Grid.Column>
               <Grid.Column>
-
-
-
 
 
                 <Form onSubmit={this.signUpUser}>
