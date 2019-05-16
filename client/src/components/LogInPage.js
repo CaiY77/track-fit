@@ -4,7 +4,7 @@ import { login, getProfile, signUp } from '../service/apiServices'
 import authService from '../service/authServices'
 import tokenService from '../service/tokenServices'
 import './LogInPage.css'
-import { Button, Checkbox, Form } from 'semantic-ui-react'
+import { Button, Checkbox, Form, Divider, Grid, Segment } from 'semantic-ui-react'
 
 import { Route, Link, Redirect } from 'react-router-dom'
 
@@ -17,7 +17,6 @@ class LogInPage extends Component {
       signin: false,
       user: {}
     }
-
 
   }
 
@@ -93,54 +92,78 @@ class LogInPage extends Component {
     return (
       <div className="profile-page">
         <div className="log-in-pic"></div>
+        <div className="center-me">
+          <Segment className="col-shade">
 
-        <div>
-          <h2>Login</h2>
-          <Form onSubmit={this.loginUser}>
-            <input
-              id="email"
-              type="text"
-              name="email"
-              onChange={this.onSigninFormChange}
-              placeholder="email" />
-            <input
-              id="password"
-              type="text"
-              name="password"
-              onChange={this.onSigninFormChange}
-              placeholder="enter your password" />
-            <Button color='blue' inverted type='submit'>Submit</Button>
+            <Grid columns={2} className="grid" relaxed='very'>
+              <Grid.Column>
+                <Form onSubmit={this.loginUser} className="form-one">
+                  <Form.Field required>
+                    <h2>Login</h2>
+                    <input
+                      id="email"
+                      type="text"
+                      name="email"
+                      onChange={this.onSigninFormChange}
+                      placeholder="email" />
+                    {/* </Form.Field>
+              <Form.Field required> */}
+                    <input
+                      id="password"
+                      type="text"
+                      name="password"
+                      onChange={this.onSigninFormChange}
+                      placeholder="enter your password" />
+                  </Form.Field>
+                  <div className="log-in-but">
+                  <Button color='blue' inverted type='submit'>Submit</Button>
+                  </div>
+
+                </Form>
+
+              </Grid.Column>
+              <Grid.Column>
 
 
-          </Form>
-        </div>
-        <div>
-          <h2>SignUp</h2>
-          <Form onSubmit={this.signUpUser}>
-            <input
-              id="name"
-              type="text"
-              name="name"
-              onChange={this.onSigninFormChange}
-              placeholder="name" />
-            <input
-              id="email"
-              type="text"
-              name="email"
-              onChange={this.onSigninFormChange}
-              placeholder="email address" />
-            <input
-              id="password"
-              type="text"
-              name="password"
-              onChange={this.onSigninFormChange}
-              placeholder="enter your password" />
 
-            <Button color='blue' inverted type='submit'>Submit</Button>
-            <Checkbox label='I agree to serve and obey Track Fit and only Track Fit' />
-          </Form>
+
+
+                <Form onSubmit={this.signUpUser}>
+                  <Form.Field required>
+                    <h2>SignUp</h2>
+                    <input
+                      id="name"
+                      type="text"
+                      name="name"
+                      onChange={this.onSigninFormChange}
+                      placeholder="name" />
+                    <input
+                      id="email"
+                      type="text"
+                      name="email"
+                      onChange={this.onSigninFormChange}
+                      placeholder="email address" />
+                    <input
+                      id="password"
+                      type="text"
+                      name="password"
+                      onChange={this.onSigninFormChange}
+                      placeholder="enter your password" />
+                  </Form.Field>
+
+                  <Checkbox label='I agree to never use this app' />
+                 
+                  <Button color='blue' inverted type='submit'>Submit</Button>
+                
+                </Form>
+              </Grid.Column>
+            </Grid>
+            <Divider vertical>OR</Divider>
+
+          </Segment>
         </div>
       </div>
+
     );
   }
 
