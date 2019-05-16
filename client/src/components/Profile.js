@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Route,Link} from 'react-router-dom';
 import {fetchUser} from '../service/track-fit.js';
-import { Image, Icon, Card, Item, Header, Button} from 'semantic-ui-react'
+import { Image, Icon, Card, Item, Header, Button, Input} from 'semantic-ui-react'
 import profilePic from '../images/profile1.jpg'
 import defaultProfile from '../images/default_pic.jpeg'
 import './Profile.css'
@@ -54,7 +54,9 @@ class Profile extends Component {
                  class="ui medium circular image"
                 />
                 
-                <button id="pencil" class="ui button">Edit</button>
+                <button id="pencil" class="ui button">
+                Edit
+                <Icon id = "pencilAlt" name="pencil alternate"></Icon></button>
             </div>
         </div>
 
@@ -79,6 +81,27 @@ class Profile extends Component {
                 <div class="header">Personal Goal</div>
            
                 <div id="personalGoal">
+                    <div><p id="goalButton">Food Calories</p></div>
+                    <div class="ui input"><input type="text" placeholder="Enter your goal" /></div>
+                    <div>
+                    <Link to="/food-entries">
+                      <button id="go"class="ui button">Go Food</button>
+                    </Link>
+                    </div>
+                </div>
+
+                <div id="personalGoal">
+                    <div><p id="goalButton" >Exercise Calories</p></div>
+                    <div class="ui input"><input type="text" placeholder="Enter your goal" /></div>
+                    <div>
+                      <Link to="/exercise-entries">
+                      <button id="go" class="ui button">Go Exercise</button>
+                      </Link>
+                    </div>
+                    
+                </div>
+
+                {/* <div id="personalGoal">
                 <Link to="/food-entries">
                     <h3 class="ui block header blue">
                       Food Entries
@@ -92,7 +115,7 @@ class Profile extends Component {
                     Exercise Entries
                   </h3>
                 </Link>
-                </div>
+                </div> */}
               </div>
         </div>
         </div>

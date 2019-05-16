@@ -32,6 +32,7 @@
 
   #profilePic{
       display: flex;
+      /* justify-content: space-around; */
   }
 
   #info{
@@ -73,6 +74,20 @@
     text-align: center;
     width: 500px;
     margin: 30px auto;
+}
+
+#personalGoal{
+  display:flex;
+  flex-direction: row;
+}
+
+#goalButton{
+  width: 150px;
+  text-align: left;
+}
+
+#go{
+  width: 100px;
 }
 
 
