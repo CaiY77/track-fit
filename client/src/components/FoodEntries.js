@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {fetchFood,createFood,fetchGoal,deleteFood} from '../service/track-fit'
 import {Card,Icon,Button,Modal,Form,Divider,Grid,Segment,Statistic} from 'semantic-ui-react'
 import '../App.css'
-import { CircularProgressbar } from 'react-circular-progressbar';
+import { CircularProgressbar,buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 const moment = require('moment');
 const FoodOptions = [
@@ -214,6 +214,7 @@ const CalorieOptions = [
             </div>
             <div className="display-right">
               <CircularProgressbar
+                styles={buildStyles({textSize: '16px'})}
                 className="progress"
                 value={this.totalCal()/maxCal * 100}
                 text={
