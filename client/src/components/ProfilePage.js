@@ -14,7 +14,7 @@ class ProfilePage extends Component {
     return (
       <div>
 
-        <nav className="ui four borderless item menu">
+        <nav className="ui stackable four borderless item menu">
 
           <img className="item logo-style" alt="TF" src={logo} />
 

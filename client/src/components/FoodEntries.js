@@ -205,7 +205,7 @@ const CalorieOptions = [
                 </Modal>
 
               </div>
-              <Card.Group itemsPerRow={2} className="card-group">
+              <Card.Group stackable itemsPerRow={2} className="card-group">
                 {
                   this.showEntries()
                 }
