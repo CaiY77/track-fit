@@ -12,7 +12,7 @@ class Profile extends Component {
     super(props);
     this.state = {
       getGoal: false,
-      goal:{},
+      goal:[],
       user:[]
     };
   }
@@ -40,21 +40,20 @@ class Profile extends Component {
 
   getGoal = async(e) =>{
     e.preventDefault()
-
     try{
       let goal = {
-        calBurned: this.state.newFoodGoal,
-        calInstake: this.state.newExerciseGoal
+        calBurned: Number.parseInt(this.state.newFoodGoal),
+        calInstake: Number.parseInt(this.state.newExerciseGoal)
       }
       console.log(goal)
 
       const newGoal = await createGoal(goal)
-      console.log('new goal '+ goal)
+      console.log('new goal '+ newGoal)
       this.setState({
         getGoal: true,
-        goal: goal
+        goal: newGoal
       })
-      console.log(goal)
+      console.log(newGoal)
     }
     catch(e){
       console.log(e)
@@ -112,8 +111,32 @@ class Profile extends Component {
         <div id = "personalInfo" class="ui link card">
             <div class="content">
                 <div class="header">Personal Goal</div>
-           
-                <div id="personalGoal">
+
+                <form onSubmit={this.getGoal}>
+                  <input 
+                        name = "newFoodGoal"
+                        onChange={this.onUpdateChange}
+                        type="text" 
+                        placeholder="Enter your goal"
+                  />
+                  <input 
+                        name = "newExerciseGoal"
+                        onChange={this.onUpdateChange}
+                        type="text" 
+                        placeholder="Enter your goal" 
+                  />
+                  <Button 
+                      type="submit"
+                      id="go" 
+                      class="ui button"
+                      color='orange'>
+                      Submit
+                  </Button>
+                </form>
+
+                
+
+                {/* <div id="personalGoal">
                     <div>
                       <p id="goalButton">Food Calories</p>
                     </div>
@@ -159,7 +182,11 @@ class Profile extends Component {
                         </Button>
                       </Link>
                     </div>
-                </div>
+                </div> */}
+
+                
+                
+              
 
                 {/* <div id="personalGoal">
                 <Link to="/food-entries">
