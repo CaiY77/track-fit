@@ -71,7 +71,7 @@ class ExerciseEntries extends Component {
       this.getAll();
   }
 
-  showExercise=()=>{
+  showEntries=()=>{
     const {allExercise} = this.state;
     const myCards = allExercise.map(exercise =>{
       const dateString = exercise.date;
@@ -154,6 +154,13 @@ class ExerciseEntries extends Component {
                 </Segment>
               </Modal>
             </div>
+            <Card.Group itemsPerRow={2} className="card-group">
+              {
+                (this.state.allExercise.length !== 0)
+                  ? this.showEntries()
+                  : <h1>No Entries Exist</h1>
+              }
+            </Card.Group>
           </div>
           <div className="display-right">
 
