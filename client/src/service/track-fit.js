@@ -129,7 +129,6 @@ export const updateExercise = async()=>{
 }
 
 
-
 //delete a exercise
 export const deleteExercise = async (user,exercise)=>{
   try{

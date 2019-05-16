@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {fetchExercise,createExercise,deleteExercise,fetchGoal} from '../service/track-fit'
 import {Card,Icon,Button,Modal,Form,Divider,Grid,Segment,Statistic} from 'semantic-ui-react'
+import { CircularProgressbar } from 'react-circular-progressbar';
 import '../App.css'
 const moment = require('moment');
 const ExerciseOptions = [
@@ -99,6 +100,14 @@ class ExerciseEntries extends Component {
     return myCards;
   }
 
+  totalCal =()=>{
+    const {allExercise} = this.state;
+    let total = 0
+    allExercise.map(entry=>{
+      total+=entry.calBurned
+    })
+    return total;
+  }
   handleChanges =(event)=>{
     const element = event.target
     const name = element.name
@@ -138,6 +147,7 @@ class ExerciseEntries extends Component {
   }
 
   render() {
+    const {maxCal} = this.state
     return (
       <div className="display-contain">
         <div className="shade">
@@ -197,6 +207,34 @@ class ExerciseEntries extends Component {
             </Card.Group>
           </div>
           <div className="display-right">
+            <CircularProgressbar
+              className="progress"
+              value={this.totalCal()/maxCal * 100}
+              text={
+                (this.totalCal()/maxCal * 100 > 100)
+                  ? `Yikes!`
+                  :`~ ${Math.floor(this.totalCal()/maxCal * 100)} %`
+              }
+            />
+            <Divider section className="divide"/>
+            <Statistic className ="stats">
+              <Statistic.Label>Burned</Statistic.Label>
+              <Statistic.Value>{this.totalCal()}</Statistic.Value>
+              <Statistic.Label>Calories So Far</Statistic.Label>
+            </Statistic>
+            <Divider section className="divide"/>
+            <Statistic className ="stats">
+              <Statistic.Label>You Set a </Statistic.Label>
+              <Statistic.Value>{maxCal}</Statistic.Value>
+              <Statistic.Label>Calorie Goal</Statistic.Label>
+            </Statistic>
+            <Divider section className="divide"/>
+            <Statistic className ="stats">
+              <Statistic.Label>You Have a Total of</Statistic.Label>
+              <Statistic.Value>{this.state.allExercise.length}</Statistic.Value>
+              <Statistic.Label>ENTRIES</Statistic.Label>
+            </Statistic>
+
 
           </div>
 
