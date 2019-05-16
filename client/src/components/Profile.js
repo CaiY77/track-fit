@@ -113,46 +113,46 @@ class Profile extends Component {
                 <div class="header">Personal Goal</div>
 
                 <form onSubmit={this.getGoal}>
-                  <input 
+                  <input
                         name = "newFoodGoal"
                         onChange={this.onUpdateChange}
-                        type="text" 
+                        type="text"
                         placeholder="Enter your goal"
                   />
-                  <input 
+                  <input
                         name = "newExerciseGoal"
                         onChange={this.onUpdateChange}
-                        type="text" 
-                        placeholder="Enter your goal" 
+                        type="text"
+                        placeholder="Enter your goal"
                   />
-                  <Button 
+                  <Button
                       type="submit"
-                      id="go" 
+                      id="go"
                       class="ui button"
                       color='orange'>
                       Submit
                   </Button>
                 </form>
 
-                
+
 
                 {/* <div id="personalGoal">
                     <div>
                       <p id="goalButton">Food Calories</p>
                     </div>
                     <div class="ui input">
-                      <input 
+                      <input
                         name = "newFoodGoal"
                         onChange={this.onUpdateChange}
-                        type="text" 
+                        type="text"
                         placeholder="Enter your goal"
                       />
                     </div>
                     <div>
                       <Link to="/food-entries">
-                         <Button 
+                         <Button
                           id="go"
-                          class="ui button" 
+                          class="ui button"
                           color='orange'>
                           Go Food
                           </Button>
@@ -165,17 +165,17 @@ class Profile extends Component {
                       <p id="goalButton" >Exercise Calories</p>
                     </div>
                     <div class="ui input">
-                      <input 
+                      <input
                         name = "newExerciseGoal"
                         onChange={this.onUpdateChange}
-                        type="text" 
-                        placeholder="Enter your goal" 
+                        type="text"
+                        placeholder="Enter your goal"
                       />
                     </div>
                     <div>
                       <Link to="/exercise-entries">
-                        <Button 
-                          id="go" 
+                        <Button
+                          id="go"
                           class="ui button"
                           color='orange'>
                           Go Exercise
@@ -184,9 +184,9 @@ class Profile extends Component {
                     </div>
                 </div> */}
 
-                
-                
-              
+
+
+
 
 
                 {/* <div id="personalGoal">
