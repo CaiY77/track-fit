@@ -1,8 +1,6 @@
 .log-in-pic {
     background: url('../images/track-fit-clear.png');
     background-size:contain;
-    
-    
     background-position: center;
     height: 35vh;
     width: 60vw;
@@ -59,4 +57,8 @@
 .log-in-pic{
   background-size:contain;
 }
+}
+
+.warning {
+    color: red;
 }
