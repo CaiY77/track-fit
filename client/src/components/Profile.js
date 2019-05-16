@@ -11,18 +11,8 @@ class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-<<<<<<< HEAD
-      getGoal: false,
-      goal:[],
-      user:[],
-
-      file: '',
-      picture: '',
-      preview: false
-=======
       hasGoal: null,
       user:[]
->>>>>>> 340dfbce479c9f78f31a12a6d8efc2d0331530f0
     };
   }
 
@@ -73,21 +63,6 @@ class Profile extends Component {
   //   }
   // }
 
-  handleImageChange(event) {
-    event.preventDefault();
-
-    let reader = new FileReader();
-    let file = event.target.files[0];
-
-    reader.onloadend = () => {
-        this.setState({
-            file: file,
-            picture: reader.result,
-            preview: true
-        });
-    }
-
-
   render() {
     return (
     <div id= "profile">
@@ -102,25 +77,9 @@ class Profile extends Component {
             class="ui medium circular image"
           />
 
-          <input 
-            ref={fileInput=> this.fileInput = fileInput} 
-            style={{display:'none'}}
-            type='file'
-            onChange={event => this.handleImageChange(event)}
-          />
-
-          <button 
-            onClick={()=>this.fileInput.click()}
-            className="ui bottom attached button" 
-            tabIndex="0"
-
-            id="pencil" >
+          <button id="pencil" className="ui button">
             Edit
-            <Icon 
-              id = "pencilAlt" 
-              name="pencil alternate"
-            ></Icon>
-          </button>
+            <Icon id = "pencilAlt" name="pencil alternate"></Icon></button>
         </div>
       </div>
 
@@ -139,12 +98,9 @@ class Profile extends Component {
             </div>
           </div>
         </div>
-
         <div id = "personalInfo" class="ui link card">
           <div class="content">
             <div class="header">Personal Goal</div>
-
-
             {
               (this.state.hasGoal)
                 ?
@@ -175,18 +131,14 @@ class Profile extends Component {
                     <Button color="orange" type='submit'>Create Goal</Button>
                   </Form>
                 )
-
             }
             </div>
         </div>
         </div>
-
         <Route path = '/food-entries'/>
         <Route path = '/exercise-entries'/>
-
     </div>
     );
   }
 }
-
 export default Profile;
