@@ -24,18 +24,18 @@ export const fetchGoal = async(id)=>{
 }
 
 // create new user
-export const createUser = async(newUser)=>{
-   try{
-      const res = await api.post('/create', newUser)
-      console.log(`axios response ${res}`);
+// export const createUser = async(newUser)=>{
+//    try{
+//       const res = await api.post('/create', newUser)
+//       console.log(`axios response ${res}`);
 
-      // return res.data;
+//       // return res.data;
 
-   }
-   catch(e){
-     console.log(e)
-   }
-}
+//    }
+//    catch(e){
+//      console.log(e)
+//    }
+// }
 
 //find the all food
 export const fetchFood = async(id)=>{

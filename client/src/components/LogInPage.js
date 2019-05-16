@@ -4,7 +4,7 @@ import { login, getProfile, signUp } from '../service/apiServices'
 import authService from '../service/authServices'
 import tokenService from '../service/tokenServices'
 
-import { Route, Link } from 'react-router-dom'
+import { Route, Link, Redirect } from 'react-router-dom'
 
 
 class LogInPage extends Component {
@@ -31,14 +31,16 @@ class LogInPage extends Component {
 
   }
 
-  // sign in 
-  onSigninFormSubmit = async (e) => {
+  // login user
+  loginUser = async (e) => {
     e.preventDefault()
     try {
       let credentials = {
-        name: this.state.name,
+        email: this.state.email,
         password: this.state.password,
+
       }
+      console.log(credentials)
 
       const user = await login(credentials)
       console.log(user, 'sign in')
@@ -48,6 +50,7 @@ class LogInPage extends Component {
         isSignedIn: true,
         user: user
       })
+      console.log(user)
       this.props.toggleLog()
     } catch (e) {
       throw e
@@ -65,9 +68,11 @@ class LogInPage extends Component {
         password: this.state.password,
         email: this.state.email
       }
+      console.log(credentials)
+
       const user = await signUp(credentials)
       console.log(user, 'sign up')
-      this.props.setCurrentUserInfo(user);
+      await this.props.setCurrentUserInfo(user);
       this.setState({
         isSignedIn: true,
         user: user
@@ -82,17 +87,18 @@ class LogInPage extends Component {
   render() {
     const { isSignedIn, user } = this.state
 
+
     return (
       <div>
         <div>
           <p>Login</p>
-          <form onSubmit={this.onLoginFormSubmit}>
+          <form onSubmit={this.loginUser}>
             <input
               id="email"
               type="text"
               name="email"
               onChange={this.onSigninFormChange}
-              placeholder="email address" />
+              placeholder="email" />
             <input
               id="password"
               type="text"

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import LogInPage from './components/LogInPage.js'
 import ProfilePage from './components/ProfilePage.js'
-import {getProfile} from './service/apiServices.js'
+import { getProfile } from './service/apiServices.js'
 import tokenService from './service/tokenServices.js'
 import decode from 'jwt-decode'
 
@@ -22,19 +22,29 @@ class App extends Component {
   // does the trick, but it doesn't assign the id of the user to the food
   // it also can't add the food 
 
+  // try decoding the jwt and setting user id to state.
+  // component did mount just check if there's a token or not.
+
+
+  // add all this stuff to a function
+
   componentDidMount = async () => {
-    document.title = 'Track My Fitness'
-    // const token = await tokenService.fetchToken()
-    // // const profile = await getProfile()
-    // const userInfo = {}
-    // const data = decode(token)
-    // userInfo.name = data.name
-    // await this.setCurrentUserInfo(userInfo)
-    // await this.toggleLog()
-    // console.log(data, "data")
-    // console.log(token, "tok")
-  
+    let token = await tokenService.fetchToken()
+    if (token) {
+      document.title = 'Track My Fitness'
+      const userInfo = {}
+      const data = decode(token)
+      userInfo.name = data.name
+      await this.setCurrentUserInfo(userInfo)
+      await this.toggleLog()
+      // this.setState({
+      //   userID: data.id
+      // })
+      console.log(data, "data")
+      console.log(token, "tok")
+    }
   }
+
 
 
   setCurrentUserInfo = async (userInfo) => {

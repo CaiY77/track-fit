@@ -19,15 +19,15 @@ userRouter.get('/:id',async(req,res)=>{
 })
 
 // make new user
-userRouter.post('/create', async(req,res)=>{
-    try{
-        const newUser = await User.create(req.body);
-        res.send(newUser)
-    }
-    catch(e){
-        console.log('Something went wrong: ${e}')
-    }
-})
+// userRouter.post('/create', async(req,res)=>{
+//     try{
+//         const newUser = await User.create(req.body);
+//         res.send(newUser)
+//     }
+//     catch(e){
+//         console.log('Something went wrong: ${e}')
+//     }
+// })
 
 
 //find all food

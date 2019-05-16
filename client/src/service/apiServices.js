@@ -12,9 +12,10 @@ const api = axios.create({
 })
 
 export const login = async(data) => {
-  try {
-    const resp = await api.post('/auth/login', data)
-    const { data: { token, user } } = resp
+    try {
+        const resp = await api.post('/auth/login', data)
+        console.log(data, 'hello')
+        const { data: { token, user } } = resp
     tokenService.storeToken(token)
     return user
   } catch (e) {
