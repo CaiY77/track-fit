@@ -141,6 +141,7 @@ class ExerciseEntries extends Component {
     await createExercise(this.props.user,newExercise);
     this.getAll();
   }
+
   handleExercise=(value)=>{
     this.setState({
       exercise: value
