@@ -206,6 +206,11 @@ const CalorieOptions = [
                 {
                   this.showEntries()
                 }
+                {
+                  (this.state.allFood.length === 0)
+                    ? <h1>No Entries Exist</h1>
+                    : null
+                }
               </Card.Group>
             </div>
             <div className="display-right">

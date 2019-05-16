@@ -200,6 +200,11 @@ class ExerciseEntries extends Component {
               {
                 this.showEntries()
               }
+              {
+                (this.state.allExercise.length === 0)
+                  ? <h1>No Entries Exist</h1>
+                  : null
+              }
             </Card.Group>
           </div>
           <div className="display-right">
