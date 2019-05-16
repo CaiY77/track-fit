@@ -1,0 +1,46 @@
+#profile{
+    display:flex;
+    flex-direction: column;
+    /* width:1000px; */
+    /* margin: 20px auto; */
+  }
+  
+  #title{
+    position: relative;
+    top:0;
+    left: 0;
+  }
+
+  #backgroundImg{
+    position: relative;
+    top: 0;
+    left: 0;
+    opacity: 0.7;
+    height: 400px;
+  }
+
+  #profilePic{
+    position: absolute;
+    top: 180px;
+    left: 25px;
+  }
+
+  #pencil{
+      margin-left: 20px;
+      margin-top:160px;
+  }
+
+  #profilePic{
+      display: flex;
+  }
+
+  #info{
+    display:flex;
+    flex-direction: column;
+    width:1500px;
+    margin: 20px auto;
+  }
+
+
+  
+

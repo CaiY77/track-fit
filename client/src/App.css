@@ -77,10 +77,5 @@ text-align: center
 }
 
 
-.profile{
-  display:flex;
-  flex-direction: column;
-  width:350px;
-  margin: 20px auto;
-}
+
 
