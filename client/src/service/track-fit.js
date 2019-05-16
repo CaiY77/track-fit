@@ -50,9 +50,6 @@ export const fetchFood = async(id)=>{
 }
 
 
-
-
-
 // create a food
 export const createFood = async (user,newFood) => {
   try {
@@ -92,14 +89,6 @@ export const deleteFood = async (user,food)=>{
   }
 }
 
-// hardcode new excersise
-const newExercise = {
-  exercise: `walking`,
-  calBurned: 5,
-  date: '2019-05-05'
-}
-
-
 //find all exercise
 export const fetchExercise = async(id)=>{
   try{
@@ -114,7 +103,7 @@ export const fetchExercise = async(id)=>{
 
 
 // create excersise
-export const createExercise = async () => {
+export const createExercise = async (user,newExercise) => {
   try {
     const res = await api.post(`/1/create-exercise`, newExercise)
     return res.data;

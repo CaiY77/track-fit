@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {fetchExercise} from '../service/track-fit'
+import {fetchExercise,createExercise} from '../service/track-fit'
 import {Card,Icon,Button,Modal,Form,Divider,Grid,Segment,Statistic} from 'semantic-ui-react'
 import '../App.css'
 const moment = require('moment');
@@ -104,6 +104,15 @@ class ExerciseEntries extends Component {
       getExercise: true
     });
   }
+  addNewExercise = async() => {
+    const newExercise = {
+      exercise: this.state.exercise,
+      calBurned: Number.parseInt(this.state.calBurned),
+      date: this.state.date
+    }
+    await createExercise(this.props.user,newExercise);
+    window.location.reload();
+  }
 
   render() {
     return (
@@ -138,11 +147,11 @@ class ExerciseEntries extends Component {
                       <Form onSubmit={()=>this.addNewFood()}>
                         <Form.Field required>
                           <label>Food Consumed</label>
-                          <Form.Select onChange={(e, {value}) => this.handleFood(value)} options={ExerciseOptions} name="food" placeholder='Select Food' />
+                          <Form.Select onChange={(e, {value}) => this.handleFood(value)} options={ExerciseOptions} name="exercise" placeholder='Select Food' />
                         </Form.Field>
                         <Form.Field required>
                           <label>Calories</label>
-                          <Form.Select onChange={(e, {value}) => this.handleCal(value)} options={CalorieOptions} name="calGained" placeholder='Select Calories' />
+                          <Form.Select onChange={(e, {value}) => this.handleCal(value)} options={CalorieOptions} name="calBurned" placeholder='Select Calories' />
                         </Form.Field>
                         <Form.Field required>
                           <label>Date</label>
