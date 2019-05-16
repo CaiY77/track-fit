@@ -63,12 +63,21 @@ class ExerciseEntries extends Component {
     super(props)
     this.state={
       allExercise:[],
-      getExercise:false,
+      maxCal: 0
     }
   }
 
   componentDidMount(){
       this.getAll();
+      this.getGoal();
+  }
+
+  getGoal = async () => {
+    const goal = await fetchGoal(this.props.user)
+
+  this.setState({
+    maxCal: goal.calBurned
+  });
   }
 
   showEntries = () =>{
