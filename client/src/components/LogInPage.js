@@ -3,6 +3,8 @@ import { createUser } from '../service/track-fit'
 import { login, getProfile, signUp } from '../service/apiServices'
 import authService from '../service/authServices'
 import tokenService from '../service/tokenServices'
+import './LogInPage.css'
+import { Button, Checkbox, Form } from 'semantic-ui-react'
 
 import { Route, Link, Redirect } from 'react-router-dom'
 
@@ -89,10 +91,12 @@ class LogInPage extends Component {
 
 
     return (
-      <div>
+      <div className="profile-page">
+        <div className="log-in-pic"></div>
+
         <div>
-          <p>Login</p>
-          <form onSubmit={this.loginUser}>
+          <h2>Login</h2>
+          <Form onSubmit={this.loginUser}>
             <input
               id="email"
               type="text"
@@ -105,14 +109,14 @@ class LogInPage extends Component {
               name="password"
               onChange={this.onSigninFormChange}
               placeholder="enter your password" />
-            <button type="submit">
-              Submit
-            </button>
-          </form>
+            <Button color='blue' inverted type='submit'>Submit</Button>
+
+
+          </Form>
         </div>
         <div>
-          <p>SignUp</p>
-          <form onSubmit={this.signUpUser}>
+          <h2>SignUp</h2>
+          <Form onSubmit={this.signUpUser}>
             <input
               id="name"
               type="text"
@@ -131,10 +135,10 @@ class LogInPage extends Component {
               name="password"
               onChange={this.onSigninFormChange}
               placeholder="enter your password" />
-            <button type="submit">
-              Submit
-            </button>
-          </form>
+
+            <Button color='blue' inverted type='submit'>Submit</Button>
+            <Checkbox label='I agree to serve and obey Track Fit and only Track Fit' />
+          </Form>
         </div>
       </div>
     );

@@ -1,0 +1,28 @@
+.log-in-pic {
+    background: url('../images/track-fit-clear.png');
+    background-size:cover;
+    background-position: center;
+    height: 35vh;
+    width: 80vw;
+    margin: auto;
+    /* border:solid; */
+}
+
+.profile-page {
+    /* background-image: url('../images/gym.jpg'); */
+    background-color: rgb(231, 231, 231);
+    background-size:cover;
+    background-position: center;
+    border:solid;
+    height: 100vh;
+    width: 100vw;
+    opacity: 0.8;
+}
+
+.profile-page h2 {
+    border: solid;
+    color: rgb(192, 103, 2);
+}
+
+
+
