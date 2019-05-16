@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import {fetchFood,createFood,fetchGoal} from '../service/track-fit'
+import {fetchFood,createFood,fetchGoal,deleteFood} from '../service/track-fit'
 import {Card,Icon,Button,Modal,Form,Divider,Grid,Segment,Statistic} from 'semantic-ui-react'
 import '../App.css'
-import {deleteFood} from '../service/track-fit'
-import { CircularProgressbar } from 'react-circular-progressbar';
+import { CircularProgressbar,buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 const moment = require('moment');
 const FoodOptions = [
@@ -71,11 +70,8 @@ const CalorieOptions = [
     }
 
     componentDidMount() {
-      if(this.props.user != '')
-      {
-      this.getAll();
       this.getGoal();
-      }
+      
     }
 
     getGoal = async () => {
@@ -93,12 +89,12 @@ const CalorieOptions = [
         });
     }
 
-    deleteFoodHandle = (user,food) => {
-      deleteFood(user,food);
-      window.location.reload();
+    deleteFoodHandle = async (user,food) => {
+      await deleteFood(user,food);
     }
 
     showEntries = () =>{
+      this.getAll();
       const {allFood} = this.state;
       const myCards = allFood.map(entry =>{
         const dateString = entry.date;
@@ -150,18 +146,16 @@ const CalorieOptions = [
         date: this.state.date
       }
       await createFood(this.props.user,newFood);
-     window.location.reload();
     }
 
     render() {
       const {maxCal} = this.state
       return (
-
         <div className="display-contain">
           <div className="shade">
             <div className="display-left">
               <div className="button-modal">
-                <Modal trigger={<Button inverted color="green" size="huge" className ="add-button">Add Food Entry</Button>}>
+                <Modal trigger={<Button color="green" size="huge" className ="add-button">Add Food Entry</Button>}>
                   <h1 className="modal-style">Add To Your Food Log</h1>
                   <Segment>
                     <Grid columns={2} relaxed='very'>
@@ -210,20 +204,26 @@ const CalorieOptions = [
               </div>
               <Card.Group itemsPerRow={2} className="card-group">
                 {
-                  (this.state.allFood.length !== 0)
-                    ? this.showEntries()
-                    : <h1>No Entries Exist</h1>
+                  this.showEntries()
+                }
+                {
+                  (this.state.allFood.length === 0)
+                    ? <Segment><h1>No Entries Exist</h1></Segment>
+                    : null
                 }
               </Card.Group>
             </div>
             <div className="display-right">
               <CircularProgressbar
+                styles={buildStyles({textSize: '16px'})}
                 className="progress"
                 value={this.totalCal()/maxCal * 100}
                 text={
-                  (this.totalCal()/maxCal * 100 > 100)
-                    ? `Yikes!`
-                    :`~ ${Math.floor(this.totalCal()/maxCal * 100)} %`
+                  (this.totalCal()/maxCal * 100)
+                    ?((this.totalCal()/maxCal * 100 > 100)
+                      ? `Complete!`
+                      :`~ ${Math.floor(this.totalCal()/maxCal * 100)} %`)
+                    : 'N/A'
                 }
               />
               <Divider section className="divide"/>
@@ -233,15 +233,29 @@ const CalorieOptions = [
                 <Statistic.Label>Calories So Far</Statistic.Label>
               </Statistic>
               <Divider section className="divide"/>
-              <Statistic className ="stats">
-                <Statistic.Label>You Set a </Statistic.Label>
-                <Statistic.Value>{maxCal}</Statistic.Value>
-                <Statistic.Label>Calorie Limit</Statistic.Label>
-              </Statistic>
+              {
+                (maxCal)
+                  ? (<Statistic className ="stats">
+                    <Statistic.Label>You Set a </Statistic.Label>
+                    <Statistic.Value>{maxCal}</Statistic.Value>
+                    <Statistic.Label>Calorie Limit</Statistic.Label>
+                  </Statistic>)
+                  : (<Statistic className ="stats">
+                    <Statistic.Label>-----</Statistic.Label>
+                    <Statistic.Value>Not Set</Statistic.Value>
+                    <Statistic.Label>-----</Statistic.Label>
+                  </Statistic>)
+              }
               <Divider section className="divide"/>
+
               <Statistic className ="stats">
                 <Statistic.Label>You Have a Total of</Statistic.Label>
-                <Statistic.Value>{this.state.allFood.length}</Statistic.Value>
+                <Statistic.Value>
+                  {(this.state.allFood)
+                    ?this.state.allFood.length
+                    : '0'
+                  }
+                </Statistic.Value>
                 <Statistic.Label>ENTRIES</Statistic.Label>
               </Statistic>
 

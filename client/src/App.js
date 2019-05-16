@@ -75,6 +75,7 @@ class App extends Component {
     return (
       <div>
 
+
         {
           (loggedIn)
             ? <ProfilePage toggleLog={this.toggleLog} user={userID} userInfo={userInfo} login={loggedIn} />

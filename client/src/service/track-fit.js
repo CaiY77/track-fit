@@ -50,9 +50,6 @@ export const fetchFood = async(id)=>{
 }
 
 
-
-
-
 // create a food
 export const createFood = async (user,newFood) => {
   try {
@@ -87,18 +84,7 @@ export const deleteFood = async (user,food)=>{
   catch(e){
     console.log(e)
   }
-  finally{
-    process.exit();
-  }
 }
-
-// hardcode new excersise
-const newExercise = {
-  exercise: `walking`,
-  calBurned: 5,
-  date: '2019-05-05'
-}
-
 
 //find all exercise
 export const fetchExercise = async(id)=>{
@@ -114,7 +100,7 @@ export const fetchExercise = async(id)=>{
 
 
 // create excersise
-export const createExercise = async () => {
+export const createExercise = async (user,newExercise) => {
   try {
     const res = await api.post(`/1/create-exercise`, newExercise)
     return res.data;
@@ -140,11 +126,10 @@ export const updateExercise = async()=>{
 }
 
 
-
 //delete a exercise
-export const deleteExercise = async ()=>{
+export const deleteExercise = async (user,exercise)=>{
   try{
-    const res = await api.delete(`/1/exercise-entry/1`)
+    const res = await api.delete(`/${user}/exercise-entry/${exercise}`)
     return res.data;
   }
   catch(e){
