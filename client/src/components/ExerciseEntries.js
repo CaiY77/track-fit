@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {fetchExercise,createExercise} from '../service/track-fit'
+import {fetchExercise,createExercise,deleteExercise} from '../service/track-fit'
 import {Card,Icon,Button,Modal,Form,Divider,Grid,Segment,Statistic} from 'semantic-ui-react'
 import '../App.css'
 const moment = require('moment');
@@ -78,7 +78,7 @@ class ExerciseEntries extends Component {
       const momentDate = moment(dateString)
       return (<Card key={entry.id} className="my-cards">
         <Card.Content extra>
-          <Icon size="big" name="food"/>
+          <Icon size="big" name="trophy"/>
           <Button onClick={()=>this.deleteExerciseHandle(this.props.user,entry.id)} icon ="trash" className="trash-button"/>
         </Card.Content>
         <Card.Content className ="feed-right">
@@ -103,6 +103,10 @@ class ExerciseEntries extends Component {
       allExercise: allExercise,
       getExercise: true
     });
+  }
+  deleteExerciseHandle = (user,ex) => {
+    deleteExercise(user,ex);
+    window.location.reload();
   }
   addNewExercise = async() => {
     const newExercise = {
@@ -130,15 +134,15 @@ class ExerciseEntries extends Component {
         <div className="shade">
           <div className="display-left">
             <div className ="button-modal">
-              <Modal trigger={<Button inverted color="green" size="huge" className ="add-button">Add Food Entry</Button>}>
-                <h1 className="modal-style">Add To Your Food Log</h1>
+              <Modal trigger={<Button inverted color="green" size="huge" className ="add-button">Add Workout Entry</Button>}>
+                <h1 className="modal-style">Add To Your Workout Log</h1>
                 <Segment>
                   <Grid columns={2} relaxed='very'>
                     <Grid.Column>
 
                       <Form onSubmit={()=>this.addNewExercise()}>
                         <Form.Field required>
-                          <label>Food Consumed</label>
+                          <label>Exercise Name</label>
                           <input onChange={this.handleChanges} name="exercise" placeholder='Today, I did some ...' />
                         </Form.Field>
                         <Form.Field required>
@@ -156,8 +160,8 @@ class ExerciseEntries extends Component {
                     <Grid.Column>
                       <Form onSubmit={()=>this.addNewExercise()}>
                         <Form.Field required>
-                          <label>Food Consumed</label>
-                          <Form.Select onChange={(e, {value}) => this.handleExercise(value)} options={ExerciseOptions} name="exercise" placeholder='Select Food' />
+                          <label>Exercise Name</label>
+                          <Form.Select onChange={(e, {value}) => this.handleExercise(value)} options={ExerciseOptions} name="exercise" placeholder='Select Workout' />
                         </Form.Field>
                         <Form.Field required>
                           <label>Calories</label>

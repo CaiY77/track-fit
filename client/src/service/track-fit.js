@@ -131,9 +131,9 @@ export const updateExercise = async()=>{
 
 
 //delete a exercise
-export const deleteExercise = async ()=>{
+export const deleteExercise = async (user,exercise)=>{
   try{
-    const res = await api.delete(`/1/exercise-entry/1`)
+    const res = await api.delete(`/${user}/exercise-entry/${exercise}`)
     return res.data;
   }
   catch(e){
