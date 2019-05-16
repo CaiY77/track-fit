@@ -113,7 +113,7 @@ userRouter.post('/:id/create-goal',async(req,res)=>{
     const newGoal = await Goal.create(req.body);
     const who = await User.findByPk(req.params.id);
     await who.setGoal(newGoal);
-    res.send(newGoal) 
+    res.json(newGoal)
   }
   catch(e){
     console.log(e)

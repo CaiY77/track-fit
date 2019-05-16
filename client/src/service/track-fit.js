@@ -32,7 +32,6 @@ export const createGoal = async(id, goal)=>{
     console.log(e)
   }
 }
-// export const makeGoal = async(id,goal)
 
 //find the all food
 export const fetchFood = async(id)=>{
