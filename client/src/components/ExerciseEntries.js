@@ -69,7 +69,6 @@ class ExerciseEntries extends Component {
   }
 
   componentDidMount(){
-      this.getAll();
       this.getGoal();
   }
 
@@ -82,6 +81,7 @@ class ExerciseEntries extends Component {
   }
 
   showEntries = () =>{
+    this.getAll();
     const {allExercise} = this.state;
     const myCards = allExercise.map(entry =>{
       const dateString = entry.date;
@@ -122,9 +122,8 @@ class ExerciseEntries extends Component {
       getExercise: true
     });
   }
-  deleteExerciseHandle = (user,ex) => {
-    deleteExercise(user,ex);
-    window.location.reload();
+  deleteExerciseHandle = async (user,ex) => {
+    await deleteExercise(user,ex);
   }
   addNewExercise = async() => {
     const newExercise = {
@@ -133,7 +132,6 @@ class ExerciseEntries extends Component {
       date: this.state.date
     }
     await createExercise(this.props.user,newExercise);
-    window.location.reload();
   }
   handleExercise=(value)=>{
     this.setState({
@@ -200,9 +198,7 @@ class ExerciseEntries extends Component {
             </div>
             <Card.Group itemsPerRow={2} className="card-group">
               {
-                (this.state.allExercise.length !== 0)
-                  ? this.showEntries()
-                  : <h1>No Entries Exist</h1>
+                this.showEntries()
               }
             </Card.Group>
           </div>

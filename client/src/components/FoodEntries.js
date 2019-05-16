@@ -70,7 +70,6 @@ const CalorieOptions = [
     }
 
     componentDidMount() {
-      this.getAll();
       this.getGoal();
     }
 
@@ -89,12 +88,12 @@ const CalorieOptions = [
         });
     }
 
-    deleteFoodHandle = (user,food) => {
-      deleteFood(user,food);
-      window.location.reload();
+    deleteFoodHandle = async (user,food) => {
+      await deleteFood(user,food);
     }
 
     showEntries = () =>{
+      this.getAll();
       const {allFood} = this.state;
       const myCards = allFood.map(entry =>{
         const dateString = entry.date;
@@ -146,7 +145,6 @@ const CalorieOptions = [
         date: this.state.date
       }
       await createFood(this.props.user,newFood);
-      window.location.reload();
     }
 
     render() {
@@ -206,9 +204,7 @@ const CalorieOptions = [
               </div>
               <Card.Group itemsPerRow={2} className="card-group">
                 {
-                  (this.state.allFood.length !== 0)
-                    ? this.showEntries()
-                    : <h1>No Entries Exist</h1>
+                  this.showEntries()
                 }
               </Card.Group>
             </div>
