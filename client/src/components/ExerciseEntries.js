@@ -69,13 +69,15 @@ class ExerciseEntries extends Component {
     }
   }
 
-  componentDidMount(){
-      this.getGoal();
-      this.getAll()
+  componentDidMount=async()=>{
+    await this.props.findToken();
+    await this.getGoal();
+    await this.getAll();
   }
 
   getGoal = async () => {
     const goal = await fetchGoal(this.props.user)
+    await console.log(goal)
     const check = goal.calBurned;
 
     (check)
@@ -84,7 +86,6 @@ class ExerciseEntries extends Component {
   }
 
   showEntries = () =>{
-    // this.getAll();
     const {allExercise} = this.state;
     const myCards = allExercise.map(entry =>{
       const dateString = entry.date;
@@ -140,6 +141,7 @@ class ExerciseEntries extends Component {
     await createExercise(this.props.user,newExercise);
     this.getAll();
   }
+
   handleExercise=(value)=>{
     this.setState({
       exercise: value

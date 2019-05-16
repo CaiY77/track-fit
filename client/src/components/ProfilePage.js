@@ -10,7 +10,7 @@ import '../App.css'
 class ProfilePage extends Component {
 
   render() {
-    const {user, userInfo} = this.props;
+    const {user, userInfo, findToken } = this.props;
     return (
       <div>
 
@@ -31,16 +31,19 @@ class ProfilePage extends Component {
           render={()=> <Profile
             user ={user}
             userInfo = {userInfo}
+            findToken={findToken}
                        />}
         />
         <Route path = '/food-entries'
           render={()=> <FoodEntries
             user ={user}
+            findToken={findToken}
                        />}
         />
         <Route path = '/exercise-entries'
           render={()=> <ExerciseEntries
             user ={user}
+            findToken={findToken}
                        />}
         />
 

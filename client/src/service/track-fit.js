@@ -99,7 +99,8 @@ export const fetchExercise = async(id)=>{
 // create excersise
 export const createExercise = async (user,newExercise) => {
   try {
-    const res = await api.post(`/1/create-exercise`, newExercise)
+    const res = await api.post(`/${user}/create-exercise`, newExercise)
+    console.log(res)
     return res.data;
 
   } catch (e) {

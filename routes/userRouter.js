@@ -158,7 +158,10 @@ userRouter.get('/:id/goal',async(req,res)=>{
         user_id: req.params.id
       }
     })
-    res.send(goal);
+  await (goal)
+    ?res.send(goal)
+    :res.json({'msg' : 'No Goals Set'})
+
   } catch (e) {
     console.log(e)
   }
