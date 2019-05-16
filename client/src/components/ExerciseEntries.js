@@ -1,33 +1,33 @@
 import React, { Component } from 'react';
-import {fetchExercise,createExercise,deleteExercise} from '../service/track-fit'
+import {fetchExercise,createExercise,deleteExercise,fetchGoal} from '../service/track-fit'
 import {Card,Icon,Button,Modal,Form,Divider,Grid,Segment,Statistic} from 'semantic-ui-react'
 import '../App.css'
 const moment = require('moment');
 const ExerciseOptions = [
   {
     key: 1,
-    value: 'burgers',
-    text: 'Burger'
+    value: 'running',
+    text: 'Running'
   }, {
     key: 2,
-    value: 'chickens',
-    text: 'Chicken'
+    value: 'jumpropes',
+    text: 'Jump Rope'
   }, {
     key: 3,
-    value: 'donuts',
-    text: 'Donuts'
+    value: 'jumping jacks',
+    text: 'Jumping Jacks'
   }, {
     key: 4,
-    value: 'pizza',
-    text: 'Pizza'
+    value: 'push-ups',
+    text: 'Push-Ups'
   }, {
     key: 5,
-    value: 'fries',
-    text: 'Fries'
+    value: 'sit-ups',
+    text: 'Sit-Ups'
   }, {
     key: 6,
-    value: 'salad',
-    text: 'Salad'
+    value: 'pull-ups',
+    text: 'Pull-Ups'
   }
 ]
 const CalorieOptions = [
