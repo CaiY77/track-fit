@@ -71,19 +71,21 @@ class ExerciseEntries extends Component {
       this.getAll();
   }
 
-  showEntries=()=>{
+  showEntries = () =>{
     const {allExercise} = this.state;
-    const myCards = allExercise.map(exercise =>{
-      const dateString = exercise.date;
-      // const dateAnswer = new Date(dateString)
+    const myCards = allExercise.map(entry =>{
+      const dateString = entry.date;
       const momentDate = moment(dateString)
-      return (
-        <Card>
-          <h1>{exercise.exercise}</h1>
-          <h1>{exercise.calBurned}</h1>
-          <h1>{momentDate.format("MMMM Do YYYY")}</h1>
-        </Card>
-      )
+      return (<Card key={entry.id} className="my-cards">
+        <Card.Content extra>
+          <Icon size="big" name="food"/>
+          <Button onClick={()=>this.deleteExerciseHandle(this.props.user,entry.id)} icon ="trash" className="trash-button"/>
+        </Card.Content>
+        <Card.Content className ="feed-right">
+          <Card.Meta content={momentDate.format("MMMM Do YYYY")}/>
+          <Card.Description>You did some {entry.exercise} and burned a whopping {entry.calBurned} calories.</Card.Description>
+        </Card.Content>
+      </Card>)
     })
     return myCards;
   }
