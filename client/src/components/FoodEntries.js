@@ -244,11 +244,16 @@ const CalorieOptions = [
                     <Statistic.Label>-----</Statistic.Label>
                   </Statistic>)
               }
-
               <Divider section className="divide"/>
+
               <Statistic className ="stats">
                 <Statistic.Label>You Have a Total of</Statistic.Label>
-                <Statistic.Value>{this.state.allFood.length}</Statistic.Value>
+                <Statistic.Value>
+                  {(this.state.allFood)
+                    ?this.state.allFood.length
+                    : '0'
+                  }
+                </Statistic.Value>
                 <Statistic.Label>ENTRIES</Statistic.Label>
               </Statistic>
 

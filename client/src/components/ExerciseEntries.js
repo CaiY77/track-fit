@@ -244,7 +244,12 @@ class ExerciseEntries extends Component {
             <Divider section className="divide"/>
             <Statistic className ="stats">
               <Statistic.Label>You Have a Total of</Statistic.Label>
-              <Statistic.Value>{this.state.allExercise.length}</Statistic.Value>
+              <Statistic.Value>
+                {(this.state.allExercise)
+                  ?this.state.allExercise.length
+                  : '0'
+                }
+              </Statistic.Value>
               <Statistic.Label>ENTRIES</Statistic.Label>
             </Statistic>
 
