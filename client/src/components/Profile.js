@@ -13,7 +13,11 @@ class Profile extends Component {
     this.state = {
       getGoal: false,
       goal:[],
-      user:[]
+      user:[],
+
+      file: '',
+      picture: '',
+      preview: false
     };
   }
 
@@ -70,6 +74,21 @@ class Profile extends Component {
   //   }
   // }
 
+  handleImageChange(event) {
+    event.preventDefault();
+
+    let reader = new FileReader();
+    let file = event.target.files[0];
+
+    reader.onloadend = () => {
+        this.setState({
+            file: file,
+            picture: reader.result,
+            preview: true
+        });
+    }
+
+
   render() {
     // console.log(this.getProfilePhoto());
 
@@ -86,9 +105,25 @@ class Profile extends Component {
             class="ui medium circular image"
           />
 
-          <button id="pencil" className="ui button">
+          <input 
+            ref={fileInput=> this.fileInput = fileInput} 
+            style={{display:'none'}}
+            type='file'
+            onChange={event => this.handleImageChange(event)}
+          />
+
+          <button 
+            onClick={()=>this.fileInput.click()}
+            className="ui bottom attached button" 
+            tabIndex="0"
+
+            id="pencil" >
             Edit
-            <Icon id = "pencilAlt" name="pencil alternate"></Icon></button>
+            <Icon 
+              id = "pencilAlt" 
+              name="pencil alternate"
+            ></Icon>
+          </button>
         </div>
       </div>
 
