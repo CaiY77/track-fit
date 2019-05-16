@@ -26,8 +26,8 @@ async function main() {
   })
 
   const goal = await Goal.create({
-    calBurned: 3,
-    calIntake: 4000
+    calBurned: 5000,
+    calIntake: 2000
   })
 
   const foodEntries = await Food.create({
@@ -43,12 +43,24 @@ async function main() {
   const foodEntries3 = await Food.create({
     food: 'cheese',
     calGained: 70,
-    date: '2019-03-05'
+    date: '2019-05-14'
   })
 
   const exerciseEntries = await Exercise.create({
-    exercise: 'jumping',
-    calBurned: 5,
+    exercise: 'push-ups',
+    calBurned: 50,
+    date: '2019-05-06'
+
+  })
+  const exerciseEntries2 = await Exercise.create({
+    exercise: 'sit-ups',
+    calBurned: 60,
+    date: '2019-05-14'
+
+  })
+  const exerciseEntries3 = await Exercise.create({
+    exercise: 'pull-ups',
+    calBurned: 40,
     date: '2019-03-03'
 
   })
@@ -60,6 +72,8 @@ async function main() {
   await foodEntries2.setUser(user1);
   await foodEntries3.setUser(user1);
   await exerciseEntries.setUser(user1)
+  await exerciseEntries2.setUser(user1)
+  await exerciseEntries3.setUser(user1)
 
 
 
