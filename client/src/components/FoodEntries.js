@@ -69,9 +69,10 @@ const CalorieOptions = [
       };
     }
 
-    componentDidMount() {
-      this.getGoal();
-      this.getAll();
+    componentDidMount=async()=> {
+      await this.props.findToken();
+      await this.getGoal();
+      await this.getAll();
     }
 
     getGoal = async () => {

@@ -15,13 +15,13 @@ class Profile extends Component {
     };
   }
 
-  componentDidMount(){
-    this.findUser();
+  componentDidMount = async()=>{
+  await this.props.findToken();
+  await this.findUser();
   }
 
   findUser = async()=>{
     const myUser = await fetchUser(this.props.user);
-    console.log(myUser);
     this.setState({
       user: myUser
     });
