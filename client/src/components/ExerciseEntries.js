@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {fetchExercise} from '../service/track-fit'
 import {Card} from 'semantic-ui-react'
+import '../App.css'
 const moment = require('moment');
 
 class ExerciseEntries extends Component {
@@ -32,6 +33,13 @@ class ExerciseEntries extends Component {
     })
     return myCards;
   }
+  
+  handleChanges =(event)=>{
+    const element = event.target
+    const name = element.name
+    const value = element.value
+    this.setState({[name]: value})
+  }
 
   getAll = async()=>{
     const allExercise = await fetchExercise(this.props.user)
@@ -43,9 +51,17 @@ class ExerciseEntries extends Component {
 
   render() {
     return (
-      (this.state.getExercise)
-      ?this.showExercise()
-      :<h1>No Exercise Entries Exist</h1>
+      <div className="display-contain">
+        <div className="shade">
+          <div className="display-left">
+
+          </div>
+          <div className="display-right">
+
+          </div>
+
+        </div>
+      </div>
     );
   }
 }
