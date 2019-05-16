@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Route,Link} from 'react-router-dom';
-import {fetchUser,createGoal,fetchGoal} from '../service/track-fit.js';
+import {fetchUser,createGoal,fetchGoal,updateGoal} from '../service/track-fit.js';
 import {Image, Icon, Card, Item, Header, Button, Input,Form} from 'semantic-ui-react'
 import profilePic from '../images/profile1.jpg'
 import defaultProfile from '../images/default_pic.jpeg'
@@ -53,6 +53,14 @@ class Profile extends Component {
       this.getGoaldb();
   }
 
+  updatetheGoal = async()=>{
+      let updategoal = {
+        calBurned: Number.parseInt(this.state.FoodGoal),
+        calIntake: Number.parseInt(this.state.ExerciseGoal)
+      }
+      const newupdateGoal = await updateGoal(this.props.user, updategoal)
+      this.getGoaldb();
+  }
   // getProfilePhoto = async()=>{
   //   try{
   //     const response = await axios.get('https://randomuser.me/api/')
@@ -105,7 +113,7 @@ class Profile extends Component {
               (this.state.hasGoal)
                 ?
                   (
-                    <Form onSubmit={()=>this.updateGoal()}>
+                    <Form onSubmit={()=>this.updatetheGoal()}>
                       <Form.Field required>
                         <label>My Food Goal</label>
                         <input onChange={this.onUpdateChange} name="FoodGoal" placeholder='Calorie Limit' />

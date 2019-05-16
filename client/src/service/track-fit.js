@@ -33,6 +33,18 @@ export const createGoal = async(id, goal)=>{
   }
 }
 
+//update Goal
+export const updateGoal = async(id,updateGoal)=>{
+  try{
+    await api.put(`/update-goal/${id}`,updateGoal);
+  }
+  catch(e){
+    console.log(e)
+  }
+}
+
+
+
 //find the all food
 export const fetchFood = async(id)=>{
   try{
