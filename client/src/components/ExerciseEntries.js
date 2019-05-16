@@ -113,6 +113,16 @@ class ExerciseEntries extends Component {
     await createExercise(this.props.user,newExercise);
     window.location.reload();
   }
+  handleExercise=(value)=>{
+    this.setState({
+      exercise: value
+    })
+  }
+  handleCal=(value)=>{
+    this.setState({
+      calBurned: value
+    })
+  }
 
   render() {
     return (
@@ -144,10 +154,10 @@ class ExerciseEntries extends Component {
 
                     </Grid.Column>
                     <Grid.Column>
-                      <Form onSubmit={()=>this.addNewFood()}>
+                      <Form onSubmit={()=>this.addNewExercise()}>
                         <Form.Field required>
                           <label>Food Consumed</label>
-                          <Form.Select onChange={(e, {value}) => this.handleFood(value)} options={ExerciseOptions} name="exercise" placeholder='Select Food' />
+                          <Form.Select onChange={(e, {value}) => this.handleExercise(value)} options={ExerciseOptions} name="exercise" placeholder='Select Food' />
                         </Form.Field>
                         <Form.Field required>
                           <label>Calories</label>
