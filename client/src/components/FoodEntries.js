@@ -239,9 +239,9 @@ const CalorieOptions = [
                     <Statistic.Label>Calorie Limit</Statistic.Label>
                   </Statistic>)
                   : (<Statistic className ="stats">
-                    <Statistic.Label>You </Statistic.Label>
-                    <Statistic.Value>Haven't Set</Statistic.Value>
-                    <Statistic.Label>Any Goals</Statistic.Label>
+                    <Statistic.Label>-----</Statistic.Label>
+                    <Statistic.Value>Not Set</Statistic.Value>
+                    <Statistic.Label>-----</Statistic.Label>
                   </Statistic>)
               }
 
