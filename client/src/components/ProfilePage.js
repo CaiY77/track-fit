@@ -10,7 +10,7 @@ import '../App.css'
 class ProfilePage extends Component {
 
   render() {
-    const {user} = this.props;
+    const {user, userInfo} = this.props;
     return (
       <div>
 
@@ -22,7 +22,7 @@ class ProfilePage extends Component {
             <Link className="item item-style" to="/">Profile</Link>
             <Link className="item item-style" to="/food-entries">Food Entries</Link>
             <Link className="item item-style" to="/exercise-entries">Exercise Entries</Link>
-            <Button onClick={this.props.toggleLog} color='blue' className="item button-style" >Sign Out</Button>
+            <Link className="item item-style" to ='/'><Button onClick={this.props.toggleLog} color='blue'>Sign Out</Button></Link>
           </div>
 
         </nav>
@@ -30,6 +30,7 @@ class ProfilePage extends Component {
         <Route exact path='/'
           render={()=> <Profile
             user ={user}
+            userInfo = {userInfo}
                        />}
         />
         <Route path = '/food-entries'

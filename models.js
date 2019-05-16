@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize');
+const bcrypt = require('bcrypt')
 
 const db = new Sequelize({
     database: 'trackfit_db',
@@ -45,6 +46,12 @@ User.hasMany(Food, {
 Food.belongsTo(User);
 
 User.hasOne(Goal);
+
+
+User.beforeCreate(async (user, options) => {
+  const hashedPassword = await bcrypt.hash(user.password, 12)
+  user.password = hashedPassword
+})
 
 
 module.exports = {

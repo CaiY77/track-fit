@@ -3,6 +3,7 @@ import {Route,Link} from 'react-router-dom';
 import {fetchUser} from '../service/track-fit.js';
 import { Image, Icon, Card, Item, Header, Button} from 'semantic-ui-react'
 import profilePic from '../images/profile1.jpg'
+import defaultProfile from '../images/default_pic.jpeg'
 import './Profile.css'
 const axios = require('axios')
 
@@ -49,11 +50,11 @@ class Profile extends Component {
             <div id = "profilePic">
                 <img 
                  style={{width: "200px", height: "200px" }}
-                 src="https://randomuser.me/api/portraits/women/26.jpg"
+                 src={defaultProfile}
                  class="ui medium circular image"
                 />
                 
-                <button id="pencil" class="ui button"><Icon name = "pencil alternate"/>Edit</button>
+                <button id="pencil" class="ui button">Edit</button>
             </div>
         </div>
 
