@@ -1,102 +1,177 @@
 import React, { Component } from 'react';
-import {createUser} from '../service/track-fit'
+import { createUser } from '../service/track-fit'
+import { login, getProfile, signUp } from '../service/apiServices'
+import authService from '../service/authServices'
+import tokenService from '../service/tokenServices'
+import './LogInPage.css'
+import { Button, Checkbox, Form, Divider, Grid, Segment } from 'semantic-ui-react'
+
+import { Route, Link, Redirect } from 'react-router-dom'
 
 
 class LogInPage extends Component {
-  constructor(){
+  constructor() {
     super()
 
-    this.state={
+    this.state = {
       signin: false,
-      newUser:[]
+      user: {},
+      hasError: false
     }
+
   }
 
-  onSigninFormChange = (event)=>{
+  logErrorToMyService = async () => {
+       await this.setState({
+          hasError: true
+        })
+  }
+
+  // setting state of form change
+  onSigninFormChange = (event) => {
     const element = event.target
     const name = element.name
     const value = element.value
 
-    console.log(name);
-    this.setState({[name]: value})
+    this.setState({ [name]: value })
 
   }
 
+  // login user
+  loginUser = async (e) => {
+    e.preventDefault()
+    try {
+      let credentials = {
+        email: this.state.email,
+        password: this.state.password,
 
-  onSigninFormSubmit = async(event)=>{
-    event.preventDefault()
+      }
 
-    console.log(`Form submitted: `)
+      const user = await login(credentials)
+        this.props.setCurrentUserInfo(user);
+        this.setState({
+          isSignedIn: true,
+          user: user
+        })
+        this.props.toggleLog()
 
-    let userInfo = {
-      name: this.state.name,
-      email: this.state.email,
-      password: this.state.password
+
+    } catch (e) {
+      this.logErrorToMyService()
+      throw e
     }
-    const currentUser = await createUser(userInfo)
-    console.log(currentUser)
-    this.setState({
-      signin: true
-    })
+  }
+
+
+  // sign up user
+  signUpUser = async (e) => {
+    e.preventDefault()
+
+    try {
+      let credentials = {
+        name: this.state.name,
+        password: this.state.password,
+        email: this.state.email
+      }
+
+
+      const user = await signUp(credentials)
+      await this.props.setCurrentUserInfo(user);
+      this.setState({
+        isSignedIn: true,
+        user: user
+      })
+      this.props.toggleLog()
+    } catch (e) {
+      throw e
+    }
   }
 
 
   render() {
-    console.log(this.props.login);
-
-    // if(this.state.login === true){
-    //   return <Redirect to="/user" />
-    // }
+    const { isSignedIn, user, hasError } = this.state
+    const errorMessage = hasError
+      ? <p className="warning"> Please enter a valid email & password </p>
+      : null
 
     return (
-      <div>
-        <div>
-          <p>Login</p>
-          <form onSubmit={this.onLoginFormSubmit}>
-            <input
-              id="email"
-              type="text"
-              name="email"
-              onChange={this.onLoginEmailChange}
-            placeholder= "email address"/>
-            <input
-              id="password"
-              type="text"
-              name="password"
-              onChange={this.onLoginPasswordChange}
-            placeholder="enter your password"/>
-            <button type="submit">
-              Submit
-            </button>
-          </form>
-        </div>
-        <div>
-          <p>SignUp</p>
-          <form onSubmit={this.onSigninFormSubmit}>
-            <input
-              id="name"
-              type="text"
-              name="name"
-              onChange={this.onSigninFormChange}
-            placeholder="name"/>
-            <input
-              id="email"
-              type="text"
-              name="email"
-              onChange={this.onSigninFormChange}
-            placeholder= "email address"/>
-            <input
-              id="password"
-              type="text"
-              name="password"
-              onChange={this.onSigninFormChange}
-            placeholder="enter your password"/>
-            <button type="submit">
-              Submit
-            </button>
-          </form>
+      <div className="profile-page">
+        <div className="log-in-pic"></div>
+        <div className="center-me">
+          <Segment className="col-shade">
+
+            <Grid columns={2} className="grid" relaxed='very'>
+              <Grid.Column>
+                <Form onSubmit={this.loginUser} className="form-one">
+                  <Form.Field required>
+                    <h2>Login</h2>
+                    <input
+                      id="email"
+                      type="email"
+                      name="email"
+                      onChange={this.onSigninFormChange}
+                      placeholder="Email"
+                    />
+
+                    <input
+                      id="password"
+                      type="password"
+                      name="password"
+                      onChange={this.onSigninFormChange}
+                    placeholder="Password" />
+                  </Form.Field>
+
+                  {errorMessage}
+                  <div className="log-in-but">
+
+                    <Button color='blue' inverted type='submit'>Log In</Button>
+                  </div>
+
+                </Form>
+
+              </Grid.Column>
+              <Grid.Column>
+
+
+                <Form onSubmit={this.signUpUser}>
+                  <Form.Field required>
+                    <h2>SignUp</h2>
+                    <input
+                      id="name"
+                      type="text"
+                      name="name"
+                      onChange={this.onSigninFormChange}
+                      placeholder="Full Name"
+                    />
+                    <input
+                      id="email"
+                      type="email"
+                      name="email"
+                      onChange={this.onSigninFormChange}
+                      placeholder="Email"
+                    />
+                    <input
+                      id="password"
+                      type="password"
+                      name="password"
+                      onChange={this.onSigninFormChange}
+                      placeholder="Password"
+                    />
+                  </Form.Field>
+
+                  <Checkbox className="sign-up" label='I agree to never use this app' />
+                  <br/>
+                  <Button color='blue' inverted type='submit'>Sign Up</Button>
+
+                </Form>
+              </Grid.Column>
+            </Grid>
+            <Divider vertical>OR</Divider>
+
+          </Segment>
         </div>
       </div>
+
     );
   }
 

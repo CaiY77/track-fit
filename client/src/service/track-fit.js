@@ -22,20 +22,28 @@ export const fetchGoal = async(id)=>{
     console.log(e)
   }
 }
-
-// create new user
-export const createUser = async(newUser)=>{
-   try{
-      const res = await api.post('/create', newUser)
-      console.log(`axios response ${res}`);
-
-      // return res.data;
-
-   }
-   catch(e){
-     console.log(e)
-   }
+//create Goal
+export const createGoal = async(id, goal)=>{
+  try{
+    const resp = await api.post(`/${id}/create-goal`, goal)
+    return resp.data;
+  }
+  catch(e){
+    console.log(e)
+  }
 }
+
+//update Goal
+export const updateGoal = async(id,updateGoal)=>{
+  try{
+    await api.put(`/update-goal/${id}`,updateGoal);
+  }
+  catch(e){
+    console.log(e)
+  }
+}
+
+
 
 //find the all food
 export const fetchFood = async(id)=>{
@@ -48,9 +56,6 @@ export const fetchFood = async(id)=>{
     console.log(e)
   }
 }
-
-
-
 
 
 // create a food
@@ -87,18 +92,7 @@ export const deleteFood = async (user,food)=>{
   catch(e){
     console.log(e)
   }
-  finally{
-    process.exit();
-  }
 }
-
-// hardcode new excersise
-const newExercise = {
-  exercise: `walking`,
-  calBurned: 5,
-  date: '2019-05-05'
-}
-
 
 //find all exercise
 export const fetchExercise = async(id)=>{
@@ -114,9 +108,10 @@ export const fetchExercise = async(id)=>{
 
 
 // create excersise
-export const createExercise = async () => {
+export const createExercise = async (user,newExercise) => {
   try {
-    const res = await api.post(`/1/create-exercise`, newExercise)
+    const res = await api.post(`/${user}/create-exercise`, newExercise)
+    console.log(res)
     return res.data;
 
   } catch (e) {
@@ -140,12 +135,11 @@ export const updateExercise = async()=>{
 }
 
 
-
 //delete a exercise
-export const deleteExercise = async ()=>{
+export const deleteExercise = async (user,exercise)=>{
   try{
-    const res = await api.delete(`/1/exercise-entry/1`)
-    return res.data;
+    const res = await api.delete(`/${user}/exercise-entry/${exercise}`)
+    // return res.data;/
   }
   catch(e){
     console.log(e)

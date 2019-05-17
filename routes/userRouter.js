@@ -2,8 +2,10 @@ const express = require('express');
 const userRouter = express.Router();
 const {User,Food,Exercise,Goal} = require('../models');
 const bodyParser = require('body-parser');
+const authRouter = require('./authRouter')
 
 userRouter.use(bodyParser.json());
+userRouter.use('/auth', authRouter);
 
 // get single user
 userRouter.get('/:id',async(req,res)=>{
@@ -15,18 +17,6 @@ userRouter.get('/:id',async(req,res)=>{
         console.log(`Something went wrong: ${e}`)
     }
 })
-
-// make new user
-userRouter.post('/create', async(req,res)=>{
-    try{
-        const newUser = await User.create(req.body);
-        res.send(newUser)
-    }
-    catch(e){
-        console.log('Something went wrong: ${e}')
-    }
-})
-
 
 //find all food
 userRouter.get('/:id/food', async(req,res)=>{
@@ -81,6 +71,7 @@ userRouter.delete('/:id/food-entry/:food_id', async (req, res) => {
         id: req.params.food_id
       }
     })
+    res.send('msg: deleted');
   } catch (e) {
     console.log(e)
   }
@@ -116,6 +107,36 @@ userRouter.post('/:id/create-exercise', async(req, res) => {
   }
 })
 
+//create Goal
+userRouter.post('/:id/create-goal',async(req,res)=>{
+  try{
+    const newGoal = await Goal.create(req.body);
+    const who = await User.findByPk(req.params.id);
+    await who.setGoal(newGoal);
+    res.json(newGoal)
+  }
+  catch(e){
+    console.log(e)
+  }
+})
+
+//update Goal
+userRouter.put('/update-goal/:user_id',async(req,res)=>{
+    try{
+      await Goal.update(
+        req.body,{
+          where:{
+            user_id: req.params.user_id
+          }
+        }
+      )
+      res.json({'msg':'updated'});
+    }
+    catch(e){
+      console.log(e)
+    }
+})
+
 // update exercise
 userRouter.put('/update-exercise/:ex_id', async (req, res) => {
   try {
@@ -140,6 +161,7 @@ userRouter.delete('/:id/exercise-entry/:exercise_id', async (req, res) => {
         id: req.params.exercise_id
       }
     })
+    res.send('msg: deleted');
   } catch (e) {
     console.log(e)
   }
@@ -153,7 +175,10 @@ userRouter.get('/:id/goal',async(req,res)=>{
         user_id: req.params.id
       }
     })
-    res.send(goal);
+  await (goal)
+    ?res.send(goal)
+    :res.json({'msg' : 'No Goals Set'})
+
   } catch (e) {
     console.log(e)
   }
