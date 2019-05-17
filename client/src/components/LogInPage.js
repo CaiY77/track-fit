@@ -27,7 +27,7 @@ class LogInPage extends Component {
         })
   }
 
-  // setting state of form change 
+  // setting state of form change
   onSigninFormChange = (event) => {
     const element = event.target
     const name = element.name
@@ -107,23 +107,24 @@ class LogInPage extends Component {
                     <h2>Login</h2>
                     <input
                       id="email"
-                      type="text"
+                      type="email"
                       name="email"
                       onChange={this.onSigninFormChange}
-                      placeholder="email" />
-                  
+                      placeholder="Email"
+                    />
+
                     <input
                       id="password"
                       type="password"
                       name="password"
                       onChange={this.onSigninFormChange}
-                      placeholder="enter your password" />
+                    placeholder="Password" />
                   </Form.Field>
 
                   {errorMessage}
                   <div className="log-in-but">
 
-                    <Button color='blue' inverted type='submit'>Submit</Button>
+                    <Button color='blue' inverted type='submit'>Log In</Button>
                   </div>
 
                 </Form>
@@ -140,24 +141,27 @@ class LogInPage extends Component {
                       type="text"
                       name="name"
                       onChange={this.onSigninFormChange}
-                      placeholder="name" />
+                      placeholder="Full Name"
+                    />
                     <input
                       id="email"
-                      type="text"
+                      type="email"
                       name="email"
                       onChange={this.onSigninFormChange}
-                      placeholder="email address" />
+                      placeholder="Email"
+                    />
                     <input
                       id="password"
                       type="password"
                       name="password"
                       onChange={this.onSigninFormChange}
-                      placeholder="enter your password" />
+                      placeholder="Password"
+                    />
                   </Form.Field>
 
-                  <Checkbox label='I agree to never use this app' />
-
-                  <Button color='blue' inverted type='submit'>Submit</Button>
+                  <Checkbox className="sign-up" label='I agree to never use this app' />
+                  <br/>
+                  <Button color='blue' inverted type='submit'>Sign Up</Button>
 
                 </Form>
               </Grid.Column>

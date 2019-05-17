@@ -100,21 +100,21 @@ class Profile extends Component {
           />
 
 
-          <input 
-              ref={fileInput => this.fileInput = fileInput} 
-              style={{ display: 'none' }} type="file" 
-              onChange={event => this.handleImageChange(event)} />
+          <input
+            ref={fileInput => this.fileInput = fileInput}
+            style={{ display: 'none' }} type="file"
+            onChange={event => this.handleImageChange(event)} />
 
-          <div 
-              id="pencil"
-              onClick={() => this.fileInput.click()} 
-              className="ui button" 
-              tabIndex="0"
-              >Edit
-              <Icon id = "pencilAlt" name="pencil alternate"></Icon>
+          <div
+            id="pencil"
+            onClick={() => this.fileInput.click()}
+            className="ui button"
+            tabIndex="0"
+          >Edit
+            <Icon id = "pencilAlt" name="pencil alternate"></Icon>
           </div>
 
-      
+
         </div>
       </div>
 
@@ -143,11 +143,11 @@ class Profile extends Component {
                     <Form onSubmit={()=>this.updatetheGoal()}>
                       <Form.Field required>
                         <label>My Exercise Goal</label>
-                        <input onChange={this.onUpdateChange} name="FoodGoal" placeholder='Calorie Limit' />
+                        <input type="number" onChange={this.onUpdateChange} name="FoodGoal" placeholder='Calorie Limit' />
                       </Form.Field>
                       <Form.Field required>
                         <label>My Food Goal</label>
-                        <input onChange={this.onUpdateChange} name="ExerciseGoal" placeholder='Exercise Goal' />
+                        <input type="number" onChange={this.onUpdateChange} name="ExerciseGoal" placeholder='Exercise Goal' />
                       </Form.Field>
                       <Button color="orange" type='submit'>Update Goal</Button>
                     </Form>
@@ -157,11 +157,11 @@ class Profile extends Component {
                   <Form onSubmit={()=>this.getGoal()}>
                     <Form.Field required>
                       <label>My Food Goal</label>
-                      <input onChange={this.onUpdateChange} name="FoodGoal" placeholder='Calorie Limit' />
+                      <input type="number" onChange={this.onUpdateChange} name="FoodGoal" placeholder='Calorie Limit' />
                     </Form.Field>
                     <Form.Field required>
                       <label>My Exercise Goal</label>
-                      <input onChange={this.onUpdateChange} name="ExerciseGoal" placeholder='Exercise Goal' />
+                      <input type="number" onChange={this.onUpdateChange} name="ExerciseGoal" placeholder='Exercise Goal' />
                     </Form.Field>
                     <Button color="orange" type='submit'>Create Goal</Button>
                   </Form>
