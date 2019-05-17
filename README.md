@@ -96,3 +96,21 @@ Track-Fit is a full-stack React application that uses JSX/JS/ES6, HTML, CSS, Seq
 ## Database Table Model
 
 <img width="749" alt="Screen Shot 2019-05-16 at 11 00 06 PM" src="https://user-images.githubusercontent.com/33525692/57900327-659b0e00-782e-11e9-860d-fee82b245029.png">
+
+## Screen Shots
+
+### Log In | Sign Up Page
+
+<img width="1440" alt="Screen Shot 2019-05-16 at 11 11 25 PM" src="https://user-images.githubusercontent.com/33525692/57900755-2968ad00-7830-11e9-96ea-67607710a883.png">
+
+### Profile Page
+
+<img width="1440" alt="Screen Shot 2019-05-16 at 11 11 45 PM" src="https://user-images.githubusercontent.com/33525692/57900757-2a99da00-7830-11e9-98aa-322b629aef21.png">
+
+### Food Entries Page
+
+<img width="1440" alt="Screen Shot 2019-05-16 at 11 12 09 PM" src="https://user-images.githubusercontent.com/33525692/57900760-2bcb0700-7830-11e9-91a7-5d15c13644cc.png">
+
+### Exercise Entries Page
+
+<img width="1440" alt="Screen Shot 2019-05-16 at 11 12 23 PM" src="https://user-images.githubusercontent.com/33525692/57900767-308fbb00-7830-11e9-8dfd-2ec43ae4ef04.png">
