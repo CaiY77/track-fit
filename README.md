@@ -34,7 +34,8 @@ Are we storing users in local storage or do we want to push the users details in
 
 ## Wireframes
 
-<img width="852" alt="wireframe" src="https://user-images.githubusercontent.com/29616227/57585371-38a8cd00-74b5-11e9-9e4f-2f3e6804421d.JPG">
+<img width="852" alt="wireframe" src="https://user-images.githubusercontent.com/29616227/57899302-819cb080-782a-11e9-9ff3-6d30d217173f.JPG"
+>
 
 
 
