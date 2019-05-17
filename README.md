@@ -1,66 +1,98 @@
 <img width="852" alt="Screen Shot 2019-05-11 at 8 07 53 PM" src="https://media.git.generalassemb.ly/user/19642/files/08852b00-7596-11e9-86a2-02210ed9edf2">
 
 ## Track Fit
-Welcome to Track Fitness!
+Welcome to Track Fitness! This app was built with the idea to optimize efficiency in journaling workout entries and calorie counting. Sometimes, simpler is better and this app gets the job done. With a sign up and log in feature, the app can keep track of unique user entries and store their information in our database. Track fit allows users to set and update their own goals. This means that removing and adding entries can help keep track of how far or close you are to the set goal. Tracking your exercise is all the rage these days so we decided to take a stab at creating our own fitness app!
 
 
 ### Contributors
 
-[Ming Jing Tang]()
-[Kahil Nayton]()
+[Ming Jing Tang](https://github.com/mingjingtang)
+
+[Kahil Nayton](https://github.com/kahilnayton)
+
+## React
+
+Track-Fit is a full-stack React application that uses JSX/JS/ES6, HTML, CSS, Sequelize, PostgreSQL and Express. This application also takes advantage of some external libraries such as:
+
+* Axios
+* React-Router-Dom
+* Semantic-UI-React
+* React-Circular-Progressbar
+* Passport | Passport-Local | Passport-JWT
+* JsonWebToken | JWT-Decode | Bcrypt
+* Nodemon
+* morgan
+* Body-Parser
 
 
+## Minimum Viable Product
 
+* Render and Store a single user only
+* Have the ability to add/delete different exercise/food to their personal log.
+* Track their progress with respect to their set goal.
 
-## MVP
-Populate database with list of exercises and the parts of the body they target.
-Set up user authentication so that you have to sign up in order to use the app.
-The user can scroll down the list and add each workout. Then they can proceed by clicking the next button and it will store this information in the users profile.
+## Additional features
 
-This database will need to contain the entries, time, date, description, user id, ex_name, cal_burned ect
+* User Authentication
+* Log In | Sign Up feature with gives access to multiple users
+* Make use of local storage to prevent user information to disappear on reset.
 
+## Sneak Peak
 
-## Dependencies
+```JSX
+<Modal trigger={<Button color="green" size="huge" className ="add-button">Add Food Entry</Button>}>
+  <h1 className="modal-style">Add To Your Food Log</h1>
+  <Segment>
+    <Grid columns={2} relaxed='very'>
+      <Grid.Column>
 
-Axios
-React-router
-Semantic UI
-Sass
-PostgreSQL to push data into the db
+        <Form onSubmit={()=>this.addNewFood()}>
+          <Form.Field required>
+            <label>Food Consumed</label>
+            <input onChange={this.handleChanges} name="food" placeholder='Today, I had some ...' />
+          </Form.Field>
+          <Form.Field required>
+            <label>Calories</label>
+            <input onChange={this.handleChanges} name="calGained" placeholder='Enter Calories' />
+          </Form.Field>
+          <Form.Field required>
+            <label>Date</label>
+            <input onChange={this.handleChanges} type="datetime-local" name="date" />
+          </Form.Field>
+          <Button inverted color="green" type='submit'>Submit</Button>
+        </Form>
 
+      </Grid.Column>
+      <Grid.Column>
+        <Form onSubmit={()=>this.addNewFood()}>
+          <Form.Field required>
+            <label>Food Consumed</label>
+            <Form.Select onChange={(e, {value}) => this.handleFood(value)} options={FoodOptions} name="food" placeholder='Select Food' />
+          </Form.Field>
+          <Form.Field required>
+            <label>Calories</label>
+            <Form.Select onChange={(e, {value}) => this.handleCal(value)} options={CalorieOptions} name="calGained" placeholder='Select Calories' />
+          </Form.Field>
+          <Form.Field required>
+            <label>Date</label>
+            <input onChange={this.handleChanges} type="datetime-local" name="date" />
+          </Form.Field>
+          <Button inverted color="green" type='submit'>Submit</Button>
+        </Form>
+      </Grid.Column>
+    </Grid>
+    <Divider vertical>OR</Divider>
+  </Segment>
 
-## Backend
-Are we storing users in local storage or do we want to push the users details into a database in which case we may need multiple cases for this process.
+</Modal>
+```
 
-## Wireframes
+## Wireframes and Ideas
 
-<img width="852" alt="wireframe" src="https://user-images.githubusercontent.com/29616227/57899302-819cb080-782a-11e9-9ff3-6d30d217173f.JPG"
->
+<img width="852" alt="wireframe" src="https://user-images.githubusercontent.com/29616227/57899302-819cb080-782a-11e9-9ff3-6d30d217173f.JPG">
 
+<img width="635" alt="Screen Shot 2019-05-13 at 11 31 43 AM" src="https://user-images.githubusercontent.com/33525692/57900045-59fb1780-782d-11e9-93ea-c30f8909901d.png">
 
+## Database Table Model
 
-
-## Motivation
-Tracking your exercise is all the rage these days so we decided to take a stab at creating our own fitness app! Track Fit is a personalised application that allows users to log a large variety of exercises tailored to their specific needs.
-
-## Build status
-We plan on using atom and teletype during group hacks and any code editor / git for when we’re apart.  
-
-## Code style
-es6
-
-## Tech/framework used
-Built with react front end and express/ sequelize backend
-Authentication with Bcrypt & passport
-Features
-Profile page that allows you to personalise and upload a profile picture. A calendar detailing all your workouts and what muscle groups you worked on.
-
-## Code Example
-
-
-## API Reference
-Even though we are building our own backend, we could use this api as a reference for how to structure our tables.
-https://wger.de/en/software/api
-
-### How to use
-Simply log in and create an account. Select the type of workout you did or plan to do and the duration and this information is saved on your profile.
+<img width="749" alt="Screen Shot 2019-05-16 at 11 00 06 PM" src="https://user-images.githubusercontent.com/33525692/57900327-659b0e00-782e-11e9-860d-fee82b245029.png">
