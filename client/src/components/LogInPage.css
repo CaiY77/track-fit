@@ -42,14 +42,12 @@
 }
 
 .log-in-but {
-    padding-top: 4.5vw;
-}
-@media (max-width: 375px) {
-.log-in-pic{
-  background-size:contain;
-}
+    padding-top: 9vh;
 }
 
 .warning {
     color: red;
+}
+.sign-up{
+  margin-bottom: 2vh;
 }
