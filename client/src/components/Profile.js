@@ -105,14 +105,7 @@ class Profile extends Component {
             style={{ display: 'none' }} type="file"
             onChange={event => this.handleImageChange(event)} />
 
-          <div
-            id="pencil"
-            onClick={() => this.fileInput.click()}
-            className="ui button"
-            tabIndex="0"
-          >Edit
-            <Icon id = "pencilAlt" name="pencil alternate"></Icon>
-          </div>
+          <Button id="pencil" onClick={() => this.fileInput.click()}><Icon name="pencil alternate"></Icon>EDIT</Button>
 
 
         </div>
@@ -121,15 +114,15 @@ class Profile extends Component {
       <div id="content">
         <div id = "personalInfo" className="ui link card">
           <div class="content">
-            <div class="header">{this.state.user.name}</div>
+            <div class="header">Hello, {this.state.user.name}</div>
             <div id="emailAddress" class="meta">{this.state.user.email}</div>
             <div id="quotes" class="description">
-              <p>
-                <span>Today's quotes:</span>
-                <span>
-                  Fitness is not about being better than someone else, it’s about being better than you used to be.
-                </span>
-              </p>
+
+              <h1>Quote of the Day</h1>
+              <h3>
+                "Fitness is not about being better than someone else, it’s about being better than you used to be." - Someone Important
+              </h3>
+
             </div>
           </div>
         </div>
