@@ -120,6 +120,23 @@ userRouter.post('/:id/create-goal',async(req,res)=>{
   }
 })
 
+//update Goal
+userRouter.put('/update-goal/:user_id',async(req,res)=>{
+    try{
+      await Goal.update(
+        req.body,{
+          where:{
+            user_id: req.params.user_id
+          }
+        }
+      )
+      res.json({'msg':'updated'});
+    }
+    catch(e){
+      console.log(e)
+    }
+})
+
 // update exercise
 userRouter.put('/update-exercise/:ex_id', async (req, res) => {
   try {
