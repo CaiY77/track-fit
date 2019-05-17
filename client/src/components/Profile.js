@@ -12,7 +12,11 @@ class Profile extends Component {
     super(props);
     this.state = {
       hasGoal: null,
-      user:[]
+      user:[],
+
+      file: null,
+      picture: defaultProfile,
+      preview: true
     };
   }
 
@@ -61,15 +65,23 @@ class Profile extends Component {
       const newupdateGoal = await updateGoal(this.props.user, updategoal)
       this.getGoaldb();
   }
-  // getProfilePhoto = async()=>{
-  //   try{
-  //     const response = await axios.get('https://randomuser.me/api/')
-  //     console.log(response.data.results[0].picture.large);
-  //   }
-  //   catch(e){
-  //     console.log(e)
-  //   }
-  // }
+
+  handleImageChange(event) {
+    event.preventDefault();
+
+    let reader = new FileReader();
+    let file = event.target.files[0];
+    console.log(file)
+
+    reader.onloadend = () => {
+        this.setState({
+            file: file,
+            picture: reader.result,
+            preview: true
+        });
+    }
+    reader.readAsDataURL(file)
+  }
 
   render() {
     return (
@@ -80,14 +92,29 @@ class Profile extends Component {
         </div>
         <div id = "profilePic">
           <img
+            onChange={this.handleImageChange}
             style={{width: "200px", height: "200px" }}
-            src={defaultProfile}
+            // src={defaultProfile}
+            src={this.state.picture}
             class="ui medium circular image"
           />
 
-          <button id="pencil" className="ui button">
-            Edit
-            <Icon id = "pencilAlt" name="pencil alternate"></Icon></button>
+
+          <input 
+              ref={fileInput => this.fileInput = fileInput} 
+              style={{ display: 'none' }} type="file" 
+              onChange={event => this.handleImageChange(event)} />
+
+          <div 
+              id="pencil"
+              onClick={() => this.fileInput.click()} 
+              className="ui button" 
+              tabIndex="0"
+              >Edit
+              <Icon id = "pencilAlt" name="pencil alternate"></Icon>
+          </div>
+
+      
         </div>
       </div>
 
@@ -115,11 +142,11 @@ class Profile extends Component {
                   (
                     <Form onSubmit={()=>this.updatetheGoal()}>
                       <Form.Field required>
-                        <label>My Food Goal</label>
+                        <label>My Exercise Goal</label>
                         <input onChange={this.onUpdateChange} name="FoodGoal" placeholder='Calorie Limit' />
                       </Form.Field>
                       <Form.Field required>
-                        <label>My Exercise Goal</label>
+                        <label>My Food Goal</label>
                         <input onChange={this.onUpdateChange} name="ExerciseGoal" placeholder='Exercise Goal' />
                       </Form.Field>
                       <Button color="orange" type='submit'>Update Goal</Button>
