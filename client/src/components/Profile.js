@@ -143,11 +143,11 @@ class Profile extends Component {
                     <Form onSubmit={()=>this.updatetheGoal()}>
                       <Form.Field required>
                         <label>My Exercise Goal</label>
-                        <input type="number" onChange={this.onUpdateChange} name="FoodGoal" placeholder='Calorie Limit' />
+                        <input type="number" onChange={this.onUpdateChange} name="FoodGoal" placeholder='Calorie to Burn' />
                       </Form.Field>
                       <Form.Field required>
                         <label>My Food Goal</label>
-                        <input type="number" onChange={this.onUpdateChange} name="ExerciseGoal" placeholder='Exercise Goal' />
+                        <input type="number" onChange={this.onUpdateChange} name="ExerciseGoal" placeholder='Max Calorie Intake' />
                       </Form.Field>
                       <Button color="orange" type='submit'>Update Goal</Button>
                     </Form>
@@ -157,11 +157,11 @@ class Profile extends Component {
                   <Form onSubmit={()=>this.getGoal()}>
                     <Form.Field required>
                       <label>My Food Goal</label>
-                      <input type="number" onChange={this.onUpdateChange} name="FoodGoal" placeholder='Calorie Limit' />
+                      <input type="number" onChange={this.onUpdateChange} name="FoodGoal" placeholder='Max Calorie Intake' />
                     </Form.Field>
                     <Form.Field required>
                       <label>My Exercise Goal</label>
-                      <input type="number" onChange={this.onUpdateChange} name="ExerciseGoal" placeholder='Exercise Goal' />
+                      <input type="number" onChange={this.onUpdateChange} name="ExerciseGoal" placeholder='Calorie to Burn' />
                     </Form.Field>
                     <Button color="orange" type='submit'>Create Goal</Button>
                   </Form>
