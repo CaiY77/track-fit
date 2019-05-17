@@ -14,7 +14,6 @@ const api = axios.create({
 export const login = async(data) => {
     try {
         const resp = await api.post('/auth/login', data)
-        console.log(data, 'hello')
         const { data: { token, user } } = resp
     tokenService.storeToken(token)
     return user
@@ -39,7 +38,6 @@ export const getProfile = async() => {
   try {
     const resp = await api.get('/app/profile')
     const { data: { user } } = resp
-
     return user
   } catch (e) {
     throw e

@@ -15,11 +15,17 @@ class LogInPage extends Component {
 
     this.state = {
       signin: false,
-      user: {}
+      user: {},
+      hasError: false
     }
 
   }
 
+  logErrorToMyService = async () => {
+       await this.setState({
+          hasError: true
+        })
+  }
 
   // setting state of form change 
   onSigninFormChange = (event) => {
@@ -27,7 +33,6 @@ class LogInPage extends Component {
     const name = element.name
     const value = element.value
 
-    console.log(name);
     this.setState({ [name]: value })
 
   }
@@ -41,19 +46,18 @@ class LogInPage extends Component {
         password: this.state.password,
 
       }
-      console.log(credentials)
 
       const user = await login(credentials)
-      console.log(user, 'sign in')
-      //tokenService.storeToken(user.token)
-      this.props.setCurrentUserInfo(user);
-      this.setState({
-        isSignedIn: true,
-        user: user
-      })
-      console.log(user)
-      this.props.toggleLog()
+        this.props.setCurrentUserInfo(user);
+        this.setState({
+          isSignedIn: true,
+          user: user
+        })
+        this.props.toggleLog()
+
+
     } catch (e) {
+      this.logErrorToMyService()
       throw e
     }
   }
@@ -69,10 +73,9 @@ class LogInPage extends Component {
         password: this.state.password,
         email: this.state.email
       }
-      console.log(credentials)
+
 
       const user = await signUp(credentials)
-      console.log(user, 'sign up')
       await this.props.setCurrentUserInfo(user);
       this.setState({
         isSignedIn: true,
@@ -86,8 +89,10 @@ class LogInPage extends Component {
 
 
   render() {
-    const { isSignedIn, user } = this.state
-
+    const { isSignedIn, user, hasError } = this.state
+    const errorMessage = hasError
+      ? <p className="warning"> Please enter a valid email & password </p>
+      : null
 
     return (
       <div className="profile-page">
@@ -106,26 +111,25 @@ class LogInPage extends Component {
                       name="email"
                       onChange={this.onSigninFormChange}
                       placeholder="email" />
-                    {/* </Form.Field>
-              <Form.Field required> */}
+                  
                     <input
                       id="password"
-                      type="text"
+                      type="password"
                       name="password"
                       onChange={this.onSigninFormChange}
                       placeholder="enter your password" />
                   </Form.Field>
+
+                  {errorMessage}
                   <div className="log-in-but">
-                  <Button color='blue' inverted type='submit'>Submit</Button>
+
+                    <Button color='blue' inverted type='submit'>Submit</Button>
                   </div>
 
                 </Form>
 
               </Grid.Column>
               <Grid.Column>
-
-
-
 
 
                 <Form onSubmit={this.signUpUser}>
@@ -145,16 +149,16 @@ class LogInPage extends Component {
                       placeholder="email address" />
                     <input
                       id="password"
-                      type="text"
+                      type="password"
                       name="password"
                       onChange={this.onSigninFormChange}
                       placeholder="enter your password" />
                   </Form.Field>
 
                   <Checkbox label='I agree to never use this app' />
-                 
+
                   <Button color='blue' inverted type='submit'>Submit</Button>
-                
+
                 </Form>
               </Grid.Column>
             </Grid>

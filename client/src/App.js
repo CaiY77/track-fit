@@ -19,14 +19,7 @@ class App extends Component {
 
   }
 
-  // does the trick, but it doesn't assign the id of the user to the food
-  // it also can't add the food
 
-  // try decoding the jwt and setting user id to state.
-  // component did mount just check if there's a token or not.
-
-
-  // add all this stuff to a function
 
   componentDidMount = async () => {
     document.title = 'Track My Fitness'
@@ -41,11 +34,9 @@ class App extends Component {
   }
 
   findToken = async()=>{
-    console.log('gettoken')
     let token = await tokenService.fetchToken()
     if (token) {
       const data = decode(token)
-      console.log(data)
       await this.setCurrentUserInfo(data)
       this.setState({
         userID: data.id

@@ -2,7 +2,6 @@ import tokenService from './tokenServices'
 
 const authService = {
   isAuthenticated: () => {
-    // check if token exists in localStorage
     const token = tokenService.fetchToken('token')
     if (!token) {
       return false
@@ -12,7 +11,6 @@ const authService = {
   },
 
   signOut: () => {
-    // clear token from localStorage
     tokenService.clearToken()
   }
 }
