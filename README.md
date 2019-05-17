@@ -87,6 +87,12 @@ Track-Fit is a full-stack React application that uses JSX/JS/ES6, HTML, CSS, Seq
 </Modal>
 ```
 
-## Wireframes
+## Wireframes and Ideas
 
-<img width="852" alt="wireframe" src="https://user-images.githubusercontent.com/29616227/57585371-38a8cd00-74b5-11e9-9e4f-2f3e6804421d.JPG">
+<img width="852" alt="wireframe" src="https://user-images.githubusercontent.com/29616227/57899302-819cb080-782a-11e9-9ff3-6d30d217173f.JPG">
+
+<img width="635" alt="Screen Shot 2019-05-13 at 11 31 43 AM" src="https://user-images.githubusercontent.com/33525692/57900045-59fb1780-782d-11e9-93ea-c30f8909901d.png">
+
+## Database Table Model
+
+<img width="749" alt="Screen Shot 2019-05-16 at 11 00 06 PM" src="https://user-images.githubusercontent.com/33525692/57900327-659b0e00-782e-11e9-860d-fee82b245029.png">
