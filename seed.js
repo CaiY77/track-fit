@@ -55,6 +55,11 @@ async function main() {
     calGained: 500,
     date: '2019-03-26'
   })
+  const foodEntries6 = await Food.create({
+    food: 'salmon',
+    calGained: 400,
+    date: '2019-03-26'
+  })
 
   const exerciseEntries = await Exercise.create({
     exercise: 'push-ups',
@@ -86,6 +91,12 @@ async function main() {
     date: '2019-05-15'
 
   })
+  const exerciseEntries6 = await Exercise.create({
+    exercise: 'walking',
+    calBurned: 40,
+    date: '2019-04-15'
+
+  })
 
   // const fE = await Food.findByPk(foodEntries.id)
 
@@ -95,11 +106,13 @@ async function main() {
   await foodEntries3.setUser(user1);
   await foodEntries4.setUser(user1);
   await foodEntries5.setUser(user1);
+  await foodEntries6.setUser(user1);
   await exerciseEntries.setUser(user1)
   await exerciseEntries2.setUser(user1)
   await exerciseEntries3.setUser(user1)
   await exerciseEntries4.setUser(user1)
   await exerciseEntries5.setUser(user1)
+  await exerciseEntries6.setUser(user1)
 
 
 
