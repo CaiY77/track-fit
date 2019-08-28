@@ -5,7 +5,7 @@ import FoodEntries from './FoodEntries'
 import ExerciseEntries from './ExerciseEntries'
 import {Button} from 'semantic-ui-react'
 import logo from '../images/track-fit-TF.jpg'
-import '../App.css'
+import '../sass/main.scss'
 
 class ProfilePage extends Component {
 

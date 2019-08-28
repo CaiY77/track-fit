@@ -15,8 +15,15 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "liveserver": "live-server",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "watch": "node-sass sass/main.scss css/style.css -w",
+    "compile": "node-sass sass/main.scss css/style.css",
+    "prefix": "postcss css/style.css --use autoprefixer -o css/style.css",
+    "compress": "node-sass css/style.css css/style.css --output-style compressed",
+    "build-sass": "npm-run-all compile prefix compress"
+    
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -32,5 +39,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "node-sass": "^4.12.0"
   }
 }

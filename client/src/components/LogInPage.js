@@ -16,15 +16,27 @@ class LogInPage extends Component {
     this.state = {
       signin: false,
       user: {},
-      hasError: false
+      hasError: false,
+      width: window.innerWidth,
     }
-
   }
 
+  componentWillMount() {
+    window.addEventListener('resize', this.handleWindowSizeChange);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleWindowSizeChange);
+  }
+
+  handleWindowSizeChange = () => {
+    this.setState({ width: window.innerWidth });
+  };
+
   logErrorToMyService = async () => {
-       await this.setState({
-          hasError: true
-        })
+    await this.setState({
+      hasError: true
+    })
   }
 
   // setting state of form change
@@ -48,12 +60,12 @@ class LogInPage extends Component {
       }
 
       const user = await login(credentials)
-        this.props.setCurrentUserInfo(user);
-        this.setState({
-          isSignedIn: true,
-          user: user
-        })
-        this.props.toggleLog()
+      this.props.setCurrentUserInfo(user);
+      this.setState({
+        isSignedIn: true,
+        user: user
+      })
+      this.props.toggleLog()
 
 
     } catch (e) {
@@ -90,91 +102,152 @@ class LogInPage extends Component {
 
   render() {
     const { isSignedIn, user, hasError } = this.state
+
     const errorMessage = hasError
       ? <p className="warning"> Please enter a valid email & password </p>
       : null
+      const { width } = this.state;
+      const isMobile = width <= 500;
 
-    return (
-      <div className="profile-page">
-        <div className="log-in-pic"></div>
-        <div className="center-me">
-          <Segment className="col-shade">
+    if (isMobile) {
+      return (
+        <div className="profile-page">
+          <div className="log-in-pic"></div>
+          <div className="center-me">
+            <Segment className="col-shade">
+              <Grid row={2} className="grid-login" relaxed='very'>
+                <Grid.Row>
+                  <Form onSubmit={this.loginUser} className="form-one">
+                    <Form.Field required>
+                      <h2>Login</h2>
+                      <input
+                        id="email"
+                        type="email"
+                        name="email"
+                        onChange={this.onSigninFormChange}
+                        placeholder="Email"
+                      />
+                      <input
+                        id="password"
+                        type="password"
+                        name="password"
+                        onChange={this.onSigninFormChange}
+                        placeholder="Password" />
+                    </Form.Field>
+                    {errorMessage}
+                    <div className="log-in-but">
+                      <Button color='blue' inverted type='submit'>Log In</Button>
+                    </div>
+                  </Form>
+                </Grid.Row>
+                <Grid.Row>
+                  <Form onSubmit={this.signUpUser}>
+                    <Form.Field required>
+                      <h2>SignUp</h2>
+                      <input
+                        id="name"
+                        type="text"
+                        name="name"
+                        onChange={this.onSigninFormChange}
+                        placeholder="Full Name"
+                      />
+                      <input
+                        id="email"
+                        type="email"
+                        name="email"
+                        onChange={this.onSigninFormChange}
+                        placeholder="Email"
+                      />
+                      <input
+                        id="password"
+                        type="password"
+                        name="password"
+                        onChange={this.onSigninFormChange}
+                        placeholder="Password"
+                      />
+                    </Form.Field>
+                    <Button color='blue' inverted type='submit'>Sign Up</Button>
 
-            <Grid columns={2} className="grid" relaxed='very'>
-              <Grid.Column>
-                <Form onSubmit={this.loginUser} className="form-one">
-                  <Form.Field required>
-                    <h2>Login</h2>
-                    <input
-                      id="email"
-                      type="email"
-                      name="email"
-                      onChange={this.onSigninFormChange}
-                      placeholder="Email"
-                    />
-
-                    <input
-                      id="password"
-                      type="password"
-                      name="password"
-                      onChange={this.onSigninFormChange}
-                    placeholder="Password" />
-                  </Form.Field>
-
-                  {errorMessage}
-                  <div className="log-in-but">
-
-                    <Button color='blue' inverted type='submit'>Log In</Button>
-                  </div>
-
-                </Form>
-
-              </Grid.Column>
-              <Grid.Column>
-
-
-                <Form onSubmit={this.signUpUser}>
-                  <Form.Field required>
-                    <h2>SignUp</h2>
-                    <input
-                      id="name"
-                      type="text"
-                      name="name"
-                      onChange={this.onSigninFormChange}
-                      placeholder="Full Name"
-                    />
-                    <input
-                      id="email"
-                      type="email"
-                      name="email"
-                      onChange={this.onSigninFormChange}
-                      placeholder="Email"
-                    />
-                    <input
-                      id="password"
-                      type="password"
-                      name="password"
-                      onChange={this.onSigninFormChange}
-                      placeholder="Password"
-                    />
-                  </Form.Field>
-
-                  <Checkbox className="sign-up" label='I agree to never use this app' />
-                  <br/>
-                  <Button color='blue' inverted type='submit'>Sign Up</Button>
-
-                </Form>
-              </Grid.Column>
-            </Grid>
-            <Divider vertical>OR</Divider>
-
-          </Segment>
+                  </Form>
+                </Grid.Row>
+              </Grid>
+            </Segment>
+          </div>
         </div>
-      </div>
+      )
+    } else {
+      return (
+        <div className="profile-page">
+          <div className="log-in-pic"></div>
+          <div className="center-me">
+            <Segment className="col-shade">
 
-    );
+              <Grid columns={2} className="grid" relaxed='very'>
+                <Grid.Column>
+                  <Form onSubmit={this.loginUser} className="form-one">
+                    <Form.Field required>
+                      <h2>Login</h2>
+                      <input
+                        id="email"
+                        type="email"
+                        name="email"
+                        onChange={this.onSigninFormChange}
+                        placeholder="Email"
+                      />
+                      <input
+                        id="password"
+                        type="password"
+                        name="password"
+                        onChange={this.onSigninFormChange}
+                        placeholder="Password" />
+                    </Form.Field>
+
+                    {errorMessage}
+                    <div className="log-in-but">
+                      <Button color='blue' inverted type='submit'>Log In</Button>
+                    </div>
+                  </Form>
+                </Grid.Column>
+                <Grid.Column>
+
+
+                  <Form onSubmit={this.signUpUser}>
+                    <Form.Field required>
+                      <h2>SignUp</h2>
+                      <input
+                        id="name"
+                        type="text"
+                        name="name"
+                        onChange={this.onSigninFormChange}
+                        placeholder="Full Name"
+                      />
+                      <input
+                        id="email"
+                        type="email"
+                        name="email"
+                        onChange={this.onSigninFormChange}
+                        placeholder="Email"
+                      />
+                      <input
+                        id="password"
+                        type="password"
+                        name="password"
+                        onChange={this.onSigninFormChange}
+                        placeholder="Password"
+                      />
+                    </Form.Field>
+
+                    <Button color='blue' inverted type='submit'>Sign Up</Button>
+
+                  </Form>
+                </Grid.Column>
+              </Grid>
+              <Divider vertical>OR</Divider>
+            </Segment>
+          </div>
+        </div>
+      );
+    }
   }
-
-}
-
-export default LogInPage;
+  }
+  export default LogInPage;

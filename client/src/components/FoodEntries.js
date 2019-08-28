@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {fetchFood,createFood,fetchGoal,deleteFood} from '../service/track-fit'
 import {Card,Icon,Button,Modal,Form,Divider,Grid,Segment,Statistic} from 'semantic-ui-react'
-import '../App.css'
+import '../sass/main.scss'
 import { CircularProgressbar,buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 const moment = require('moment');

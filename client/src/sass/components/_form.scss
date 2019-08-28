@@ -1,0 +1,200 @@
+
+
+.modal-style{
+    text-align: center;
+    padding: 2vh 0 0 0;
+  }
+  .card-group{
+    margin-top: 3vh !important;
+  }
+  .my-cards{
+    margin-top: 5vh !important;
+    opacity: 0.9;
+  }
+  
+  .stats{
+    flex:1;
+    margin:0 !important;
+  }
+  .divide{
+    margin: 0 !important;
+    margin-bottom: 3vh !important;
+    margin-top: 4vh !important;
+  }
+  .progress{
+    height: 25vh;
+    padding-top:3vh;
+  }
+
+  .log-in-pic {
+    background: url('../images/track-fit-clear.png');
+    background-size:contain;
+    background-position: center;
+    height: 35vh;
+    width: 60vw;
+    margin: auto;
+}
+
+.profile-page {
+    background-image: url('../images/profile-option.jpg');
+    background-size:cover;
+    background-position: center;
+    height: 100vh;
+    width: 100vw;
+    opacity: 0.8;
+    font-family: Heiti TC;
+    background-color: blue;
+}
+
+.profile-page h2 {
+    color: rgb(224, 120, 0);
+}
+
+
+.grid-total {
+    /* border: solid; */
+    width: 50vw;
+    margin: auto;
+    /* background-color:green; */
+    opacity: .5
+}
+
+.col-shade {
+    margin-left: 25vw;
+    width: 50vw;
+}
+.center-me{
+    text-align:center;
+    padding-left:25vw;
+}
+
+.log-in-but {
+    padding-top: 9vh;
+}
+
+
+.sign-up{
+  margin-bottom: 2vh;
+}
+
+#profile{
+    display:flex;
+    flex-direction: column;
+    /* font-family:Heiti TC; */
+  }
+  
+  #title{
+    position: relative;
+    top:0;
+    left: 0;
+  }
+
+  #backgroundImg{
+    position: relative;
+    top: 0;
+    left: 0;
+    opacity: 0.7;
+    height: 400px;
+    object-fit: cover;
+  }
+
+  #profilePic{
+    position: absolute;
+    top: 180px;
+    left: 25px;
+  }
+
+  #pencil{
+      margin-left: 20px;
+      margin-top:160px;
+  }
+
+  #profilePic{
+      display: flex;
+      /* justify-content: space-around; */
+  }
+
+  #info{
+    display:flex;
+    flex-direction: column;
+    width:1500px;
+    margin: 20px auto;
+  }
+
+#content{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 1.2em;
+}
+
+#personalInfo{
+    width: 950px;
+    height: 250px;
+    margin:40px 30px;
+}
+
+#emailAddress{
+    background-color:rgb(238,238,238);
+    color: black;
+    float: left;
+    padding: 5px 10px;
+    border-radius: 25px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+#quotes p span{
+    display: block;
+    text-indent: 50px;
+}
+
+#personalGoal{
+    text-align: center;
+    width: 500px;
+    margin: 30px auto;
+}
+
+#personalGoal{
+  display:flex;
+  flex-direction: row;
+}
+
+#goalButton{
+  width: 150px;
+  text-align: left;
+}
+
+#go{
+  width: 100px;
+  color:white;
+}
+
+@media only screen and(max-width: 500px) {
+    .log-in-pic {
+        // background: url('../images/track-fit-clear.png');
+        // border: solid;
+        background-repeat: no-repeat;
+        // height: 15vh;
+    }
+
+    .profile-page {
+        background-image: none;
+        background-color: rgba(164, 164, 164, 0.461);
+        border: solid;
+    }
+
+    .login-form {
+        border: solid;
+    }
+
+    .grid-login {
+        // border: solid green;
+        background-color: rgba(164, 164, 164, 0.461);
+    }
+
+
+
+}
+
+  

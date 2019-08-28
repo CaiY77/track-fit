@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {fetchExercise,createExercise,deleteExercise,fetchGoal} from '../service/track-fit'
 import {Card,Icon,Button,Modal,Form,Divider,Grid,Segment,Statistic} from 'semantic-ui-react'
 import { CircularProgressbar,buildStyles } from 'react-circular-progressbar';
-import '../App.css'
+import '../sass/main.scss'
 const moment = require('moment');
 const ExerciseOptions = [
   {
