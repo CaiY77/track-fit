@@ -4,16 +4,15 @@ import {fetchUser,createGoal,fetchGoal,updateGoal} from '../service/track-fit.js
 import {Image, Icon, Card, Item, Header, Button, Input,Form} from 'semantic-ui-react'
 import profilePic from '../images/profile1.jpg'
 import defaultProfile from '../images/default_pic.jpeg'
-import './Profile.css'
-const axios = require('axios')
+import '../sass/main.scss'
 
+const axios = require('axios')
 class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
       hasGoal: null,
       user:[],
-
       file: null,
       picture: defaultProfile,
       preview: true

@@ -3,16 +3,13 @@ import { createUser } from '../service/track-fit'
 import { login, getProfile, signUp } from '../service/apiServices'
 import authService from '../service/authServices'
 import tokenService from '../service/tokenServices'
-import './LogInPage.css'
 import { Button, Checkbox, Form, Divider, Grid, Segment } from 'semantic-ui-react'
-
 import { Route, Link, Redirect } from 'react-router-dom'
 
 
 class LogInPage extends Component {
   constructor() {
     super()
-
     this.state = {
       signin: false,
       user: {},
