@@ -18,7 +18,7 @@
     "url": "https://github.com/CaiY77/track-fit/issues"
   },
   "devDependencies": {
-    "nodemon": "^1.19.0"
+    "nodemon": "^1.19.1"
   },
   "homepage": "https://github.com/CaiY77/track-fit#readme",
   "dependencies": {
@@ -30,7 +30,6 @@
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^2.2.0",
     "morgan": "^1.9.1",
-    "nodemon": "^1.19.0",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",

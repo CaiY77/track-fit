@@ -2,9 +2,9 @@
     background: url('../images/track-fit-clear.png');
     background-size:contain;
     background-position: center;
+    background-repeat: no-repeat;
     height: 35vh;
     width: 60vw;
-
     margin: auto;
 }
 

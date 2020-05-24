@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/static/css/main.50895925.chunk.css",
+    "main.js": "/static/js/main.f79b1519.chunk.js",
+    "main.js.map": "/static/js/main.f79b1519.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
+    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
+    "static/css/2.8f2da2fe.chunk.css": "/static/css/2.8f2da2fe.chunk.css",
+    "static/js/2.52f7e69b.chunk.js": "/static/js/2.52f7e69b.chunk.js",
+    "static/js/2.52f7e69b.chunk.js.map": "/static/js/2.52f7e69b.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.e4a65258d960cdcfe881e469acb04e75.js": "/precache-manifest.e4a65258d960cdcfe881e469acb04e75.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.8f2da2fe.chunk.css.map": "/static/css/2.8f2da2fe.chunk.css.map",
+    "static/css/main.50895925.chunk.css.map": "/static/css/main.50895925.chunk.css.map",
+    "static/media/App.css": "/static/media/back1.70e685c1.jpg",
+    "static/media/semantic.min.css": "/static/media/outline-icons.ef60a4f6.woff",
+    "static/media/LogInPage.css": "/static/media/profile-option.38ddadf8.jpg",
+    "static/media/profile1.jpg": "/static/media/profile1.006491ba.jpg",
+    "static/media/track-fit-TF.jpg": "/static/media/track-fit-TF.8eecb4b0.jpg"
+  }
+}

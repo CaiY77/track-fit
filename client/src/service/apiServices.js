@@ -1,6 +1,6 @@
 import axios from 'axios'
 import tokenService from './tokenServices'
-const BASE_URL = 'http://localhost:3001'
+const BASE_URL = process.env.REACT_APP_DATA_BASE_URL;
 
 const JWT_TOKEN = tokenService.fetchToken() || ''
 
