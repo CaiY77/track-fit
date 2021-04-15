@@ -4,7 +4,7 @@ const { passport, jwtSign } = require('../auth/auth.js')
 
 authRouter.post('/signup', async(req, res, next) => {
 
-  
+
   passport.authenticate('signup', async(err, user, info) => {
     try {
       if (err) {
@@ -21,6 +21,7 @@ authRouter.post('/signup', async(req, res, next) => {
       const payload = { name, id }
 
       const token = jwtSign(payload)
+      res.header("Access-Control-Allow-Origin", "*")
       return res.json({user: user, token: token, message: info.message})
     } catch (error) {
       return next(error)
@@ -34,32 +35,32 @@ authRouter.post('/login', (req, res, next) => {
     passport.authenticate('login', async(err, user, info) => {
       try {
         let error
-  
+
         if (err) {
           error = new Error(err.message)
           error.status = 500
-  
+
           return next(error)
         }
-  
+
         if (!user) {
           error = new Error(info.message)
           error.status = 400
           return next(error)
         }
-  
+
         req.login(user, { session: false }, async (error) => {
           if (error) return next(error)
-  
+
           if (!user) {
             let err = new Error(info.message)
             err.status = 400
             return next(err)
           }
-  
+
           const { email, id } = user
           const payload = { email, id }
-  
+
           const token = jwtSign(payload)
           return res.json({ user, token })
         })
@@ -68,6 +69,5 @@ authRouter.post('/login', (req, res, next) => {
       }
     })(req, res, next)
   })
-  
+
   module.exports = authRouter
-  

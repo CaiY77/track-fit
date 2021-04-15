@@ -11,6 +11,7 @@ userRouter.use('/auth', authRouter);
 userRouter.get('/:id',async(req,res)=>{
     try{
         const user = await User.findByPk(req.params.id);
+        res.header("Access-Control-Allow-Origin", "*")
         res.json(user);
     }
     catch(e){
@@ -26,6 +27,7 @@ userRouter.get('/:id/food', async(req,res)=>{
         user_id: req.params.id
       }
     });
+    res.header("Access-Control-Allow-Origin", "*")
     res.send(allFood);
   }
   catch(e){
@@ -40,6 +42,7 @@ userRouter.post('/:id/create-food', async (req, res) => {
     const food = await Food.create(req.body);
     const who = await User.findByPk(req.params.id);
     await food.setUser(who);
+    res.header("Access-Control-Allow-Origin", "*")
     res.json(food)
   } catch (e) {
     console.log(e)
@@ -57,6 +60,7 @@ userRouter.put('/update-food/:food_id', async (req, res) => {
           id: req.params.food_id
         }
       })
+      res.header("Access-Control-Allow-Origin", "*")
       res.send('updated')
     }catch (e) {
       console.log(e)
@@ -71,6 +75,7 @@ userRouter.delete('/:id/food-entry/:food_id', async (req, res) => {
         id: req.params.food_id
       }
     })
+    res.header("Access-Control-Allow-Origin", "*")
     res.send('msg: deleted');
   } catch (e) {
     console.log(e)
@@ -86,6 +91,7 @@ userRouter.get('/:id/exercise', async(req,res)=>{
         user_id: req.params.id
       }
     });
+    res.header("Access-Control-Allow-Origin", "*")
     res.send(allExercise);
   }
   catch(e){
@@ -100,6 +106,7 @@ userRouter.post('/:id/create-exercise', async(req, res) => {
     const newExerciseEntry = await Exercise.create(req.body)
     const who = await User.findByPk(req.params.id);
     await newExerciseEntry.setUser(who);
+    res.header("Access-Control-Allow-Origin", "*")
     res.json(newExerciseEntry)
   }
   catch(e){
@@ -113,6 +120,7 @@ userRouter.post('/:id/create-goal',async(req,res)=>{
     const newGoal = await Goal.create(req.body);
     const who = await User.findByPk(req.params.id);
     await who.setGoal(newGoal);
+    res.header("Access-Control-Allow-Origin", "*")
     res.json(newGoal)
   }
   catch(e){
@@ -130,6 +138,7 @@ userRouter.put('/update-goal/:user_id',async(req,res)=>{
           }
         }
       )
+      res.header("Access-Control-Allow-Origin", "*")
       res.json({'msg':'updated'});
     }
     catch(e){
@@ -147,6 +156,7 @@ userRouter.put('/update-exercise/:ex_id', async (req, res) => {
         id: req.params.ex_id
       }
     })
+    res.header("Access-Control-Allow-Origin", "*")
     res.send('updated')
   } catch (e) {
     console.log(e)
@@ -161,6 +171,7 @@ userRouter.delete('/:id/exercise-entry/:exercise_id', async (req, res) => {
         id: req.params.exercise_id
       }
     })
+    res.header("Access-Control-Allow-Origin", "*")
     res.send('msg: deleted');
   } catch (e) {
     console.log(e)
@@ -175,6 +186,7 @@ userRouter.get('/:id/goal',async(req,res)=>{
         user_id: req.params.id
       }
     })
+    res.header("Access-Control-Allow-Origin", "*")
   await (goal)
     ?res.send(goal)
     :res.json({'msg' : 'No Goals Set'})
