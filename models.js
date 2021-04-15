@@ -1,14 +1,26 @@
 const Sequelize = require('sequelize');
 const bcrypt = require('bcrypt')
 
+const options = process.env.NODE_ENV === 'production' 
+? { 
+  dialectOptions: { 
+    ssl: { 
+      require: true, 
+      rejectUnauthorized: false, 
+    }, 
+  }, 
+  ssl: true, 
+} 
+: {};
+
 const db = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost:5432/trackfit_db',{
-    database: 'trackfit_db',
-    dialect: 'postgres',
-    define:{
-        underscored: true,
-        returning: true
-    }
-})
+  dialect: 'postgres', 
+  define:{ 
+    underscored: true, 
+    returning: true 
+  }, 
+  ...options,
+});
 
 const User = db.define('user',{
   name: Sequelize.STRING,
