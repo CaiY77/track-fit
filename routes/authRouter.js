@@ -21,7 +21,6 @@ authRouter.post('/signup', async(req, res, next) => {
       const payload = { name, id }
 
       const token = jwtSign(payload)
-      res.header("Access-Control-Allow-Origin", "*")
       return res.json({user: user, token: token, message: info.message})
     } catch (error) {
       return next(error)

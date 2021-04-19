@@ -27,6 +27,11 @@ app.use('/auth', authRouter);
 app.use('/app', authorized, appRouter)
 app.use(passport.initialize())
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "https://track-fitness.surge.sh/"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 app.get('/', async (request, response) => {
   try {

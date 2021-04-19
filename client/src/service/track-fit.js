@@ -2,8 +2,7 @@ import axios from 'axios'
 const URL = process.env.REACT_APP_DATA_BASE_URL;
 
 const api = axios.create({
-  baseURL: `${URL}/user`,
-  headers: {"Access-Control-Allow-Origin": "*"}
+  baseURL: `${URL}/user`
 })
 // get a user
 export const fetchUser = async (id) => {
