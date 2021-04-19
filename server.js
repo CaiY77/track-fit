@@ -13,27 +13,17 @@ const PORT = process.env.PORT || 3001
 
 const app = express();
 
-
 app.use(logger('dev'))
 app.use(cors())
-
-
-
 app.use(bodyParser.urlencoded({ extended: true }))
-
 app.use(bodyParser.json())
+
 app.use('/user', userRouter);
 app.use('/auth', authRouter);
 app.use('/app', authorized, appRouter)
+
 app.use(passport.initialize())
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "https://track-fitness.surge.sh/");
-  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
-  res.header("Access-Control-Allow-Credentials", "true");
-  next();
-});
 
 app.get('/', async (request, response) => {
   try {
